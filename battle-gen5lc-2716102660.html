@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tactigon vs 13th Nu</title>
+<style>
+/* Everything here is lc-* and scoped to #lc-app: replay-embed.js injects Showdown's battle.css
+   globally, which already styles .turn, .win, .battle and friends. */
+:root{--bg:#f5f6f8;--card:#fff;--line:#dfe3ea;--ink:#1f2430;--ink2:#5a6070;--muted:#8a90a0;--head:#2b3a55;
+  --win:#2f7d55;--lose:#b5473a;--series:#3a6ea5;--grid:#e8ebf0;--mid:#c3c8d2;--hl:#eef3fa}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#14171d;--card:#1d2129;--line:#2e3440;--ink:#e6e9ef;
+  --ink2:#b4bac6;--muted:#8a90a0;--head:#1b2333;--win:#5fbf8a;--lose:#e07a6c;--series:#7fb0e6;--grid:#2a2f3a;--mid:#4a5160;--hl:#24303f}}
+:root[data-theme="dark"]{--bg:#14171d;--card:#1d2129;--line:#2e3440;--ink:#e6e9ef;--ink2:#b4bac6;--muted:#8a90a0;--head:#1b2333;
+  --win:#5fbf8a;--lose:#e07a6c;--series:#7fb0e6;--grid:#2a2f3a;--mid:#4a5160;--hl:#24303f}
+body{margin:0;font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}
+#lc-head{padding:12px 20px;background:var(--head);color:#fff}
+#lc-head h1{margin:0;font-size:16px;font-weight:600}
+#lc-head p{margin:2px 0 0;opacity:.75;font-size:13px}
+#lc-head a{color:#cfe0ff}
+#lc-app .lc-split{display:flex;flex-wrap:wrap;align-items:flex-start;gap:20px;padding:18px}
+#lc-app .lc-left{flex:0 0 640px;max-width:100%;overflow:hidden}
+#lc-app .lc-panel{flex:1 1 380px;min-width:300px;max-width:480px;position:sticky;top:18px}
+#lc-app .lc-card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:14px}
+#lc-app .lc-card h3{margin:0 0 8px;font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:600}
+#lc-app .lc-big{font-size:28px;font-weight:650;font-variant-numeric:tabular-nums;line-height:1.1}
+#lc-app .lc-big small{display:block;font-size:10px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+#lc-app .lc-row{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+#lc-app .lc-delta{font-size:13px;font-variant-numeric:tabular-nums;color:var(--ink2)}
+#lc-app table{width:100%;border-collapse:collapse;margin-top:8px}
+#lc-app th{text-align:left;font-size:10px;text-transform:uppercase;color:var(--muted);font-weight:500;padding:2px 0;letter-spacing:.04em}
+#lc-app td{padding:4px 0;border-top:1px solid var(--line);font-size:13px;color:var(--ink2);font-variant-numeric:tabular-nums}
+#lc-app td.n,#lc-app th.n{text-align:right;width:64px}
+#lc-app tr.lc-pick td{color:var(--ink);font-weight:600}
+#lc-app .lc-bar{display:inline-block;height:6px;border-radius:3px;background:var(--series);vertical-align:middle;margin-left:6px;opacity:.75}
+#lc-app .lc-note{margin-top:8px;font-size:12px;color:var(--ink2);background:var(--hl);border-radius:5px;padding:5px 8px}
+#lc-app .lc-idle{color:var(--muted);font-size:13px}
+#lc-app svg{display:block;width:100%;height:auto;overflow:visible}
+#lc-app svg text{fill:var(--muted);font-size:10px;font-family:inherit}
+#lc-tip{position:fixed;pointer-events:none;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:6px;
+  padding:5px 8px;font-size:12px;box-shadow:0 2px 8px rgba(0,0,0,.15);display:none;z-index:10;font-variant-numeric:tabular-nums}
+#lc-offline{display:none;margin:12px 18px 0;padding:10px 14px;background:var(--card);border:1px solid var(--lose);border-radius:6px;color:var(--lose);font-size:13px}
+#lc-head p{overflow-wrap:anywhere}
+@media (max-width:700px){#lc-app .lc-split{padding:16px;gap:14px}#lc-app .lc-left{flex:1 1 100%;overflow-x:auto}
+  #lc-app .lc-panel{position:static;flex:1 1 100%;min-width:0;max-width:none}#lc-head{padding:12px 16px}}
+</style></head><body>
+<div id="lc-head"><h1>Tactigon vs 13th Nu</h1><p>battle-gen5lc-2716102660 · won · 17 turns · Tactigon v11 · <a href="index.html">all games</a></p></div>
+<div id="lc-offline">The Showdown replay player could not be loaded (it comes from play.pokemonshowdown.com), so the panel can't follow the turn. The chart still works.</div>
+<div id="lc-app"><div class="lc-split">
+  <div class="lc-left"><div class="wrapper replay-wrapper" style="width:640px;max-width:100%">
+    <input type="hidden" name="replayid" value="battle-gen5lc-2716102660" />
+    <div class="battle"></div><div class="battle-log"></div>
+    <div class="replay-controls"></div><div class="replay-controls-2"></div>
+    <script type="text/plain" class="battle-log-data">>battle-gen5lc-2716102660
+|init|battle
+|title|13th Nu vs. Tactigon
+|t:|1795035667
+|gametype|singles
+|player|p1|13th Nu|kimonogirl|
+|player|p2|Tactigon|2|
+|gen|5
+|tier|[Gen 5] LC
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Endless Battle Clause: Forcing endless battles is banned
+|rule|Species Clause: Limit one of each Pokemon
+|rule|OHKO Clause: OHKO moves are banned
+|rule|Evasion Items Clause: Evasion items are banned
+|rule|Evasion Moves Clause: Evasion moves are banned
+|rule|Pomeg Glitch Clause: Gen 3 Pokemon at level 5+ can have any of their level-up moves.
+|rule|Sleep Moves Clause: Sleep-inducing moves are banned
+|clearpoke
+|poke|p1|Vullaby, L5, F|item
+|poke|p1|Porygon, L5|item
+|poke|p1|Timburr, L5, M|item
+|poke|p1|Tirtouga, L5, F|item
+|poke|p1|Natu, L5, F|item
+|poke|p1|Diglett, L5, F|item
+|poke|p2|Mienfoo, L5, F|item
+|poke|p2|Foongus, L5, F|item
+|poke|p2|Vullaby, L5, F|item
+|poke|p2|Slowpoke, L5, M|item
+|poke|p2|Pawniard, L5, F|item
+|poke|p2|Staryu, L5|item
+|teampreview
+|
+|t:|1795035678
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Vullaby|Vullaby, L5, F|100/100
+|switch|p2a: Staryu|Staryu, L5|21/21
+|turn|1
+|
+|t:|1795035687
+|switch|p1a: Porygon|Porygon, L5|100/100
+|-ability|p1a: Porygon|Natural Cure|Trace|[from] ability: Trace|[of] p2a: Staryu
+|move|p2a: Staryu|Thunder Wave|p1a: Porygon
+|-status|p1a: Porygon|par
+|
+|upkeep
+|turn|2
+|
+|t:|1795035694
+|switch|p2a: Mienfoo|Mienfoo, L5, F|23/23
+|move|p1a: Porygon|Toxic|p2a: Mienfoo
+|-status|p2a: Mienfoo|tox
+|
+|-damage|p2a: Mienfoo|22/23 tox|[from] psn
+|upkeep
+|turn|3
+|
+|t:|1795035697
+|-curestatus|p1a: Porygon|par|[from] ability: Natural Cure|[silent]
+|switch|p1a: Natu|Natu, L5, F|100/100
+|move|p2a: Mienfoo|U-turn|p1a: Natu
+|-damage|p1a: Natu|79/100
+|
+|t:|1795035697
+|switch|p2a: Slowpoke|Slowpoke, L5, M|26/26|[from] U-turn
+|
+|upkeep
+|turn|4
+|
+|t:|1795035707
+|move|p1a: Natu|Calm Mind|p1a: Natu
+|-boost|p1a: Natu|spa|1
+|-boost|p1a: Natu|spd|1
+|move|p2a: Slowpoke|Scald|p1a: Natu
+|-damage|p1a: Natu|61/100
+|
+|upkeep
+|turn|5
+|
+|t:|1795035715
+|move|p1a: Natu|Roost|p1a: Natu
+|-heal|p1a: Natu|100/100
+|-singleturn|p1a: Natu|move: Roost
+|move|p2a: Slowpoke|Scald|p1a: Natu
+|-damage|p1a: Natu|83/100
+|-status|p1a: Natu|brn
+|
+|-damage|p1a: Natu|74/100 brn|[from] brn
+|upkeep
+|turn|6
+|
+|t:|1795035719
+|move|p1a: Natu|Psychic|p2a: Slowpoke
+|-resisted|p2a: Slowpoke
+|-damage|p2a: Slowpoke|20/26
+|move|p2a: Slowpoke|Scald|p1a: Natu
+|-damage|p1a: Natu|57/100 brn
+|
+|-damage|p1a: Natu|48/100 brn|[from] brn
+|upkeep
+|turn|7
+|
+|t:|1795035721
+|switch|p2a: Vullaby|Vullaby, L5, F|23/23
+|move|p1a: Natu|Roost|p1a: Natu
+|-heal|p1a: Natu|100/100 brn
+|-singleturn|p1a: Natu|move: Roost
+|
+|-damage|p1a: Natu|92/100 brn|[from] brn
+|upkeep
+|turn|8
+|
+|t:|1795035729
+|switch|p1a: Tirtouga|Tirtouga, L5, F|100/100
+|move|p2a: Vullaby|Knock Off|p1a: Tirtouga
+|-damage|p1a: Tirtouga|96/100
+|-enditem|p1a: Tirtouga|Eviolite|[from] move: Knock Off|[of] p2a: Vullaby
+|
+|upkeep
+|turn|9
+|
+|t:|1795035736
+|move|p2a: Vullaby|Taunt|p1a: Tirtouga
+|-start|p1a: Tirtouga|move: Taunt
+|cant|p1a: Tirtouga|move: Taunt|Stealth Rock
+|
+|upkeep
+|turn|10
+|
+|t:|1795035739
+|switch|p2a: Mienfoo|Mienfoo, L5, F|23/23 tox
+|move|p1a: Tirtouga|Waterfall|p2a: Mienfoo
+|-damage|p2a: Mienfoo|14/23 tox
+|
+|-damage|p2a: Mienfoo|13/23 tox|[from] psn
+|upkeep
+|turn|11
+|
+|t:|1795035743
+|switch|p1a: Natu|Natu, L5, F|92/100 brn
+|move|p2a: Mienfoo|U-turn|p1a: Natu
+|-damage|p1a: Natu|70/100 brn
+|
+|t:|1795035743
+|switch|p2a: Vullaby|Vullaby, L5, F|23/23|[from] U-turn
+|
+|-damage|p1a: Natu|61/100 brn|[from] brn
+|upkeep
+|turn|12
+|
+|t:|1795035748
+|switch|p1a: Tirtouga|Tirtouga, L5, F|96/100
+|move|p2a: Vullaby|Knock Off|p1a: Tirtouga
+|-damage|p1a: Tirtouga|82/100
+|
+|upkeep
+|turn|13
+|
+|t:|1795035752
+|move|p2a: Vullaby|Taunt|p1a: Tirtouga
+|-start|p1a: Tirtouga|move: Taunt
+|move|p1a: Tirtouga|Stone Edge|p2a: Vullaby|[miss]
+|-miss|p1a: Tirtouga|p2a: Vullaby
+|
+|upkeep
+|turn|14
+|
+|t:|1795035758
+|switch|p2a: Mienfoo|Mienfoo, L5, F|20/23 tox
+|switch|p1a: Vullaby|Vullaby, L5, F|100/100
+|
+|-damage|p2a: Mienfoo|19/23 tox|[from] psn
+|upkeep
+|turn|15
+|
+|t:|1795035762
+|switch|p2a: Staryu|Staryu, L5|21/21
+|move|p1a: Vullaby|Nasty Plot|p1a: Vullaby
+|-boost|p1a: Vullaby|spa|2
+|
+|upkeep
+|turn|16
+|
+|t:|1795035765
+|move|p2a: Staryu|Thunder Wave|p1a: Vullaby
+|-status|p1a: Vullaby|par
+|cant|p1a: Vullaby|par
+|
+|upkeep
+|turn|17
+|-message|13th Nu forfeited.
+|
+|win|Tactigon</script>
+  </div></div>
+  <aside class="lc-panel">
+    <div class="lc-card"><h3>Win chance over the game</h3><div id="lc-chart"></div></div>
+    <div class="lc-card" id="lc-turn"><div class="lc-idle">Press play: the bot's view of each turn appears here as the replay advances. Click the chart to jump to a turn.</div></div>
+  </aside>
+</div></div>
+<div id="lc-tip"></div>
+<script>
+var G = {"room": "battle-gen5lc-2716102660", "me": "Tactigon", "side": "p2", "foe": "13th Nu", "result": "won", "turns": 17, "decisions": [{"turn": 1, "choice": "move 2", "options": [["Thunder Wave", 71], ["Scald", 28], ["Recover", 1], ["switch Pawniard", 0]], "win": 68, "notes": []}, {"turn": 2, "choice": "switch 4", "options": [["switch Mienfoo", 73], ["switch Pawniard", 15], ["Scald", 11], ["switch Foongus", 0]], "win": 65, "notes": []}, {"turn": 3, "choice": "move 2", "options": [["U-turn", 98], ["High Jump Kick", 1], ["Knock Off", 1], ["Fake Out", 0]], "win": 65, "notes": []}, {"turn": 3, "choice": "switch 3", "options": [["switch Slowpoke", 68], ["switch Vullaby", 21], ["switch Pawniard", 8], ["switch Staryu", 3]], "win": 65, "notes": []}, {"turn": 4, "choice": "move 4", "options": [["Scald", 100], ["Flamethrower", 0], ["Thunder Wave", 0], ["Slack Off", 0]], "win": 63, "notes": []}, {"turn": 5, "choice": "move 4", "options": [["Scald", 100], ["switch Vullaby", 0], ["Flamethrower", 0], ["switch Pawniard", 0]], "win": 65, "notes": []}, {"turn": 6, "choice": "move 4", "options": [["Scald", 74], ["switch Vullaby", 21], ["Flamethrower", 5], ["Slack Off", 0]], "win": 69, "notes": []}, {"turn": 7, "choice": "switch 6", "options": [["switch Vullaby", 60], ["Scald", 20], ["switch Pawniard", 18], ["Flamethrower", 1]], "win": 70, "notes": []}, {"turn": 8, "choice": "move 4", "options": [["Knock Off", 98], ["Brave Bird", 2], ["switch Slowpoke", 0], ["Roost", 0]], "win": 67, "notes": []}, {"turn": 9, "choice": "move 3", "options": [["Taunt", 100], ["switch Pawniard", 0], ["switch Staryu", 0], ["switch Foongus", 0]], "win": 67, "notes": []}, {"turn": 10, "choice": "switch 3", "options": [["switch Mienfoo", 94], ["switch Pawniard", 3], ["switch Foongus", 2], ["switch Slowpoke", 0]], "win": 69, "notes": []}, {"turn": 11, "choice": "move 2", "options": [["U-turn", 100], ["High Jump Kick", 0], ["Fake Out", 0], ["switch Pawniard", 0]], "win": 70, "notes": []}, {"turn": 11, "choice": "switch 3", "options": [["switch Pawniard", 49], ["switch Vullaby", 45], ["switch Slowpoke", 5], ["switch Foongus", 0]], "win": 77, "notes": []}, {"turn": 12, "choice": "move 4", "options": [["Knock Off", 76], ["Brave Bird", 23], ["switch Mienfoo", 0], ["Taunt", 0]], "win": 72, "notes": []}, {"turn": 13, "choice": "move 3", "options": [["Taunt", 100], ["switch Pawniard", 0], ["switch Staryu", 0], ["switch Mienfoo", 0]], "win": 70, "notes": []}, {"turn": 14, "choice": "switch 3", "options": [["switch Mienfoo", 66], ["switch Pawniard", 18], ["switch Foongus", 12], ["switch Slowpoke", 3]], "win": 69, "notes": []}, {"turn": 15, "choice": "switch 4", "options": [["switch Staryu", 100], ["Fake Out", 0], ["switch Pawniard", 0], ["switch Slowpoke", 0]], "win": 67, "notes": []}, {"turn": 16, "choice": "move 2", "options": [["Thunder Wave", 92], ["Scald", 8], ["Recover", 0], ["switch Mienfoo", 0]], "win": 67, "notes": []}, {"turn": 17, "choice": "move 3", "options": [["Scald", 99], ["Recover", 1], ["switch Pawniard", 1], ["Thunder Wave", 0]], "win": 80, "notes": []}]};
+(function () {
+  var NS = 'http://www.w3.org/2000/svg';
+  var byTurn = {};
+  G.decisions.forEach(function (d) { (byTurn[d.turn] = byTurn[d.turn] || []).push(d); });
+  // one point per turn: the decision at the start of the turn (forced switches come later in it)
+  var pts = Object.keys(byTurn).map(Number).sort(function (a, b) { return a - b; })
+    .map(function (t) { return {t: t, w: byTurn[t][0].win}; }).filter(function (p) { return p.w !== null; });
+  var final = G.result === 'won' ? 100 : G.result === 'lost' ? 0 : 50;
+  var W = 440, H = 170, L = 30, R = 8, T = 8, B = 22;
+  var maxT = Math.max(G.turns, pts.length ? pts[pts.length - 1].t : 1, 1);
+  var x = function (t) { return L + (W - L - R) * (t - 1) / Math.max(maxT - 1, 1); };
+  var y = function (w) { return T + (H - T - B) * (1 - w / 100); };
+  function el(name, attrs, parent) {
+    var e = document.createElementNS(NS, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  var svg = el('svg', {viewBox: '0 0 ' + W + ' ' + H, role: 'img',
+    'aria-label': 'Bot win chance by turn, ending in a ' + G.result});
+  [0, 25, 50, 75, 100].forEach(function (v) {
+    el('line', {x1: L, x2: W - R, y1: y(v), y2: y(v), stroke: v === 50 ? 'var(--mid)' : 'var(--grid)',
+      'stroke-width': 1, 'stroke-dasharray': v === 50 ? '3 3' : ''}, svg);
+    el('text', {x: L - 6, y: y(v) + 3, 'text-anchor': 'end'}, svg).textContent = v + '%';
+  });
+  var step = Math.max(1, Math.ceil(maxT / 8));
+  for (var t = 1; t <= maxT; t += step) el('text', {x: x(t), y: H - 6, 'text-anchor': 'middle'}, svg).textContent = t;
+  if (pts.length) {
+    var d = pts.map(function (p, i) { return (i ? 'L' : 'M') + x(p.t).toFixed(1) + ' ' + y(p.w).toFixed(1); }).join(' ');
+    el('path', {d: d, fill: 'none', stroke: 'var(--series)', 'stroke-width': 2, 'stroke-linejoin': 'round', 'stroke-linecap': 'round'}, svg);
+    var last = pts[pts.length - 1];
+    el('line', {x1: x(last.t), y1: y(last.w), x2: x(maxT), y2: y(final), stroke: 'var(--series)', 'stroke-width': 2,
+      'stroke-dasharray': '2 3', opacity: .6}, svg);
+    el('circle', {cx: x(maxT), cy: y(final), r: 4, fill: G.result === 'won' ? 'var(--win)' : G.result === 'lost' ? 'var(--lose)' : 'var(--mid)',
+      stroke: 'var(--card)', 'stroke-width': 2}, svg);
+  }
+  var cursor = el('line', {y1: T, y2: H - B, stroke: 'var(--ink2)', 'stroke-width': 1, opacity: 0}, svg);
+  var dot = el('circle', {r: 4.5, fill: 'var(--series)', stroke: 'var(--card)', 'stroke-width': 2, opacity: 0}, svg);
+  var hit = el('rect', {x: L, y: T, width: W - L - R, height: H - T - B, fill: 'transparent', style: 'cursor:pointer'}, svg);
+  document.getElementById('lc-chart').appendChild(svg);
+  var tip = document.getElementById('lc-tip');
+  function nearest(ev) {
+    var r = svg.getBoundingClientRect(), px = (ev.clientX - r.left) * W / r.width, best = null;
+    pts.forEach(function (p) { if (!best || Math.abs(x(p.t) - px) < Math.abs(x(best.t) - px)) best = p; });
+    return best;
+  }
+  hit.addEventListener('mousemove', function (ev) {
+    var p = nearest(ev); if (!p) return;
+    tip.style.display = 'block'; tip.style.left = (ev.clientX + 12) + 'px'; tip.style.top = (ev.clientY - 28) + 'px';
+    tip.textContent = 'Turn ' + p.t + ': ' + p.w + '% win chance';
+  });
+  hit.addEventListener('mouseleave', function () { tip.style.display = 'none'; });
+  hit.addEventListener('click', function (ev) {
+    var p = nearest(ev); if (!p) return;
+    var b = window.Replays && window.Replays.battle;
+    if (b) { try { b.seekTurn(p.t); } catch (e) {} }
+    show(p.t, true);
+  });
+
+  var panel = document.getElementById('lc-turn'), current = null;
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]; }); }
+  function show(turn, force) {
+    var t = null;
+    Object.keys(byTurn).map(Number).forEach(function (k) { if (k <= turn) t = k; });
+    if (t === current && !force) return;
+    current = t;
+    if (t === null) { cursor.setAttribute('opacity', 0); dot.setAttribute('opacity', 0); return; }
+    var p = pts.filter(function (q) { return q.t === t; })[0];
+    cursor.setAttribute('x1', x(t)); cursor.setAttribute('x2', x(t)); cursor.setAttribute('opacity', .35);
+    if (p) { dot.setAttribute('cx', x(t)); dot.setAttribute('cy', y(p.w)); dot.setAttribute('opacity', 1); }
+    var prev = pts.filter(function (q) { return q.t < t; }).pop();
+    var html = '';
+    byTurn[t].forEach(function (d, i) {
+      var delta = (i === 0 && prev && d.win !== null) ? d.win - prev.w : null;
+      html += '<h3>Turn ' + t + (i ? ' · forced switch' : '') + '</h3><div class="lc-row"><div class="lc-big">' +
+        (d.win === null ? '–' : d.win + '%') + '<small>win chance</small></div>' +
+        (delta !== null ? '<div class="lc-delta">' + (delta >= 0 ? '+' : '') + delta + ' pts vs turn ' + prev.t + '</div>' : '') + '</div>';
+      if (d.options.length) {
+        html += '<table><thead><tr><th>option</th><th class="n">preference</th></tr></thead><tbody>';
+        d.options.forEach(function (o, j) {
+          html += '<tr' + (j === 0 ? ' class="lc-pick"' : '') + '><td>' + esc(o[0]) + '</td><td class="n">' + o[1] +
+            '%<span class="lc-bar" style="width:' + Math.round(o[1] * 0.3) + 'px"></span></td></tr>';
+        });
+        html += '</tbody></table>';
+      }
+      d.notes.forEach(function (n) { html += '<div class="lc-note">' + esc(n) + '</div>'; });
+      if (i < byTurn[t].length - 1) html += '<div style="height:12px"></div>';
+    });
+    panel.innerHTML = html;
+  }
+  var tries = 0, swapped = false;
+  (function hook() {
+    var b = window.Replays && window.Replays.battle;
+    if (!b) {
+      if (++tries > 40) document.getElementById('lc-offline').style.display = 'block';
+      return setTimeout(hook, 250);
+    }
+    if (G.side === 'p2' && !swapped) {  // show the battle from the bot's side
+      swapped = true;
+      try { window.Replays.switchViewpoint(); } catch (e) { try { b.switchViewpoint(); } catch (e2) {} }
+    }
+    var m = /turn=(\d+)/.exec(location.hash);  // links like page.html#turn=12 open at that turn
+    if (m) { try { b.seekTurn(+m[1]); } catch (e) {} }
+    setInterval(function () { show(b.turn); }, 200);  // 'turn' events are suppressed while seeking
+    show(b.turn);
+  })();
+})();
+</script>
+<script>
+  var daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24);
+  document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"><\/script>');
+</script>
+</body></html>
