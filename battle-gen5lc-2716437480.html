@@ -1,0 +1,1815 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tactigon vs asdweqwasd</title>
+<style>
+/* Everything here is lc-* and scoped to #lc-app: replay-embed.js injects Showdown's battle.css
+   globally, which already styles .turn, .win, .battle and friends. */
+:root{--bg:#f5f6f8;--card:#fff;--line:#dfe3ea;--ink:#1f2430;--ink2:#5a6070;--muted:#8a90a0;--head:#2b3a55;
+  --win:#2f7d55;--lose:#b5473a;--series:#3a6ea5;--grid:#e8ebf0;--mid:#c3c8d2;--hl:#eef3fa}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#14171d;--card:#1d2129;--line:#2e3440;--ink:#e6e9ef;
+  --ink2:#b4bac6;--muted:#8a90a0;--head:#1b2333;--win:#5fbf8a;--lose:#e07a6c;--series:#7fb0e6;--grid:#2a2f3a;--mid:#4a5160;--hl:#24303f}}
+:root[data-theme="dark"]{--bg:#14171d;--card:#1d2129;--line:#2e3440;--ink:#e6e9ef;--ink2:#b4bac6;--muted:#8a90a0;--head:#1b2333;
+  --win:#5fbf8a;--lose:#e07a6c;--series:#7fb0e6;--grid:#2a2f3a;--mid:#4a5160;--hl:#24303f}
+body{margin:0;font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}
+#lc-head{padding:12px 20px;background:var(--head);color:#fff}
+#lc-head h1{margin:0;font-size:16px;font-weight:600}
+#lc-head p{margin:2px 0 0;opacity:.75;font-size:13px}
+#lc-head a{color:#cfe0ff}
+#lc-app .lc-split{display:flex;flex-wrap:wrap;align-items:flex-start;gap:20px;padding:18px}
+#lc-app .lc-left{flex:0 0 640px;max-width:100%;overflow:hidden}
+#lc-app .lc-panel{flex:1 1 380px;min-width:300px;max-width:480px;position:sticky;top:18px}
+#lc-app .lc-card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:14px}
+#lc-app .lc-card h3{margin:0 0 8px;font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:600}
+#lc-app .lc-big{font-size:28px;font-weight:650;font-variant-numeric:tabular-nums;line-height:1.1}
+#lc-app .lc-big small{display:block;font-size:10px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+#lc-app .lc-row{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+#lc-app .lc-delta{font-size:13px;font-variant-numeric:tabular-nums;color:var(--ink2)}
+#lc-app table{width:100%;border-collapse:collapse;margin-top:8px}
+#lc-app th{text-align:left;font-size:10px;text-transform:uppercase;color:var(--muted);font-weight:500;padding:2px 0;letter-spacing:.04em}
+#lc-app td{padding:4px 0;border-top:1px solid var(--line);font-size:13px;color:var(--ink2);font-variant-numeric:tabular-nums}
+#lc-app td.n,#lc-app th.n{text-align:right;width:64px}
+#lc-app tr.lc-pick td{color:var(--ink);font-weight:600}
+#lc-app .lc-bar{display:inline-block;height:6px;border-radius:3px;background:var(--series);vertical-align:middle;margin-left:6px;opacity:.75}
+#lc-app .lc-note{margin-top:8px;font-size:12px;color:var(--ink2);background:var(--hl);border-radius:5px;padding:5px 8px}
+#lc-app .lc-idle{color:var(--muted);font-size:13px}
+#lc-app svg{display:block;width:100%;height:auto;overflow:visible}
+#lc-app svg text{fill:var(--muted);font-size:10px;font-family:inherit}
+#lc-tip{position:fixed;pointer-events:none;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:6px;
+  padding:5px 8px;font-size:12px;box-shadow:0 2px 8px rgba(0,0,0,.15);display:none;z-index:10;font-variant-numeric:tabular-nums}
+#lc-offline{display:none;margin:12px 18px 0;padding:10px 14px;background:var(--card);border:1px solid var(--lose);border-radius:6px;color:var(--lose);font-size:13px}
+#lc-head p{overflow-wrap:anywhere}
+@media (max-width:700px){#lc-app .lc-split{padding:16px;gap:14px}#lc-app .lc-left{flex:1 1 100%;overflow-x:auto}
+  #lc-app .lc-panel{position:static;flex:1 1 100%;min-width:0;max-width:none}#lc-head{padding:12px 16px}}
+</style></head><body>
+<div id="lc-head"><h1>Tactigon vs asdweqwasd</h1><p>battle-gen5lc-2716437480 · lost · 165 turns · Tactigon v11 · <a href="index.html">all games</a></p></div>
+<div id="lc-offline">The Showdown replay player could not be loaded (it comes from play.pokemonshowdown.com), so the panel can't follow the turn. The chart still works.</div>
+<div id="lc-app"><div class="lc-split">
+  <div class="lc-left"><div class="wrapper replay-wrapper" style="width:640px;max-width:100%">
+    <input type="hidden" name="replayid" value="battle-gen5lc-2716437480" />
+    <div class="battle"></div><div class="battle-log"></div>
+    <div class="replay-controls"></div><div class="replay-controls-2"></div>
+    <script type="text/plain" class="battle-log-data">>battle-gen5lc-2716437480
+|init|battle
+|title|asdweqwasd vs. Tactigon
+|t:|1795098309
+|gametype|singles
+|player|p1|asdweqwasd|picnicker|
+|player|p2|Tactigon|2|
+|gen|5
+|tier|[Gen 5] LC
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Endless Battle Clause: Forcing endless battles is banned
+|rule|Species Clause: Limit one of each Pokemon
+|rule|OHKO Clause: OHKO moves are banned
+|rule|Evasion Items Clause: Evasion items are banned
+|rule|Evasion Moves Clause: Evasion moves are banned
+|rule|Pomeg Glitch Clause: Gen 3 Pokemon at level 5+ can have any of their level-up moves.
+|rule|Sleep Moves Clause: Sleep-inducing moves are banned
+|clearpoke
+|poke|p1|Mienfoo, L5, M|item
+|poke|p1|Drilbur, L5, M|item
+|poke|p1|Gastly, L5, M|item
+|poke|p1|Porygon, L5|item
+|poke|p1|Ferroseed, L5, M|item
+|poke|p1|Stunky, L5, M|item
+|poke|p2|Mienfoo, L5, F|item
+|poke|p2|Foongus, L5, M|item
+|poke|p2|Vullaby, L5, F|item
+|poke|p2|Slowpoke, L5, M|item
+|poke|p2|Pawniard, L5, M|item
+|poke|p2|Staryu, L5|item
+|teampreview
+|
+|t:|1795098332
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Mienfoo|Mienfoo, L5, M|100/100
+|switch|p2a: Slowpoke|Slowpoke, L5, M|26/26
+|turn|1
+|
+|t:|1795098333
+|move|p1a: Mienfoo|Fake Out|p2a: Slowpoke
+|-damage|p2a: Slowpoke|23/26
+|cant|p2a: Slowpoke|flinch
+|
+|upkeep
+|turn|2
+|
+|t:|1795098336
+|move|p1a: Mienfoo|U-turn|p2a: Slowpoke
+|-supereffective|p2a: Slowpoke
+|-damage|p2a: Slowpoke|15/26
+|
+|t:|1795098339
+|switch|p1a: Drilbur|Drilbur, L5, M|100/100|[from] U-turn
+|-ability|p1a: Drilbur|Mold Breaker
+|move|p2a: Slowpoke|Thunder Wave|p1a: Drilbur
+|-immune|p1a: Drilbur
+|
+|upkeep
+|turn|3
+|
+|t:|1795098344
+|switch|p1a: Stunky|Stunky, L5, M|100/100
+|move|p2a: Slowpoke|Scald|p1a: Stunky
+|-damage|p1a: Stunky|57/100
+|
+|upkeep
+|turn|4
+|
+|t:|1795098347
+|move|p1a: Stunky|Crunch|p2a: Slowpoke
+|-supereffective|p2a: Slowpoke
+|-damage|p2a: Slowpoke|1/26
+|-unboost|p2a: Slowpoke|def|1
+|move|p2a: Slowpoke|Thunder Wave|p1a: Stunky
+|-status|p1a: Stunky|par
+|
+|upkeep
+|turn|5
+|
+|t:|1795098353
+|-activate|p2a: Slowpoke|move: Pursuit
+|move|p1a: Stunky|Pursuit|p2a: Slowpoke|[from] Pursuit
+|-supereffective|p2a: Slowpoke
+|-damage|p2a: Slowpoke|0 fnt
+|faint|p2a: Slowpoke
+|-hint|A Pokemon can't switch between when it runs out of HP and when it faints
+|
+|upkeep
+|
+|t:|1795098354
+|switch|p2a: Mienfoo|Mienfoo, L5, F|23/23
+|turn|6
+|
+|t:|1795098361
+|switch|p1a: Mienfoo|Mienfoo, L5, M|100/100
+|move|p2a: Mienfoo|Knock Off|p1a: Mienfoo
+|-resisted|p1a: Mienfoo
+|-damage|p1a: Mienfoo|96/100
+|-enditem|p1a: Mienfoo|Eviolite|[from] move: Knock Off|[of] p2a: Mienfoo
+|
+|upkeep
+|turn|7
+|
+|t:|1795098365
+|move|p2a: Mienfoo|High Jump Kick|p1a: Mienfoo
+|-damage|p1a: Mienfoo|18/100
+|move|p1a: Mienfoo|Knock Off|p2a: Mienfoo
+|-resisted|p2a: Mienfoo
+|-damage|p2a: Mienfoo|22/23
+|-enditem|p2a: Mienfoo|Eviolite|[from] move: Knock Off|[of] p1a: Mienfoo
+|
+|upkeep
+|turn|8
+|
+|t:|1795098369
+|move|p1a: Mienfoo|U-turn|p2a: Mienfoo
+|-resisted|p2a: Mienfoo
+|-damage|p2a: Mienfoo|19/23
+|
+|t:|1795098381
+|switch|p1a: Stunky|Stunky, L5, M|57/100 par|[from] U-turn
+|move|p2a: Mienfoo|U-turn|p1a: Stunky
+|-crit|p1a: Stunky
+|-damage|p1a: Stunky|0 fnt
+|-damage|p2a: Mienfoo|14/23|[from] ability: Aftermath|[of] p1a: Stunky
+|faint|p1a: Stunky
+|
+|t:|1795098382
+|switch|p2a: Foongus|Foongus, L5, M|24/24|[from] U-turn
+|
+|upkeep
+|
+|t:|1795098390
+|switch|p1a: Ferroseed|Ferroseed, L5, M|100/100
+|turn|9
+|
+|t:|1795098393
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-status|p1a: Ferroseed|par
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|10
+|
+|t:|1795098397
+|switch|p2a: Mienfoo|Mienfoo, L5, F|21/23
+|move|p1a: Ferroseed|Thunder Wave|p2a: Mienfoo
+|-status|p2a: Mienfoo|par
+|
+|upkeep
+|turn|11
+|
+|t:|1795098401
+|switch|p1a: Gastly|Gastly, L5, M|100/100
+|cant|p2a: Mienfoo|par
+|
+|upkeep
+|turn|12
+|
+|t:|1795098403
+|move|p1a: Gastly|Sludge Bomb|p2a: Mienfoo
+|-damage|p2a: Mienfoo|8/23 par
+|move|p2a: Mienfoo|U-turn|p1a: Gastly
+|-resisted|p1a: Gastly
+|-damage|p1a: Gastly|96/100
+|
+|t:|1795098404
+|switch|p2a: Pawniard|Pawniard, L5, M|21/21|[from] U-turn
+|
+|upkeep
+|turn|13
+|
+|t:|1795098407
+|move|p1a: Gastly|Will-O-Wisp|p2a: Pawniard
+|-status|p2a: Pawniard|brn
+|move|p2a: Pawniard|Pursuit|p1a: Gastly
+|-supereffective|p1a: Gastly
+|-damage|p1a: Gastly|67/100
+|
+|-damage|p2a: Pawniard|19/21 brn|[from] brn
+|upkeep
+|turn|14
+|
+|t:|1795098412
+|move|p1a: Gastly|Hidden Power|p2a: Pawniard
+|-supereffective|p2a: Pawniard
+|-damage|p2a: Pawniard|7/21 brn
+|move|p2a: Pawniard|Pursuit|p1a: Gastly
+|-supereffective|p1a: Gastly
+|-damage|p1a: Gastly|39/100
+|
+|-damage|p2a: Pawniard|5/21 brn|[from] brn
+|upkeep
+|turn|15
+|
+|t:|1795098418
+|move|p2a: Pawniard|Sucker Punch|p1a: Gastly
+|-supereffective|p1a: Gastly
+|-damage|p1a: Gastly|0 fnt
+|faint|p1a: Gastly
+|
+|-damage|p2a: Pawniard|3/21 brn|[from] brn
+|upkeep
+|
+|t:|1795098420
+|switch|p1a: Drilbur|Drilbur, L5, M|100/100
+|-ability|p1a: Drilbur|Mold Breaker
+|turn|16
+|
+|t:|1795098422
+|move|p1a: Drilbur|Stealth Rock|p2a: Pawniard
+|-sidestart|p2: Tactigon|move: Stealth Rock
+|move|p2a: Pawniard|Stealth Rock|p1a: Drilbur
+|-sidestart|p1: asdweqwasd|move: Stealth Rock
+|
+|-damage|p2a: Pawniard|1/21 brn|[from] brn
+|upkeep
+|turn|17
+|
+|t:|1795098425
+|switch|p2a: Staryu|Staryu, L5|21/21
+|-damage|p2a: Staryu|19/21|[from] Stealth Rock
+|move|p1a: Drilbur|Rapid Spin|p2a: Staryu
+|-damage|p2a: Staryu|17/21
+|-sideend|p1: asdweqwasd|Stealth Rock|[from] move: Rapid Spin|[of] p1a: Drilbur
+|
+|upkeep
+|turn|18
+|
+|t:|1795098430
+|switch|p1a: Ferroseed|Ferroseed, L5, M|100/100 par
+|move|p2a: Staryu|Rapid Spin|p1a: Ferroseed
+|-resisted|p1a: Ferroseed
+|-damage|p1a: Ferroseed|96/100 par
+|-damage|p2a: Staryu|15/21|[from] ability: Iron Barbs|[of] p1a: Ferroseed
+|-sideend|p2: Tactigon|Stealth Rock|[from] move: Rapid Spin|[of] p2a: Staryu
+|
+|upkeep
+|turn|19
+|
+|t:|1795098434
+|move|p2a: Staryu|Recover|p2a: Staryu
+|-heal|p2a: Staryu|21/21
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|20
+|
+|t:|1795098437
+|switch|p2a: Mienfoo|Mienfoo, L5, F|15/23 par
+|move|p1a: Ferroseed|Spikes|p2a: Mienfoo
+|-sidestart|p2: Tactigon|Spikes
+|
+|upkeep
+|turn|21
+|
+|t:|1795098446
+|switch|p1a: Drilbur|Drilbur, L5, M|100/100
+|-ability|p1a: Drilbur|Mold Breaker
+|move|p2a: Mienfoo|U-turn|p1a: Drilbur
+|-damage|p1a: Drilbur|74/100
+|
+|t:|1795098446
+|switch|p2a: Foongus|Foongus, L5, M|24/24|[from] U-turn
+|-damage|p2a: Foongus|21/24|[from] Spikes
+|
+|upkeep
+|turn|22
+|
+|t:|1795098448
+|switch|p1a: Ferroseed|Ferroseed, L5, M|96/100 par
+|move|p2a: Foongus|Giga Drain|p1a: Ferroseed
+|-resisted|p1a: Ferroseed
+|-damage|p1a: Ferroseed|91/100 par
+|-heal|p2a: Foongus|22/24|[from] drain|[of] p1a: Ferroseed
+|
+|upkeep
+|turn|23
+|
+|t:|1795098452
+|switch|p2a: Mienfoo|Mienfoo, L5, F|22/23 par
+|-damage|p2a: Mienfoo|20/23 par|[from] Spikes
+|switch|p1a: Mienfoo|Mienfoo, L5, M|48/100
+|
+|upkeep
+|turn|24
+|
+|t:|1795098454
+|switch|p2a: Foongus|Foongus, L5, M|24/24
+|-damage|p2a: Foongus|21/24|[from] Spikes
+|move|p1a: Mienfoo|Fake Out|p2a: Foongus
+|-damage|p2a: Foongus|18/24
+|
+|upkeep
+|turn|25
+|
+|t:|1795098456
+|move|p1a: Mienfoo|U-turn|p2a: Foongus
+|-damage|p2a: Foongus|12/24
+|
+|t:|1795098458
+|switch|p1a: Ferroseed|Ferroseed, L5, M|91/100 par|[from] U-turn
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|
+|upkeep
+|turn|26
+|
+|t:|1795098460
+|switch|p2a: Mienfoo|Mienfoo, L5, F|23/23 par
+|-damage|p2a: Mienfoo|21/23 par|[from] Spikes
+|switch|p1a: Mienfoo|Mienfoo, L5, M|79/100
+|
+|upkeep
+|turn|27
+|
+|t:|1795098462
+|switch|p2a: Pawniard|Pawniard, L5, M|1/21 brn
+|-damage|p2a: Pawniard|0 fnt|[from] Spikes
+|faint|p2a: Pawniard
+|move|p1a: Mienfoo|Fake Out|p2: Pawniard|[notarget]
+|-fail|p1a: Mienfoo
+|
+|upkeep
+|
+|t:|1795098463
+|switch|p2a: Vullaby|Vullaby, L5, F|23/23
+|turn|28
+|
+|t:|1795098466
+|switch|p1a: Porygon|Porygon, L5|100/100
+|-ability|p1a: Porygon|Overcoat|Trace|[from] ability: Trace|[of] p2a: Vullaby
+|move|p2a: Vullaby|Brave Bird|p1a: Porygon
+|-damage|p1a: Porygon|60/100
+|-damage|p2a: Vullaby|20/23|[from] Recoil
+|
+|upkeep
+|turn|29
+|
+|t:|1795098472
+|move|p2a: Vullaby|Taunt|p1a: Porygon
+|-start|p1a: Porygon|move: Taunt
+|cant|p1a: Porygon|move: Taunt|Recover
+|
+|upkeep
+|turn|30
+|
+|t:|1795098474
+|move|p2a: Vullaby|Brave Bird|p1a: Porygon
+|-damage|p1a: Porygon|20/100
+|-damage|p2a: Vullaby|17/23|[from] Recoil
+|move|p1a: Porygon|Thunderbolt|p2a: Vullaby
+|-supereffective|p2a: Vullaby
+|-damage|p2a: Vullaby|1/23
+|
+|upkeep
+|turn|31
+|
+|t:|1795098482
+|move|p2a: Vullaby|Roost|p2a: Vullaby
+|-heal|p2a: Vullaby|13/23
+|-singleturn|p2a: Vullaby|move: Roost
+|move|p1a: Porygon|Thunderbolt|p2a: Vullaby
+|-damage|p2a: Vullaby|7/23
+|
+|-end|p1a: Porygon|move: Taunt
+|upkeep
+|turn|32
+|
+|t:|1795098492
+|move|p2a: Vullaby|Brave Bird|p1a: Porygon
+|-crit|p1a: Porygon
+|-damage|p1a: Porygon|0 fnt
+|faint|p1a: Porygon
+|-damage|p2a: Vullaby|5/23|[from] Recoil
+|
+|upkeep
+|
+|t:|1795098494
+|switch|p1a: Drilbur|Drilbur, L5, M|74/100
+|-ability|p1a: Drilbur|Mold Breaker
+|turn|33
+|
+|t:|1795098497
+|switch|p2a: Staryu|Staryu, L5|21/21
+|-damage|p2a: Staryu|19/21|[from] Spikes
+|move|p1a: Drilbur|Rock Tomb|p2a: Staryu|[miss]
+|-miss|p1a: Drilbur|p2a: Staryu
+|
+|upkeep
+|turn|34
+|
+|t:|1795098500
+|switch|p1a: Ferroseed|Ferroseed, L5, M|91/100 par
+|move|p2a: Staryu|Thunder Wave|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|
+|upkeep
+|turn|35
+|
+|t:|1795098505
+|move|p2a: Staryu|Scald|p1a: Ferroseed
+|-resisted|p1a: Ferroseed
+|-damage|p1a: Ferroseed|81/100 par
+|move|p1a: Ferroseed|Giga Drain|p2a: Staryu
+|-supereffective|p2a: Staryu
+|-damage|p2a: Staryu|7/21
+|-heal|p1a: Ferroseed|100/100 par|[from] drain|[of] p2a: Staryu
+|
+|upkeep
+|turn|36
+|
+|t:|1795098511
+|move|p2a: Staryu|Recover|p2a: Staryu
+|-heal|p2a: Staryu|18/21
+|move|p1a: Ferroseed|Giga Drain|p2a: Staryu
+|-supereffective|p2a: Staryu
+|-damage|p2a: Staryu|6/21
+|
+|upkeep
+|turn|37
+|
+|t:|1795098516
+|move|p2a: Staryu|Recover|p2a: Staryu
+|-heal|p2a: Staryu|17/21
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|38
+|
+|t:|1795098520
+|switch|p2a: Mienfoo|Mienfoo, L5, F|23/23 par
+|-damage|p2a: Mienfoo|21/23 par|[from] Spikes
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|39
+|
+|t:|1795098524
+|switch|p1a: Mienfoo|Mienfoo, L5, M|100/100
+|move|p2a: Mienfoo|High Jump Kick|p1a: Mienfoo
+|-damage|p1a: Mienfoo|31/100
+|
+|upkeep
+|turn|40
+|
+|t:|1795098526
+|move|p1a: Mienfoo|Fake Out|p2a: Mienfoo
+|-damage|p2a: Mienfoo|17/23 par
+|cant|p2a: Mienfoo|flinch
+|
+|upkeep
+|turn|41
+|
+|t:|1795098528
+|move|p1a: Mienfoo|Drain Punch|p2a: Mienfoo
+|-damage|p2a: Mienfoo|8/23 par
+|-heal|p1a: Mienfoo|53/100|[from] drain|[of] p2a: Mienfoo
+|move|p2a: Mienfoo|High Jump Kick|p1a: Mienfoo|[miss]
+|-miss|p2a: Mienfoo|p1a: Mienfoo
+|-damage|p2a: Mienfoo|0 fnt|[from] highjumpkick
+|faint|p2a: Mienfoo
+|
+|upkeep
+|
+|t:|1795098528
+|switch|p2a: Foongus|Foongus, L5, M|20/24
+|-damage|p2a: Foongus|17/24|[from] Spikes
+|turn|42
+|
+|t:|1795098534
+|move|p1a: Mienfoo|U-turn|p2a: Foongus
+|-damage|p2a: Foongus|12/24
+|
+|t:|1795098536
+|switch|p1a: Ferroseed|Ferroseed, L5, M|100/100 par|[from] U-turn
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|
+|upkeep
+|turn|43
+|
+|t:|1795098540
+|move|p2a: Foongus|Synthesis|p2a: Foongus
+|-heal|p2a: Foongus|24/24
+|move|p1a: Ferroseed|Thunder Wave|p2a: Foongus
+|-status|p2a: Foongus|par
+|
+|upkeep
+|turn|44
+|
+|t:|1795098545
+|move|p2a: Foongus|Giga Drain|p1a: Ferroseed
+|-resisted|p1a: Ferroseed
+|-damage|p1a: Ferroseed|96/100 par
+|move|p1a: Ferroseed|Spikes|p2a: Foongus
+|-sidestart|p2: Tactigon|Spikes
+|
+|upkeep
+|turn|45
+|
+|t:|1795098546
+|move|p2a: Foongus|Giga Drain|p1a: Ferroseed
+|-resisted|p1a: Ferroseed
+|-damage|p1a: Ferroseed|91/100 par
+|move|p1a: Ferroseed|Thunderbolt|p2a: Foongus
+|-resisted|p2a: Foongus
+|-damage|p2a: Foongus|22/24 par
+|
+|upkeep
+|turn|46
+|
+|t:|1795098549
+|switch|p1a: Mienfoo|Mienfoo, L5, M|83/100
+|move|p2a: Foongus|Giga Drain|p1a: Mienfoo
+|-crit|p1a: Mienfoo
+|-damage|p1a: Mienfoo|5/100
+|-heal|p2a: Foongus|24/24 par|[from] drain|[of] p1a: Mienfoo
+|
+|upkeep
+|turn|47
+|
+|t:|1795098551
+|move|p1a: Mienfoo|U-turn|p2a: Foongus
+|-damage|p2a: Foongus|19/24 par
+|
+|t:|1795098553
+|switch|p1a: Ferroseed|Ferroseed, L5, M|91/100 par|[from] U-turn
+|cant|p2a: Foongus|par
+|
+|upkeep
+|turn|48
+|
+|t:|1795098555
+|cant|p2a: Foongus|par
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|49
+|
+|t:|1795098557
+|move|p2a: Foongus|Giga Drain|p1a: Ferroseed
+|-resisted|p1a: Ferroseed
+|-damage|p1a: Ferroseed|86/100 par
+|-heal|p2a: Foongus|20/24 par|[from] drain|[of] p1a: Ferroseed
+|move|p1a: Ferroseed|Spikes|p2a: Foongus
+|-sidestart|p2: Tactigon|Spikes
+|
+|upkeep
+|turn|50
+|
+|t:|1795098559
+|move|p2a: Foongus|Giga Drain|p1a: Ferroseed
+|-resisted|p1a: Ferroseed
+|-damage|p1a: Ferroseed|81/100 par
+|-heal|p2a: Foongus|21/24 par|[from] drain|[of] p1a: Ferroseed
+|move|p1a: Ferroseed|Thunderbolt|p2a: Foongus
+|-resisted|p2a: Foongus
+|-damage|p2a: Foongus|19/24 par
+|
+|upkeep
+|turn|51
+|
+|t:|1795098561
+|move|p2a: Foongus|Giga Drain|p1a: Ferroseed
+|-resisted|p1a: Ferroseed
+|-damage|p1a: Ferroseed|77/100 par
+|-heal|p2a: Foongus|20/24 par|[from] drain|[of] p1a: Ferroseed
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|52
+|
+|t:|1795098562
+|move|p2a: Foongus|Giga Drain|p1a: Ferroseed
+|-resisted|p1a: Ferroseed
+|-damage|p1a: Ferroseed|72/100 par
+|-heal|p2a: Foongus|21/24 par|[from] drain|[of] p1a: Ferroseed
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|53
+|
+|t:|1795098563
+|move|p2a: Foongus|Giga Drain|p1a: Ferroseed
+|-resisted|p1a: Ferroseed
+|-damage|p1a: Ferroseed|67/100 par
+|-heal|p2a: Foongus|22/24 par|[from] drain|[of] p1a: Ferroseed
+|move|p1a: Ferroseed|Giga Drain|p2a: Foongus
+|-resisted|p2a: Foongus
+|-damage|p2a: Foongus|21/24 par
+|-heal|p1a: Ferroseed|72/100 par|[from] drain|[of] p2a: Foongus
+|
+|upkeep
+|turn|54
+|
+|t:|1795098565
+|cant|p2a: Foongus|par
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|55
+|
+|t:|1795098566
+|move|p2a: Foongus|Giga Drain|p1a: Ferroseed
+|-resisted|p1a: Ferroseed
+|-damage|p1a: Ferroseed|67/100 par
+|-heal|p2a: Foongus|22/24 par|[from] drain|[of] p1a: Ferroseed
+|move|p1a: Ferroseed|Giga Drain|p2a: Foongus
+|-resisted|p2a: Foongus
+|-damage|p2a: Foongus|21/24 par
+|-heal|p1a: Ferroseed|72/100 par|[from] drain|[of] p2a: Foongus
+|
+|upkeep
+|turn|56
+|
+|t:|1795098568
+|move|p2a: Foongus|Giga Drain|p1a: Ferroseed
+|-resisted|p1a: Ferroseed
+|-damage|p1a: Ferroseed|67/100 par
+|-heal|p2a: Foongus|22/24 par|[from] drain|[of] p1a: Ferroseed
+|move|p1a: Ferroseed|Giga Drain|p2a: Foongus
+|-resisted|p2a: Foongus
+|-damage|p2a: Foongus|21/24 par
+|-heal|p1a: Ferroseed|72/100 par|[from] drain|[of] p2a: Foongus
+|
+|upkeep
+|turn|57
+|
+|t:|1795098569
+|move|p2a: Foongus|Giga Drain|p1a: Ferroseed
+|-resisted|p1a: Ferroseed
+|-damage|p1a: Ferroseed|67/100 par
+|-heal|p2a: Foongus|22/24 par|[from] drain|[of] p1a: Ferroseed
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|58
+|
+|t:|1795098570
+|cant|p2a: Foongus|par
+|move|p1a: Ferroseed|Giga Drain|p2a: Foongus
+|-resisted|p2a: Foongus
+|-damage|p2a: Foongus|21/24 par
+|-heal|p1a: Ferroseed|72/100 par|[from] drain|[of] p2a: Foongus
+|
+|upkeep
+|turn|59
+|
+|t:|1795098571
+|move|p2a: Foongus|Giga Drain|p1a: Ferroseed
+|-resisted|p1a: Ferroseed
+|-damage|p1a: Ferroseed|67/100 par
+|-heal|p2a: Foongus|22/24 par|[from] drain|[of] p1a: Ferroseed
+|move|p1a: Ferroseed|Giga Drain|p2a: Foongus
+|-resisted|p2a: Foongus
+|-crit|p2a: Foongus
+|-damage|p2a: Foongus|20/24 par
+|-heal|p1a: Ferroseed|72/100 par|[from] drain|[of] p2a: Foongus
+|
+|upkeep
+|turn|60
+|
+|t:|1795098576
+|move|p2a: Foongus|Giga Drain|p1a: Ferroseed
+|-resisted|p1a: Ferroseed
+|-damage|p1a: Ferroseed|67/100 par
+|-heal|p2a: Foongus|21/24 par|[from] drain|[of] p1a: Ferroseed
+|move|p1a: Ferroseed|Thunderbolt|p2a: Foongus
+|-resisted|p2a: Foongus
+|-damage|p2a: Foongus|19/24 par
+|
+|upkeep
+|turn|61
+|
+|t:|1795098577
+|cant|p2a: Foongus|par
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|62
+|
+|t:|1795098579
+|move|p2a: Foongus|Giga Drain|p1a: Ferroseed
+|-resisted|p1a: Ferroseed
+|-damage|p1a: Ferroseed|62/100 par
+|-heal|p2a: Foongus|20/24 par|[from] drain|[of] p1a: Ferroseed
+|move|p1a: Ferroseed|Giga Drain|p2a: Foongus
+|-resisted|p2a: Foongus
+|-damage|p2a: Foongus|19/24 par
+|-heal|p1a: Ferroseed|67/100 par|[from] drain|[of] p2a: Foongus
+|
+|upkeep
+|turn|63
+|
+|t:|1795098581
+|move|p2a: Foongus|Giga Drain|p1a: Ferroseed
+|-resisted|p1a: Ferroseed
+|-damage|p1a: Ferroseed|62/100 par
+|-heal|p2a: Foongus|20/24 par|[from] drain|[of] p1a: Ferroseed
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|64
+|
+|t:|1795098582
+|move|p2a: Foongus|Synthesis|p2a: Foongus
+|-heal|p2a: Foongus|24/24 par
+|move|p1a: Ferroseed|Thunderbolt|p2a: Foongus
+|-resisted|p2a: Foongus
+|-damage|p2a: Foongus|22/24 par
+|
+|upkeep
+|turn|65
+|
+|t:|1795098584
+|move|p2a: Foongus|Sludge Bomb|p1a: Ferroseed
+|-immune|p1a: Ferroseed
+|move|p1a: Ferroseed|Thunderbolt|p2a: Foongus
+|-resisted|p2a: Foongus
+|-damage|p2a: Foongus|20/24 par
+|
+|upkeep
+|turn|66
+|
+|t:|1795098586
+|cant|p2a: Foongus|par
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|67
+|
+|t:|1795098589
+|move|p2a: Foongus|Sludge Bomb|p1a: Ferroseed
+|-immune|p1a: Ferroseed
+|move|p1a: Ferroseed|Thunderbolt|p2a: Foongus
+|-resisted|p2a: Foongus
+|-damage|p2a: Foongus|18/24 par
+|
+|upkeep
+|turn|68
+|
+|t:|1795098590
+|move|p2a: Foongus|Synthesis|p2a: Foongus
+|-heal|p2a: Foongus|24/24 par
+|move|p1a: Ferroseed|Thunderbolt|p2a: Foongus
+|-resisted|p2a: Foongus
+|-damage|p2a: Foongus|22/24 par
+|
+|upkeep
+|turn|69
+|
+|t:|1795098592
+|cant|p2a: Foongus|par
+|move|p1a: Ferroseed|Thunder Wave|p2a: Foongus
+|-fail|p2a: Foongus|par
+|
+|upkeep
+|turn|70
+|
+|t:|1795098593
+|move|p2a: Foongus|Sludge Bomb|p1a: Ferroseed
+|-immune|p1a: Ferroseed
+|move|p1a: Ferroseed|Thunder Wave|p2a: Foongus
+|-fail|p2a: Foongus|par
+|
+|upkeep
+|turn|71
+|
+|t:|1795098594
+|move|p2a: Foongus|Sludge Bomb|p1a: Ferroseed
+|-immune|p1a: Ferroseed
+|move|p1a: Ferroseed|Thunder Wave|p2a: Foongus
+|-fail|p2a: Foongus|par
+|
+|upkeep
+|turn|72
+|
+|t:|1795098596
+|move|p2a: Foongus|Sludge Bomb|p1a: Ferroseed
+|-immune|p1a: Ferroseed
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|73
+|
+|t:|1795098597
+|move|p2a: Foongus|Sludge Bomb|p1a: Ferroseed
+|-immune|p1a: Ferroseed
+|move|p1a: Ferroseed|Thunder Wave|p2a: Foongus
+|-fail|p2a: Foongus|par
+|
+|upkeep
+|turn|74
+|
+|t:|1795098599
+|move|p2a: Foongus|Sludge Bomb|p1a: Ferroseed
+|-immune|p1a: Ferroseed
+|move|p1a: Ferroseed|Thunder Wave|p2a: Foongus
+|-fail|p2a: Foongus|par
+|
+|upkeep
+|turn|75
+|
+|t:|1795098601
+|move|p2a: Foongus|Sludge Bomb|p1a: Ferroseed
+|-immune|p1a: Ferroseed
+|move|p1a: Ferroseed|Thunder Wave|p2a: Foongus
+|-fail|p2a: Foongus|par
+|
+|upkeep
+|turn|76
+|
+|t:|1795098604
+|move|p2a: Foongus|Sludge Bomb|p1a: Ferroseed
+|-immune|p1a: Ferroseed
+|move|p1a: Ferroseed|Thunder Wave|p2a: Foongus
+|-fail|p2a: Foongus|par
+|
+|upkeep
+|turn|77
+|
+|t:|1795098605
+|move|p2a: Foongus|Sludge Bomb|p1a: Ferroseed
+|-immune|p1a: Ferroseed
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|78
+|
+|t:|1795098609
+|cant|p2a: Foongus|par
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|79
+|
+|t:|1795098611
+|move|p2a: Foongus|Sludge Bomb|p1a: Ferroseed
+|-immune|p1a: Ferroseed
+|move|p1a: Ferroseed|Thunder Wave|p2a: Foongus
+|-fail|p2a: Foongus|par
+|
+|upkeep
+|turn|80
+|
+|t:|1795098612
+|move|p2a: Foongus|Sludge Bomb|p1a: Ferroseed
+|-immune|p1a: Ferroseed
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|81
+|
+|t:|1795098614
+|move|p2a: Foongus|Sludge Bomb|p1a: Ferroseed
+|-immune|p1a: Ferroseed
+|move|p1a: Ferroseed|Thunder Wave|p2a: Foongus
+|-fail|p2a: Foongus|par
+|
+|upkeep
+|turn|82
+|
+|t:|1795098615
+|move|p2a: Foongus|Sludge Bomb|p1a: Ferroseed
+|-immune|p1a: Ferroseed
+|move|p1a: Ferroseed|Giga Drain|p2a: Foongus
+|-resisted|p2a: Foongus
+|-damage|p2a: Foongus|21/24 par
+|-heal|p1a: Ferroseed|67/100 par|[from] drain|[of] p2a: Foongus
+|
+|upkeep
+|turn|83
+|
+|t:|1795098619
+|move|p2a: Foongus|Sludge Bomb|p1a: Ferroseed
+|-immune|p1a: Ferroseed
+|move|p1a: Ferroseed|Giga Drain|p2a: Foongus
+|-resisted|p2a: Foongus
+|-damage|p2a: Foongus|20/24 par
+|-heal|p1a: Ferroseed|72/100 par|[from] drain|[of] p2a: Foongus
+|
+|upkeep
+|turn|84
+|
+|t:|1795098621
+|move|p2a: Foongus|Synthesis|p2a: Foongus
+|-heal|p2a: Foongus|24/24 par
+|move|p1a: Ferroseed|Thunder Wave|p2a: Foongus
+|-fail|p2a: Foongus|par
+|
+|upkeep
+|turn|85
+|
+|t:|1795098622
+|move|p2a: Foongus|Sludge Bomb|p1a: Ferroseed
+|-immune|p1a: Ferroseed
+|move|p1a: Ferroseed|Thunder Wave|p2a: Foongus
+|-fail|p2a: Foongus|par
+|
+|upkeep
+|turn|86
+|
+|t:|1795098626
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|move|p1a: Ferroseed|Thunder Wave|p2a: Foongus
+|-fail|p2a: Foongus|par
+|
+|upkeep
+|turn|87
+|
+|t:|1795098628
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|88
+|
+|t:|1795098629
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|move|p1a: Ferroseed|Thunder Wave|p2a: Foongus
+|-fail|p2a: Foongus|par
+|
+|upkeep
+|turn|89
+|
+|t:|1795098631
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|move|p1a: Ferroseed|Thunder Wave|p2a: Foongus
+|-fail|p2a: Foongus|par
+|
+|upkeep
+|turn|90
+|
+|t:|1795098633
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|91
+|
+|t:|1795098635
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|move|p1a: Ferroseed|Spikes||[still]
+|-fail|p1a: Ferroseed
+|
+|upkeep
+|turn|92
+|
+|t:|1795098637
+|switch|p2a: Staryu|Staryu, L5|17/21
+|-damage|p2a: Staryu|12/21|[from] Spikes
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|93
+|
+|t:|1795098638
+|move|p2a: Staryu|Rapid Spin|p1a: Ferroseed
+|-resisted|p1a: Ferroseed
+|-damage|p1a: Ferroseed|67/100 par
+|-damage|p2a: Staryu|10/21|[from] ability: Iron Barbs|[of] p1a: Ferroseed
+|-sideend|p2: Tactigon|Spikes|[from] move: Rapid Spin|[of] p2a: Staryu
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|94
+|
+|t:|1795098646
+|move|p2a: Staryu|Recover|p2a: Staryu
+|-heal|p2a: Staryu|21/21
+|move|p1a: Ferroseed|Thunderbolt|p2a: Staryu
+|-supereffective|p2a: Staryu
+|-damage|p2a: Staryu|11/21
+|
+|upkeep
+|turn|95
+|
+|t:|1795098648
+|move|p2a: Staryu|Recover|p2a: Staryu
+|-heal|p2a: Staryu|21/21
+|move|p1a: Ferroseed|Spikes|p2a: Staryu
+|-sidestart|p2: Tactigon|Spikes
+|
+|upkeep
+|turn|96
+|
+|t:|1795098650
+|move|p2a: Staryu|Rapid Spin|p1a: Ferroseed
+|-resisted|p1a: Ferroseed
+|-damage|p1a: Ferroseed|62/100 par
+|-damage|p2a: Staryu|19/21|[from] ability: Iron Barbs|[of] p1a: Ferroseed
+|-sideend|p2: Tactigon|Spikes|[from] move: Rapid Spin|[of] p2a: Staryu
+|move|p1a: Ferroseed|Thunder Wave|p2a: Staryu
+|-status|p2a: Staryu|par
+|
+|upkeep
+|turn|97
+|
+|t:|1795098653
+|-curestatus|p2a: Staryu|par|[from] ability: Natural Cure|[silent]
+|switch|p2a: Foongus|Foongus, L5, M|24/24 par
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|98
+|
+|t:|1795098655
+|switch|p2a: Vullaby|Vullaby, L5, F|5/23
+|move|p1a: Ferroseed|Spikes|p2a: Vullaby
+|-sidestart|p2: Tactigon|Spikes
+|
+|upkeep
+|turn|99
+|
+|t:|1795098659
+|move|p2a: Vullaby|Roost|p2a: Vullaby
+|-heal|p2a: Vullaby|17/23
+|-singleturn|p2a: Vullaby|move: Roost
+|move|p1a: Ferroseed|Thunder Wave|p2a: Vullaby
+|-status|p2a: Vullaby|par
+|
+|upkeep
+|turn|100
+|
+|t:|1795098665
+|move|p2a: Vullaby|Brave Bird|p1a: Ferroseed
+|-damage|p1a: Ferroseed|15/100 par
+|-damage|p2a: Vullaby|15/23 par|[from] ability: Iron Barbs|[of] p1a: Ferroseed
+|-damage|p2a: Vullaby|12/23 par|[from] Recoil
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|101
+|
+|t:|1795098674
+|switch|p1a: Mienfoo|Mienfoo, L5, M|35/100
+|move|p2a: Vullaby|Brave Bird|p1a: Mienfoo
+|-supereffective|p1a: Mienfoo
+|-damage|p1a: Mienfoo|0 fnt
+|faint|p1a: Mienfoo
+|-damage|p2a: Vullaby|9/23 par|[from] Recoil
+|
+|upkeep
+|
+|t:|1795098676
+|switch|p1a: Drilbur|Drilbur, L5, M|74/100
+|-ability|p1a: Drilbur|Mold Breaker
+|turn|102
+|
+|t:|1795098678
+|move|p1a: Drilbur|Rock Tomb|p2a: Vullaby
+|-supereffective|p2a: Vullaby
+|-crit|p2a: Vullaby
+|-damage|p2a: Vullaby|0 fnt
+|faint|p2a: Vullaby
+|
+|upkeep
+|
+|t:|1795098679
+|switch|p2a: Staryu|Staryu, L5|19/21
+|-damage|p2a: Staryu|17/21|[from] Spikes
+|turn|103
+|
+|t:|1795098684
+|move|p2a: Staryu|Scald|p1a: Drilbur
+|-supereffective|p1a: Drilbur
+|-damage|p1a: Drilbur|14/100
+|move|p1a: Drilbur|Rock Tomb|p2a: Staryu|[miss]
+|-miss|p1a: Drilbur|p2a: Staryu
+|
+|upkeep
+|turn|104
+|
+|t:|1795098688
+|move|p2a: Staryu|Scald|p1a: Drilbur
+|-supereffective|p1a: Drilbur
+|-damage|p1a: Drilbur|0 fnt
+|faint|p1a: Drilbur
+|
+|upkeep
+|
+|t:|1795098690
+|switch|p1a: Ferroseed|Ferroseed, L5, M|15/100 par
+|turn|105
+|
+|t:|1795098692
+|move|p2a: Staryu|Scald|p1a: Ferroseed
+|-resisted|p1a: Ferroseed
+|-damage|p1a: Ferroseed|5/100 par
+|move|p1a: Ferroseed|Giga Drain|p2a: Staryu
+|-supereffective|p2a: Staryu
+|-damage|p2a: Staryu|3/21
+|-heal|p1a: Ferroseed|39/100 par|[from] drain|[of] p2a: Staryu
+|
+|upkeep
+|turn|106
+|
+|t:|1795098700
+|move|p2a: Staryu|Scald|p1a: Ferroseed
+|-resisted|p1a: Ferroseed
+|-damage|p1a: Ferroseed|29/100 par
+|move|p1a: Ferroseed|Thunder Wave|p2a: Staryu
+|-status|p2a: Staryu|par
+|
+|upkeep
+|turn|107
+|
+|t:|1795098704
+|-curestatus|p2a: Staryu|par|[from] ability: Natural Cure|[silent]
+|switch|p2a: Foongus|Foongus, L5, M|24/24 par
+|-damage|p2a: Foongus|21/24 par|[from] Spikes
+|move|p1a: Ferroseed|Giga Drain|p2a: Foongus
+|-resisted|p2a: Foongus
+|-damage|p2a: Foongus|20/24 par
+|-heal|p1a: Ferroseed|34/100 par|[from] drain|[of] p2a: Foongus
+|
+|upkeep
+|turn|108
+|
+|t:|1795098707
+|move|p2a: Foongus|Synthesis|p2a: Foongus
+|-heal|p2a: Foongus|24/24 par
+|move|p1a: Ferroseed|Spikes|p2a: Foongus
+|-sidestart|p2: Tactigon|Spikes
+|
+|upkeep
+|turn|109
+|
+|t:|1795098708
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|110
+|
+|t:|1795098710
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|move|p1a: Ferroseed|Spikes|p2a: Foongus
+|-sidestart|p2: Tactigon|Spikes
+|
+|upkeep
+|turn|111
+|
+|t:|1795098713
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|112
+|
+|t:|1795098714
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|move|p1a: Ferroseed|Giga Drain|p2a: Foongus
+|-resisted|p2a: Foongus
+|-damage|p2a: Foongus|23/24 par
+|-heal|p1a: Ferroseed|39/100 par|[from] drain|[of] p2a: Foongus
+|
+|upkeep
+|turn|113
+|
+|t:|1795098715
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|move|p1a: Ferroseed|Giga Drain|p2a: Foongus
+|-resisted|p2a: Foongus
+|-damage|p2a: Foongus|22/24 par
+|-heal|p1a: Ferroseed|43/100 par|[from] drain|[of] p2a: Foongus
+|
+|upkeep
+|turn|114
+|
+|t:|1795098717
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|move|p1a: Ferroseed|Giga Drain|p2a: Foongus
+|-resisted|p2a: Foongus
+|-damage|p2a: Foongus|21/24 par
+|-heal|p1a: Ferroseed|48/100 par|[from] drain|[of] p2a: Foongus
+|
+|upkeep
+|turn|115
+|
+|t:|1795098719
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|move|p1a: Ferroseed|Giga Drain|p2a: Foongus
+|-resisted|p2a: Foongus
+|-damage|p2a: Foongus|20/24 par
+|-heal|p1a: Ferroseed|53/100 par|[from] drain|[of] p2a: Foongus
+|
+|upkeep
+|turn|116
+|
+|t:|1795098721
+|move|p2a: Foongus|Synthesis|p2a: Foongus
+|-heal|p2a: Foongus|24/24 par
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|117
+|
+|t:|1795098725
+|cant|p2a: Foongus|par
+|move|p1a: Ferroseed|Spikes||[still]
+|-fail|p1a: Ferroseed
+|
+|upkeep
+|turn|118
+|
+|t:|1795098726
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed|[miss]
+|-miss|p2a: Foongus|p1a: Ferroseed
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|119
+|
+|t:|1795098727
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|move|p1a: Ferroseed|Spikes||[still]
+|-fail|p1a: Ferroseed
+|
+|upkeep
+|turn|120
+|
+|t:|1795098728
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|move|p1a: Ferroseed|Spikes||[still]
+|-fail|p1a: Ferroseed
+|
+|upkeep
+|turn|121
+|
+|t:|1795098729
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|move|p1a: Ferroseed|Spikes||[still]
+|-fail|p1a: Ferroseed
+|
+|upkeep
+|turn|122
+|
+|t:|1795098732
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|move|p1a: Ferroseed|Spikes||[still]
+|-fail|p1a: Ferroseed
+|
+|upkeep
+|turn|123
+|
+|t:|1795098733
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed|[miss]
+|-miss|p2a: Foongus|p1a: Ferroseed
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|124
+|
+|t:|1795098735
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|move|p1a: Ferroseed|Spikes||[still]
+|-fail|p1a: Ferroseed
+|
+|upkeep
+|turn|125
+|
+|t:|1795098738
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|move|p1a: Ferroseed|Spikes||[still]
+|-fail|p1a: Ferroseed
+|
+|upkeep
+|turn|126
+|
+|t:|1795098739
+|cant|p2a: Foongus|par
+|move|p1a: Ferroseed|Spikes||[still]
+|-fail|p1a: Ferroseed
+|
+|upkeep
+|turn|127
+|
+|t:|1795098741
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|move|p1a: Ferroseed|Spikes||[still]
+|-fail|p1a: Ferroseed
+|
+|upkeep
+|turn|128
+|
+|t:|1795098742
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed|[miss]
+|-miss|p2a: Foongus|p1a: Ferroseed
+|move|p1a: Ferroseed|Spikes||[still]
+|-fail|p1a: Ferroseed
+|
+|upkeep
+|turn|129
+|
+|t:|1795098743
+|cant|p2a: Foongus|par
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|130
+|
+|t:|1795098747
+|cant|p2a: Foongus|par
+|move|p1a: Ferroseed|Spikes||[still]
+|-fail|p1a: Ferroseed
+|
+|upkeep
+|turn|131
+|
+|t:|1795098751
+|cant|p2a: Foongus|par
+|move|p1a: Ferroseed|Spikes||[still]
+|-fail|p1a: Ferroseed
+|
+|upkeep
+|turn|132
+|
+|t:|1795098752
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|move|p1a: Ferroseed|Spikes||[still]
+|-fail|p1a: Ferroseed
+|
+|upkeep
+|turn|133
+|
+|t:|1795098753
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|move|p1a: Ferroseed|Spikes||[still]
+|-fail|p1a: Ferroseed
+|
+|upkeep
+|turn|134
+|
+|t:|1795098754
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|move|p1a: Ferroseed|Spikes||[still]
+|-fail|p1a: Ferroseed
+|
+|upkeep
+|turn|135
+|
+|t:|1795098755
+|cant|p2a: Foongus|par
+|move|p1a: Ferroseed|Spikes||[still]
+|-fail|p1a: Ferroseed
+|
+|upkeep
+|turn|136
+|
+|t:|1795098756
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|137
+|
+|t:|1795098757
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|move|p1a: Ferroseed|Spikes||[still]
+|-fail|p1a: Ferroseed
+|
+|upkeep
+|turn|138
+|
+|t:|1795098758
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed|[miss]
+|-miss|p2a: Foongus|p1a: Ferroseed
+|move|p1a: Ferroseed|Spikes||[still]
+|-fail|p1a: Ferroseed
+|
+|upkeep
+|turn|139
+|
+|t:|1795098759
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|move|p1a: Ferroseed|Spikes||[still]
+|-fail|p1a: Ferroseed
+|
+|upkeep
+|turn|140
+|
+|t:|1795098760
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|move|p1a: Ferroseed|Spikes||[still]
+|-fail|p1a: Ferroseed
+|
+|upkeep
+|turn|141
+|
+|t:|1795098761
+|cant|p2a: Foongus|par
+|move|p1a: Ferroseed|Spikes||[still]
+|-fail|p1a: Ferroseed
+|
+|upkeep
+|turn|142
+|
+|t:|1795098762
+|cant|p2a: Foongus|par
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|143
+|
+|t:|1795098765
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|move|p1a: Ferroseed|Spikes||[still]
+|-fail|p1a: Ferroseed
+|
+|upkeep
+|turn|144
+|
+|t:|1795098767
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|move|p1a: Ferroseed|Spikes||[still]
+|-fail|p1a: Ferroseed
+|
+|upkeep
+|turn|145
+|
+|t:|1795098768
+|cant|p2a: Foongus|par
+|move|p1a: Ferroseed|Spikes||[still]
+|-fail|p1a: Ferroseed
+|
+|upkeep
+|turn|146
+|
+|t:|1795098770
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|move|p1a: Ferroseed|Thunder Wave|p2a: Foongus
+|-fail|p2a: Foongus|par
+|
+|upkeep
+|turn|147
+|
+|t:|1795098771
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|move|p1a: Ferroseed|Thunder Wave|p2a: Foongus
+|-fail|p2a: Foongus|par
+|
+|upkeep
+|turn|148
+|
+|t:|1795098773
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed|[miss]
+|-miss|p2a: Foongus|p1a: Ferroseed
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|149
+|
+|t:|1795098774
+|switch|p2a: Staryu|Staryu, L5|3/21
+|-damage|p2a: Staryu|0 fnt|[from] Spikes
+|faint|p2a: Staryu
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|
+|t:|1795098775
+|switch|p2a: Foongus|Foongus, L5, M|24/24 par
+|-damage|p2a: Foongus|18/24 par|[from] Spikes
+|turn|150
+|
+|t:|1795098777
+|cant|p2a: Foongus|par
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|151
+|
+|t:|1795098778
+|move|p2a: Foongus|Synthesis|p2a: Foongus
+|-heal|p2a: Foongus|24/24 par
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|152
+|
+|t:|1795098780
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed|[miss]
+|-miss|p2a: Foongus|p1a: Ferroseed
+|move|p1a: Ferroseed|Thunder Wave|p2a: Foongus
+|-fail|p2a: Foongus|par
+|
+|upkeep
+|turn|153
+|
+|t:|1795098781
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed|[miss]
+|-miss|p2a: Foongus|p1a: Ferroseed
+|move|p1a: Ferroseed|Thunder Wave|p2a: Foongus
+|-fail|p2a: Foongus|par
+|
+|upkeep
+|turn|154
+|
+|t:|1795098783
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|155
+|
+|t:|1795098784
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|move|p1a: Ferroseed|Thunder Wave|p2a: Foongus
+|-fail|p2a: Foongus|par
+|
+|upkeep
+|turn|156
+|
+|t:|1795098785
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|157
+|
+|t:|1795098787
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|move|p1a: Ferroseed|Thunder Wave|p2a: Foongus
+|-fail|p2a: Foongus|par
+|
+|upkeep
+|turn|158
+|
+|t:|1795098788
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|move|p1a: Ferroseed|Thunder Wave|p2a: Foongus
+|-fail|p2a: Foongus|par
+|
+|upkeep
+|turn|159
+|
+|t:|1795098790
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|move|p1a: Ferroseed|Thunder Wave|p2a: Foongus
+|-fail|p2a: Foongus|par
+|
+|upkeep
+|turn|160
+|
+|t:|1795098792
+|move|p2a: Foongus|Stun Spore|p1a: Ferroseed
+|-fail|p1a: Ferroseed|par
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|161
+|
+|t:|1795098793
+|cant|p2a: Foongus|par
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|162
+|
+|t:|1795098796
+|move|p2a: Foongus|Synthesis|p2a: Foongus
+|-fail|p2a: Foongus|heal
+|move|p1a: Ferroseed|Thunder Wave|p2a: Foongus
+|-fail|p2a: Foongus|par
+|
+|upkeep
+|turn|163
+|
+|t:|1795098797
+|-activate|p2a: Foongus|move: Struggle
+|move|p2a: Foongus|Struggle|p1a: Ferroseed
+|-damage|p1a: Ferroseed|43/100 par
+|-damage|p2a: Foongus|21/24 par|[from] ability: Iron Barbs|[of] p1a: Ferroseed
+|-damage|p2a: Foongus|15/24 par|[from] recoil
+|cant|p1a: Ferroseed|par
+|
+|upkeep
+|turn|164
+|
+|t:|1795098800
+|-activate|p2a: Foongus|move: Struggle
+|move|p2a: Foongus|Struggle|p1a: Ferroseed
+|-damage|p1a: Ferroseed|34/100 par
+|-damage|p2a: Foongus|12/24 par|[from] ability: Iron Barbs|[of] p1a: Ferroseed
+|-damage|p2a: Foongus|6/24 par|[from] recoil
+|move|p1a: Ferroseed|Thunderbolt|p2a: Foongus
+|-resisted|p2a: Foongus
+|-damage|p2a: Foongus|4/24 par
+|
+|upkeep
+|turn|165
+|
+|t:|1795098806
+|-activate|p2a: Foongus|move: Struggle
+|move|p2a: Foongus|Struggle|p1a: Ferroseed
+|-crit|p1a: Ferroseed
+|-damage|p1a: Ferroseed|10/100 par
+|-damage|p2a: Foongus|1/24 par|[from] ability: Iron Barbs|[of] p1a: Ferroseed
+|-damage|p2a: Foongus|0 fnt|[from] recoil
+|faint|p2a: Foongus
+|
+|win|asdweqwasd</script>
+  </div></div>
+  <aside class="lc-panel">
+    <div class="lc-card"><h3>Win chance over the game</h3><div id="lc-chart"></div></div>
+    <div class="lc-card" id="lc-turn"><div class="lc-idle">Press play: the bot's view of each turn appears here as the replay advances. Click the chart to jump to a turn.</div></div>
+  </aside>
+</div></div>
+<div id="lc-tip"></div>
+<script>
+var G = {"room": "battle-gen5lc-2716437480", "me": "Tactigon", "side": "p2", "foe": "asdweqwasd", "result": "lost", "turns": 165, "decisions": [{"turn": 1, "choice": "move 1", "options": [["Thunder Wave", 100], ["Scald", 0], ["switch Mienfoo", 0], ["switch Foongus", 0]], "win": 55, "notes": []}, {"turn": 2, "choice": "move 1", "options": [["Thunder Wave", 100], ["Scald", 0], ["switch Mienfoo", 0], ["switch Foongus", 0]], "win": 53, "notes": []}, {"turn": 3, "choice": "move 4", "options": [["Scald", 93], ["Slack Off", 7], ["switch Mienfoo", 0], ["switch Staryu", 0]], "win": 50, "notes": []}, {"turn": 4, "choice": "move 1", "options": [["Thunder Wave", 58], ["Slack Off", 41], ["Scald", 1], ["switch Mienfoo", 0]], "win": 56, "notes": []}, {"turn": 5, "choice": "switch 3", "options": [["switch Mienfoo", 65], ["Slack Off", 34], ["switch Vullaby", 0], ["switch Staryu", 0]], "win": 52, "notes": []}, {"turn": 6, "choice": "switch 3", "options": [["switch Vullaby", 48], ["switch Mienfoo", 34], ["switch Staryu", 18], ["switch Pawniard", 0]], "win": 46, "notes": []}, {"turn": 6, "choice": "move 4", "options": [["Knock Off", 85], ["U-turn", 14], ["High Jump Kick", 0], ["Fake Out", 0]], "win": 42, "notes": []}, {"turn": 7, "choice": "move 3", "options": [["High Jump Kick", 64], ["Knock Off", 14], ["switch Vullaby", 10], ["U-turn", 7]], "win": 47, "notes": []}, {"turn": 8, "choice": "move 2", "options": [["U-turn", 87], ["High Jump Kick", 12], ["Knock Off", 1], ["switch Foongus", 0]], "win": 47, "notes": []}, {"turn": 8, "choice": "switch 2", "options": [["switch Foongus", 87], ["switch Vullaby", 12], ["switch Staryu", 1], ["switch Pawniard", 0]], "win": 53, "notes": []}, {"turn": 9, "choice": "move 3", "options": [["Stun Spore", 79], ["switch Mienfoo", 19], ["switch Staryu", 1], ["switch Vullaby", 1]], "win": 48, "notes": []}, {"turn": 10, "choice": "switch 2", "options": [["switch Mienfoo", 92], ["switch Vullaby", 7], ["switch Pawniard", 1], ["switch Staryu", 0]], "win": 56, "notes": []}, {"turn": 11, "choice": "move 4", "options": [["U-turn", 63], ["Knock Off", 36], ["High Jump Kick", 0], ["switch Pawniard", 0]], "win": 57, "notes": []}, {"turn": 12, "choice": "move 2", "options": [["U-turn", 97], ["Knock Off", 1], ["switch Pawniard", 1], ["switch Foongus", 0]], "win": 56, "notes": []}, {"turn": 12, "choice": "switch 4", "options": [["switch Pawniard", 100], ["switch Vullaby", 0], ["switch Foongus", 0], ["switch Staryu", 0]], "win": 60, "notes": []}, {"turn": 13, "choice": "move 4", "options": [["Pursuit", 99], ["Stealth Rock", 1], ["Iron Head", 0], ["Sucker Punch", 0]], "win": 62, "notes": []}, {"turn": 14, "choice": "move 4", "options": [["Pursuit", 100], ["Stealth Rock", 0], ["Sucker Punch", 0], ["Iron Head", 0]], "win": 52, "notes": []}, {"turn": 15, "choice": "move 2", "options": [["Sucker Punch", 100], ["Pursuit", 0], ["switch Foongus", 0], ["Iron Head", 0]], "win": 45, "notes": []}, {"turn": 16, "choice": "move 1", "options": [["Stealth Rock", 84], ["switch Staryu", 14], ["switch Foongus", 2], ["Iron Head", 1]], "win": 55, "notes": []}, {"turn": 17, "choice": "switch 5", "options": [["Sucker Punch", 53], ["switch Staryu", 29], ["switch Foongus", 10], ["Iron Head", 7]], "win": 52, "notes": []}, {"turn": 18, "choice": "move 4", "options": [["Rapid Spin", 97], ["Thunder Wave", 1], ["Scald", 1], ["Recover", 0]], "win": 56, "notes": []}, {"turn": 19, "choice": "move 1", "options": [["Recover", 92], ["switch Mienfoo", 8], ["Scald", 0], ["switch Vullaby", 0]], "win": 59, "notes": []}, {"turn": 20, "choice": "switch 4", "options": [["switch Mienfoo", 95], ["Scald", 5], ["switch Vullaby", 0], ["switch Pawniard", 0]], "win": 64, "notes": []}, {"turn": 21, "choice": "move 2", "options": [["High Jump Kick", 50], ["U-turn", 42], ["Knock Off", 8], ["switch Vullaby", 0]], "win": 67, "notes": []}, {"turn": 21, "choice": "switch 2", "options": [["switch Foongus", 86], ["switch Staryu", 14], ["switch Vullaby", 0], ["switch Pawniard", 0]], "win": 63, "notes": []}, {"turn": 22, "choice": "move 2", "options": [["Giga Drain", 99], ["Stun Spore", 1], ["switch Vullaby", 0], ["switch Staryu", 0]], "win": 66, "notes": []}, {"turn": 23, "choice": "switch 2", "options": [["switch Mienfoo", 100], ["switch Staryu", 0], ["Giga Drain", 0], ["switch Pawniard", 0]], "win": 68, "notes": []}, {"turn": 24, "choice": "switch 2", "options": [["switch Foongus", 34], ["Fake Out", 28], ["switch Vullaby", 24], ["switch Pawniard", 6]], "win": 64, "notes": []}, {"turn": 25, "choice": "move 3", "options": [["Stun Spore", 92], ["switch Mienfoo", 7], ["Giga Drain", 0], ["switch Vullaby", 0]], "win": 65, "notes": []}, {"turn": 26, "choice": "switch 2", "options": [["switch Mienfoo", 95], ["Synthesis", 5], ["switch Staryu", 0], ["switch Pawniard", 0]], "win": 60, "notes": []}, {"turn": 27, "choice": "switch 5", "options": [["switch Pawniard", 43], ["switch Vullaby", 22], ["switch Foongus", 17], ["Fake Out", 12]], "win": 60, "notes": []}, {"turn": 28, "choice": "switch 6", "options": [["switch Vullaby", 100], ["switch Mienfoo", 0], ["switch Foongus", 0], ["switch Staryu", 0]], "win": 57, "notes": []}, {"turn": 28, "choice": "move 2", "options": [["Brave Bird", 100], ["Knock Off", 0], ["Roost", 0], ["switch Mienfoo", 0]], "win": 58, "notes": []}, {"turn": 29, "choice": "move 3", "options": [["Taunt", 96], ["Knock Off", 4], ["Brave Bird", 0], ["switch Mienfoo", 0]], "win": 55, "notes": []}, {"turn": 30, "choice": "move 2", "options": [["Brave Bird", 83], ["Knock Off", 16], ["Roost", 0], ["switch Mienfoo", 0]], "win": 62, "notes": []}, {"turn": 31, "choice": "move 1", "options": [["Roost", 98], ["Brave Bird", 2], ["Knock Off", 0], ["switch Mienfoo", 0]], "win": 48, "notes": []}, {"turn": 32, "choice": "move 2", "options": [["Brave Bird", 100], ["Roost", 0], ["Knock Off", 0], ["Taunt", 0]], "win": 58, "notes": []}, {"turn": 33, "choice": "switch 4", "options": [["switch Staryu", 93], ["switch Mienfoo", 5], ["switch Foongus", 2], ["Roost", 0]], "win": 63, "notes": []}, {"turn": 34, "choice": "move 2", "options": [["Thunder Wave", 82], ["Scald", 14], ["Rapid Spin", 2], ["switch Vullaby", 1]], "win": 67, "notes": []}, {"turn": 35, "choice": "move 3", "options": [["Scald", 78], ["Rapid Spin", 19], ["switch Mienfoo", 1], ["switch Vullaby", 1]], "win": 68, "notes": []}, {"turn": 36, "choice": "move 1", "options": [["Recover", 100], ["switch Vullaby", 0], ["switch Mienfoo", 0], ["Rapid Spin", 0]], "win": 58, "notes": []}, {"turn": 37, "choice": "move 1", "options": [["Recover", 99], ["switch Mienfoo", 0], ["switch Vullaby", 0], ["switch Foongus", 0]], "win": 57, "notes": []}, {"turn": 38, "choice": "switch 5", "options": [["switch Mienfoo", 98], ["Rapid Spin", 1], ["switch Vullaby", 0], ["Scald", 0]], "win": 60, "notes": []}, {"turn": 39, "choice": "move 3", "options": [["High Jump Kick", 99], ["Knock Off", 0], ["U-turn", 0], ["switch Vullaby", 0]], "win": 66, "notes": []}, {"turn": 40, "choice": "move 3", "options": [["High Jump Kick", 50], ["switch Foongus", 41], ["U-turn", 8], ["Knock Off", 1]], "win": 66, "notes": []}, {"turn": 41, "choice": "move 3", "options": [["High Jump Kick", 95], ["switch Foongus", 3], ["U-turn", 2], ["Knock Off", 0]], "win": 66, "notes": []}, {"turn": 42, "choice": "switch 2", "options": [["switch Foongus", 85], ["switch Staryu", 15], ["switch Vullaby", 0]], "win": 48, "notes": []}, {"turn": 42, "choice": "move 3", "options": [["Stun Spore", 100], ["Giga Drain", 0], ["Synthesis", 0], ["Sludge Bomb", 0]], "win": 45, "notes": []}, {"turn": 43, "choice": "move 4", "options": [["Synthesis", 64], ["switch Staryu", 36], ["switch Vullaby", 0], ["Giga Drain", 0]], "win": 36, "notes": []}, {"turn": 44, "choice": "move 2", "options": [["Giga Drain", 42], ["switch Vullaby", 30], ["switch Staryu", 14], ["Sludge Bomb", 8]], "win": 35, "notes": []}, {"turn": 45, "choice": "move 2", "options": [["Giga Drain", 74], ["Sludge Bomb", 15], ["Synthesis", 6], ["switch Staryu", 3]], "win": 35, "notes": []}, {"turn": 46, "choice": "move 2", "options": [["Giga Drain", 94], ["Synthesis", 5], ["Sludge Bomb", 1], ["Stun Spore", 0]], "win": 33, "notes": []}, {"turn": 47, "choice": "move 2", "options": [["Giga Drain", 72], ["Stun Spore", 22], ["Sludge Bomb", 6], ["switch Staryu", 0]], "win": 46, "notes": []}, {"turn": 48, "choice": "move 2", "options": [["Giga Drain", 93], ["switch Staryu", 5], ["Synthesis", 1], ["Stun Spore", 0]], "win": 44, "notes": []}, {"turn": 49, "choice": "move 2", "options": [["Giga Drain", 96], ["switch Staryu", 2], ["Sludge Bomb", 1], ["Stun Spore", 1]], "win": 46, "notes": []}, {"turn": 50, "choice": "move 2", "options": [["Giga Drain", 97], ["Synthesis", 2], ["Sludge Bomb", 1], ["switch Staryu", 0]], "win": 45, "notes": []}, {"turn": 51, "choice": "move 2", "options": [["Giga Drain", 84], ["Synthesis", 16], ["Sludge Bomb", 0], ["Stun Spore", 0]], "win": 43, "notes": []}, {"turn": 52, "choice": "move 2", "options": [["Giga Drain", 95], ["Synthesis", 5], ["Sludge Bomb", 0], ["Stun Spore", 0]], "win": 44, "notes": []}, {"turn": 53, "choice": "move 2", "options": [["Giga Drain", 97], ["Synthesis", 3], ["Sludge Bomb", 1], ["Stun Spore", 0]], "win": 46, "notes": []}, {"turn": 54, "choice": "move 2", "options": [["Giga Drain", 94], ["Synthesis", 6], ["Sludge Bomb", 0], ["Stun Spore", 0]], "win": 44, "notes": []}, {"turn": 55, "choice": "move 2", "options": [["Giga Drain", 97], ["Sludge Bomb", 2], ["Synthesis", 0], ["Stun Spore", 0]], "win": 45, "notes": []}, {"turn": 56, "choice": "move 2", "options": [["Giga Drain", 97], ["Synthesis", 3], ["Sludge Bomb", 0], ["Stun Spore", 0]], "win": 46, "notes": []}, {"turn": 57, "choice": "move 2", "options": [["Giga Drain", 94], ["Synthesis", 6], ["Sludge Bomb", 0], ["Stun Spore", 0]], "win": 44, "notes": []}, {"turn": 58, "choice": "move 2", "options": [["Giga Drain", 97], ["Synthesis", 2], ["Sludge Bomb", 1], ["Stun Spore", 0]], "win": 43, "notes": []}, {"turn": 59, "choice": "move 2", "options": [["Giga Drain", 98], ["Sludge Bomb", 1], ["Synthesis", 1], ["Stun Spore", 0]], "win": 44, "notes": []}, {"turn": 60, "choice": "move 2", "options": [["Giga Drain", 93], ["Synthesis", 7], ["Sludge Bomb", 0], ["Stun Spore", 0]], "win": 43, "notes": []}, {"turn": 61, "choice": "move 2", "options": [["Giga Drain", 66], ["Synthesis", 34], ["Sludge Bomb", 0], ["Stun Spore", 0]], "win": 43, "notes": []}, {"turn": 62, "choice": "move 2", "options": [["Giga Drain", 98], ["Sludge Bomb", 1], ["Synthesis", 1], ["Stun Spore", 0]], "win": 43, "notes": []}, {"turn": 63, "choice": "move 2", "options": [["Giga Drain", 88], ["Synthesis", 12], ["Sludge Bomb", 0], ["Stun Spore", 0]], "win": 44, "notes": []}, {"turn": 64, "choice": "move 4", "options": [["Synthesis", 90], ["Sludge Bomb", 9], ["Stun Spore", 1], ["switch Staryu", 0]], "win": 44, "notes": []}, {"turn": 65, "choice": "move 1", "options": [["Sludge Bomb", 93], ["Synthesis", 4], ["Stun Spore", 3], ["switch Staryu", 0]], "win": 44, "notes": []}, {"turn": 66, "choice": "move 1", "options": [["Sludge Bomb", 51], ["Synthesis", 45], ["Stun Spore", 4], ["switch Staryu", 0]], "win": 44, "notes": []}, {"turn": 67, "choice": "move 1", "options": [["Sludge Bomb", 86], ["Stun Spore", 7], ["Synthesis", 7], ["switch Staryu", 0]], "win": 43, "notes": []}, {"turn": 68, "choice": "move 4", "options": [["Synthesis", 76], ["Sludge Bomb", 21], ["Stun Spore", 3], ["switch Staryu", 0]], "win": 43, "notes": []}, {"turn": 69, "choice": "move 1", "options": [["Sludge Bomb", 92], ["Stun Spore", 5], ["Synthesis", 3], ["switch Staryu", 0]], "win": 43, "notes": []}, {"turn": 70, "choice": "move 1", "options": [["Sludge Bomb", 92], ["Stun Spore", 6], ["Synthesis", 2], ["switch Staryu", 0]], "win": 47, "notes": []}, {"turn": 71, "choice": "move 1", "options": [["Sludge Bomb", 91], ["Stun Spore", 6], ["Synthesis", 3], ["switch Staryu", 0]], "win": 48, "notes": []}, {"turn": 72, "choice": "move 1", "options": [["Sludge Bomb", 90], ["Stun Spore", 6], ["Synthesis", 3], ["switch Staryu", 0]], "win": 48, "notes": []}, {"turn": 73, "choice": "move 1", "options": [["Sludge Bomb", 91], ["Stun Spore", 7], ["Synthesis", 1], ["switch Staryu", 0]], "win": 46, "notes": []}, {"turn": 74, "choice": "move 1", "options": [["Sludge Bomb", 88], ["Stun Spore", 8], ["Synthesis", 3], ["switch Staryu", 1]], "win": 48, "notes": []}, {"turn": 75, "choice": "move 1", "options": [["Sludge Bomb", 87], ["Stun Spore", 8], ["Synthesis", 4], ["switch Staryu", 1]], "win": 48, "notes": []}, {"turn": 76, "choice": "move 1", "options": [["Sludge Bomb", 85], ["Stun Spore", 9], ["Synthesis", 4], ["switch Staryu", 1]], "win": 48, "notes": []}, {"turn": 77, "choice": "move 1", "options": [["Sludge Bomb", 83], ["Stun Spore", 10], ["Synthesis", 4], ["switch Staryu", 2]], "win": 48, "notes": []}, {"turn": 78, "choice": "move 1", "options": [["Sludge Bomb", 85], ["Stun Spore", 12], ["Synthesis", 2], ["switch Staryu", 1]], "win": 45, "notes": []}, {"turn": 79, "choice": "move 1", "options": [["Sludge Bomb", 80], ["Stun Spore", 18], ["Synthesis", 2], ["switch Staryu", 1]], "win": 45, "notes": []}, {"turn": 80, "choice": "move 1", "options": [["Sludge Bomb", 81], ["Stun Spore", 13], ["Synthesis", 4], ["switch Staryu", 2]], "win": 47, "notes": []}, {"turn": 81, "choice": "move 1", "options": [["Sludge Bomb", 82], ["Stun Spore", 15], ["Synthesis", 2], ["switch Staryu", 1]], "win": 44, "notes": []}, {"turn": 82, "choice": "move 1", "options": [["Sludge Bomb", 78], ["Stun Spore", 15], ["Synthesis", 5], ["switch Staryu", 2]], "win": 46, "notes": []}, {"turn": 83, "choice": "move 1", "options": [["Sludge Bomb", 62], ["Synthesis", 27], ["Stun Spore", 11], ["switch Staryu", 0]], "win": 42, "notes": []}, {"turn": 84, "choice": "move 4", "options": [["Synthesis", 51], ["Sludge Bomb", 40], ["Stun Spore", 9], ["switch Staryu", 0]], "win": 40, "notes": []}, {"turn": 85, "choice": "move 1", "options": [["Sludge Bomb", 79], ["Stun Spore", 18], ["Synthesis", 2], ["switch Staryu", 1]], "win": 42, "notes": []}, {"turn": 86, "choice": "move 3", "options": [["Stun Spore", 56], ["switch Staryu", 32], ["Synthesis", 12], ["switch Vullaby", 0]], "win": 43, "notes": []}, {"turn": 87, "choice": "move 3", "options": [["Stun Spore", 77], ["switch Staryu", 13], ["Synthesis", 9], ["switch Vullaby", 0]], "win": 43, "notes": []}, {"turn": 88, "choice": "move 3", "options": [["Stun Spore", 88], ["switch Staryu", 10], ["Synthesis", 2], ["switch Vullaby", 0]], "win": 41, "notes": []}, {"turn": 89, "choice": "move 3", "options": [["Stun Spore", 79], ["switch Staryu", 14], ["Synthesis", 6], ["switch Vullaby", 0]], "win": 43, "notes": []}, {"turn": 90, "choice": "move 3", "options": [["Stun Spore", 77], ["switch Staryu", 15], ["Synthesis", 7], ["switch Vullaby", 0]], "win": 43, "notes": []}, {"turn": 91, "choice": "move 3", "options": [["Stun Spore", 87], ["switch Staryu", 11], ["Synthesis", 2], ["switch Vullaby", 0]], "win": 41, "notes": []}, {"turn": 92, "choice": "switch 5", "options": [["switch Staryu", 71], ["Stun Spore", 27], ["Synthesis", 1], ["switch Vullaby", 0]], "win": 43, "notes": []}, {"turn": 93, "choice": "move 4", "options": [["Rapid Spin", 99], ["Recover", 1], ["switch Foongus", 0], ["Scald", 0]], "win": 37, "notes": []}, {"turn": 94, "choice": "move 1", "options": [["Recover", 99], ["switch Foongus", 1], ["switch Vullaby", 0], ["Scald", 0]], "win": 41, "notes": []}, {"turn": 95, "choice": "move 1", "options": [["Recover", 98], ["switch Foongus", 2], ["switch Vullaby", 0], ["Scald", 0]], "win": 42, "notes": []}, {"turn": 96, "choice": "move 4", "options": [["switch Foongus", 43], ["Rapid Spin", 30], ["Scald", 27], ["Recover", 0]], "win": 50, "notes": []}, {"turn": 97, "choice": "switch 5", "options": [["switch Foongus", 100], ["switch Vullaby", 0], ["Scald", 0], ["Recover", 0]], "win": 46, "notes": []}, {"turn": 98, "choice": "switch 4", "options": [["switch Vullaby", 71], ["Stun Spore", 22], ["Synthesis", 4], ["switch Staryu", 3]], "win": 57, "notes": []}, {"turn": 99, "choice": "move 1", "options": [["Roost", 100], ["Brave Bird", 0], ["switch Foongus", 0], ["Knock Off", 0]], "win": 61, "notes": []}, {"turn": 100, "choice": "move 2", "options": [["Brave Bird", 100], ["Roost", 0], ["Knock Off", 0], ["switch Foongus", 0]], "win": 54, "notes": []}, {"turn": 101, "choice": "move 2", "options": [["Brave Bird", 76], ["Roost", 24], ["Knock Off", 0], ["switch Foongus", 0]], "win": 73, "notes": []}, {"turn": 102, "choice": "move 2", "options": [["Brave Bird", 52], ["switch Staryu", 16], ["Knock Off", 14], ["switch Foongus", 14]], "win": 87, "notes": []}, {"turn": 103, "choice": "switch 5", "options": [["switch Staryu", 94], ["switch Foongus", 6]], "win": 81, "notes": []}, {"turn": 103, "choice": "move 3", "options": [["Scald", 100], ["Rapid Spin", 0], ["Recover", 0], ["Thunder Wave", 0]], "win": 84, "notes": []}, {"turn": 104, "choice": "move 3", "options": [["Scald", 100], ["Recover", 0], ["Rapid Spin", 0], ["Thunder Wave", 0]], "win": 90, "notes": []}, {"turn": 105, "choice": "move 3", "options": [["Scald", 90], ["switch Foongus", 10], ["Rapid Spin", 0], ["Thunder Wave", 0]], "win": 87, "notes": []}, {"turn": 106, "choice": "move 3", "options": [["Scald", 97], ["switch Foongus", 1], ["Rapid Spin", 1], ["Recover", 1]], "win": 59, "notes": []}, {"turn": 107, "choice": "switch 4", "options": [["switch Foongus", 100], ["Scald", 0], ["Rapid Spin", 0], ["Recover", 0]], "win": 65, "notes": []}, {"turn": 108, "choice": "move 4", "options": [["Stun Spore", 54], ["Synthesis", 46], ["switch Staryu", 0]], "win": 76, "notes": []}, {"turn": 109, "choice": "move 3", "options": [["Stun Spore", 98], ["Synthesis", 2], ["switch Staryu", 0]], "win": 77, "notes": []}, {"turn": 110, "choice": "move 3", "options": [["Stun Spore", 98], ["Synthesis", 2], ["switch Staryu", 0]], "win": 74, "notes": []}, {"turn": 111, "choice": "move 3", "options": [["Stun Spore", 99], ["Synthesis", 1], ["switch Staryu", 0]], "win": 74, "notes": []}, {"turn": 112, "choice": "move 3", "options": [["Stun Spore", 99], ["Synthesis", 1], ["switch Staryu", 0]], "win": 73, "notes": []}, {"turn": 113, "choice": "move 3", "options": [["Stun Spore", 96], ["Synthesis", 4], ["switch Staryu", 0]], "win": 67, "notes": []}, {"turn": 114, "choice": "move 3", "options": [["Stun Spore", 93], ["Synthesis", 7], ["switch Staryu", 0]], "win": 66, "notes": []}, {"turn": 115, "choice": "move 3", "options": [["Stun Spore", 85], ["Synthesis", 15], ["switch Staryu", 0]], "win": 65, "notes": []}, {"turn": 116, "choice": "move 4", "options": [["Stun Spore", 71], ["Synthesis", 29], ["switch Staryu", 0]], "win": 68, "notes": []}, {"turn": 117, "choice": "move 3", "options": [["Stun Spore", 98], ["Synthesis", 2], ["switch Staryu", 0]], "win": 73, "notes": []}, {"turn": 118, "choice": "move 3", "options": [["Stun Spore", 95], ["Synthesis", 4], ["switch Staryu", 1]], "win": 74, "notes": []}, {"turn": 119, "choice": "move 3", "options": [["Stun Spore", 97], ["Synthesis", 2], ["switch Staryu", 2]], "win": 69, "notes": []}, {"turn": 120, "choice": "move 3", "options": [["Stun Spore", 95], ["Synthesis", 3], ["switch Staryu", 3]], "win": 72, "notes": []}, {"turn": 121, "choice": "move 3", "options": [["Stun Spore", 95], ["Synthesis", 3], ["switch Staryu", 2]], "win": 73, "notes": []}, {"turn": 122, "choice": "move 3", "options": [["Stun Spore", 95], ["Synthesis", 3], ["switch Staryu", 2]], "win": 73, "notes": []}, {"turn": 123, "choice": "move 3", "options": [["Stun Spore", 94], ["Synthesis", 3], ["switch Staryu", 3]], "win": 73, "notes": []}, {"turn": 124, "choice": "move 3", "options": [["Stun Spore", 91], ["switch Staryu", 7], ["Synthesis", 2]], "win": 72, "notes": []}, {"turn": 125, "choice": "move 3", "options": [["Stun Spore", 92], ["switch Staryu", 6], ["Synthesis", 2]], "win": 72, "notes": []}, {"turn": 126, "choice": "move 3", "options": [["Stun Spore", 93], ["switch Staryu", 4], ["Synthesis", 3]], "win": 73, "notes": []}, {"turn": 127, "choice": "move 3", "options": [["Stun Spore", 94], ["Synthesis", 4], ["switch Staryu", 2]], "win": 73, "notes": []}, {"turn": 128, "choice": "move 3", "options": [["Stun Spore", 93], ["switch Staryu", 4], ["Synthesis", 3]], "win": 73, "notes": []}, {"turn": 129, "choice": "move 3", "options": [["Stun Spore", 92], ["switch Staryu", 4], ["Synthesis", 3]], "win": 74, "notes": []}, {"turn": 130, "choice": "move 3", "options": [["Stun Spore", 93], ["switch Staryu", 5], ["Synthesis", 3]], "win": 72, "notes": []}, {"turn": 131, "choice": "move 3", "options": [["Stun Spore", 93], ["Synthesis", 4], ["switch Staryu", 4]], "win": 74, "notes": []}, {"turn": 132, "choice": "move 3", "options": [["Stun Spore", 93], ["Synthesis", 4], ["switch Staryu", 3]], "win": 75, "notes": []}, {"turn": 133, "choice": "move 3", "options": [["Stun Spore", 92], ["switch Staryu", 5], ["Synthesis", 3]], "win": 74, "notes": []}, {"turn": 134, "choice": "move 3", "options": [["Stun Spore", 92], ["switch Staryu", 5], ["Synthesis", 3]], "win": 74, "notes": []}, {"turn": 135, "choice": "move 3", "options": [["Stun Spore", 91], ["switch Staryu", 5], ["Synthesis", 4]], "win": 74, "notes": []}, {"turn": 136, "choice": "move 3", "options": [["Stun Spore", 92], ["Synthesis", 5], ["switch Staryu", 3]], "win": 74, "notes": []}, {"turn": 137, "choice": "move 3", "options": [["Stun Spore", 86], ["switch Staryu", 11], ["Synthesis", 3]], "win": 73, "notes": []}, {"turn": 138, "choice": "move 3", "options": [["Stun Spore", 88], ["switch Staryu", 9], ["Synthesis", 3]], "win": 73, "notes": []}, {"turn": 139, "choice": "move 3", "options": [["Stun Spore", 90], ["switch Staryu", 6], ["Synthesis", 4]], "win": 74, "notes": []}, {"turn": 140, "choice": "move 3", "options": [["Stun Spore", 90], ["switch Staryu", 6], ["Synthesis", 4]], "win": 74, "notes": []}, {"turn": 141, "choice": "move 3", "options": [["Stun Spore", 89], ["switch Staryu", 7], ["Synthesis", 4]], "win": 74, "notes": []}, {"turn": 142, "choice": "move 3", "options": [["Stun Spore", 89], ["Synthesis", 7], ["switch Staryu", 4]], "win": 75, "notes": []}, {"turn": 143, "choice": "move 3", "options": [["Stun Spore", 85], ["switch Staryu", 11], ["Synthesis", 4]], "win": 75, "notes": []}, {"turn": 144, "choice": "move 3", "options": [["Stun Spore", 82], ["switch Staryu", 15], ["Synthesis", 3]], "win": 75, "notes": []}, {"turn": 145, "choice": "move 3", "options": [["Stun Spore", 85], ["switch Staryu", 11], ["Synthesis", 4]], "win": 77, "notes": []}, {"turn": 146, "choice": "move 3", "options": [["Stun Spore", 82], ["Synthesis", 9], ["switch Staryu", 9]], "win": 82, "notes": []}, {"turn": 147, "choice": "move 3", "options": [["Stun Spore", 71], ["switch Staryu", 24], ["Synthesis", 6]], "win": 83, "notes": []}, {"turn": 148, "choice": "move 3", "options": [["Stun Spore", 67], ["switch Staryu", 26], ["Synthesis", 6]], "win": 83, "notes": []}, {"turn": 149, "choice": "switch 4", "options": [["switch Staryu", 53], ["Stun Spore", 45], ["Synthesis", 2]], "win": 81, "notes": []}, {"turn": 150, "choice": "switch 4", "options": [["switch Foongus", 100]], "win": 60, "notes": []}, {"turn": 150, "choice": "move 4", "options": [["Synthesis", 94], ["Stun Spore", 6]], "win": 60, "notes": []}, {"turn": 151, "choice": "move 4", "options": [["Synthesis", 93], ["Stun Spore", 7]], "win": 64, "notes": []}, {"turn": 152, "choice": "move 3", "options": [["Stun Spore", 96], ["Synthesis", 4]], "win": 66, "notes": []}, {"turn": 153, "choice": "move 3", "options": [["Stun Spore", 97], ["Synthesis", 3]], "win": 63, "notes": []}, {"turn": 154, "choice": "move 3", "options": [["Stun Spore", 96], ["Synthesis", 4]], "win": 63, "notes": []}, {"turn": 155, "choice": "move 3", "options": [["Stun Spore", 97], ["Synthesis", 3]], "win": 58, "notes": []}, {"turn": 156, "choice": "move 3", "options": [["Stun Spore", 96], ["Synthesis", 4]], "win": 62, "notes": []}, {"turn": 157, "choice": "move 3", "options": [["Stun Spore", 98], ["Synthesis", 2]], "win": 59, "notes": []}, {"turn": 158, "choice": "move 3", "options": [["Stun Spore", 96], ["Synthesis", 4]], "win": 63, "notes": []}, {"turn": 159, "choice": "move 3", "options": [["Stun Spore", 95], ["Synthesis", 5]], "win": 65, "notes": []}, {"turn": 160, "choice": "move 3", "options": [["Stun Spore", 95], ["Synthesis", 5]], "win": 66, "notes": []}, {"turn": 161, "choice": "move 4", "options": [["Synthesis", 100]], "win": 61, "notes": []}, {"turn": 162, "choice": "move 4", "options": [["Synthesis", 100]], "win": 64, "notes": []}, {"turn": 163, "choice": "move 1", "options": [["Struggle", 100]], "win": 69, "notes": []}, {"turn": 164, "choice": "move 1", "options": [["Struggle", 100]], "win": 49, "notes": []}, {"turn": 165, "choice": "move 1", "options": [["Struggle", 100]], "win": 29, "notes": []}]};
+(function () {
+  var NS = 'http://www.w3.org/2000/svg';
+  var byTurn = {};
+  G.decisions.forEach(function (d) { (byTurn[d.turn] = byTurn[d.turn] || []).push(d); });
+  // one point per turn: the decision at the start of the turn (forced switches come later in it)
+  var pts = Object.keys(byTurn).map(Number).sort(function (a, b) { return a - b; })
+    .map(function (t) { return {t: t, w: byTurn[t][0].win}; }).filter(function (p) { return p.w !== null; });
+  var final = G.result === 'won' ? 100 : G.result === 'lost' ? 0 : 50;
+  var W = 440, H = 170, L = 30, R = 8, T = 8, B = 22;
+  var maxT = Math.max(G.turns, pts.length ? pts[pts.length - 1].t : 1, 1);
+  var x = function (t) { return L + (W - L - R) * (t - 1) / Math.max(maxT - 1, 1); };
+  var y = function (w) { return T + (H - T - B) * (1 - w / 100); };
+  function el(name, attrs, parent) {
+    var e = document.createElementNS(NS, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  var svg = el('svg', {viewBox: '0 0 ' + W + ' ' + H, role: 'img',
+    'aria-label': 'Bot win chance by turn, ending in a ' + G.result});
+  [0, 25, 50, 75, 100].forEach(function (v) {
+    el('line', {x1: L, x2: W - R, y1: y(v), y2: y(v), stroke: v === 50 ? 'var(--mid)' : 'var(--grid)',
+      'stroke-width': 1, 'stroke-dasharray': v === 50 ? '3 3' : ''}, svg);
+    el('text', {x: L - 6, y: y(v) + 3, 'text-anchor': 'end'}, svg).textContent = v + '%';
+  });
+  var step = Math.max(1, Math.ceil(maxT / 8));
+  for (var t = 1; t <= maxT; t += step) el('text', {x: x(t), y: H - 6, 'text-anchor': 'middle'}, svg).textContent = t;
+  if (pts.length) {
+    var d = pts.map(function (p, i) { return (i ? 'L' : 'M') + x(p.t).toFixed(1) + ' ' + y(p.w).toFixed(1); }).join(' ');
+    el('path', {d: d, fill: 'none', stroke: 'var(--series)', 'stroke-width': 2, 'stroke-linejoin': 'round', 'stroke-linecap': 'round'}, svg);
+    var last = pts[pts.length - 1];
+    el('line', {x1: x(last.t), y1: y(last.w), x2: x(maxT), y2: y(final), stroke: 'var(--series)', 'stroke-width': 2,
+      'stroke-dasharray': '2 3', opacity: .6}, svg);
+    el('circle', {cx: x(maxT), cy: y(final), r: 4, fill: G.result === 'won' ? 'var(--win)' : G.result === 'lost' ? 'var(--lose)' : 'var(--mid)',
+      stroke: 'var(--card)', 'stroke-width': 2}, svg);
+  }
+  var cursor = el('line', {y1: T, y2: H - B, stroke: 'var(--ink2)', 'stroke-width': 1, opacity: 0}, svg);
+  var dot = el('circle', {r: 4.5, fill: 'var(--series)', stroke: 'var(--card)', 'stroke-width': 2, opacity: 0}, svg);
+  var hit = el('rect', {x: L, y: T, width: W - L - R, height: H - T - B, fill: 'transparent', style: 'cursor:pointer'}, svg);
+  document.getElementById('lc-chart').appendChild(svg);
+  var tip = document.getElementById('lc-tip');
+  function nearest(ev) {
+    var r = svg.getBoundingClientRect(), px = (ev.clientX - r.left) * W / r.width, best = null;
+    pts.forEach(function (p) { if (!best || Math.abs(x(p.t) - px) < Math.abs(x(best.t) - px)) best = p; });
+    return best;
+  }
+  hit.addEventListener('mousemove', function (ev) {
+    var p = nearest(ev); if (!p) return;
+    tip.style.display = 'block'; tip.style.left = (ev.clientX + 12) + 'px'; tip.style.top = (ev.clientY - 28) + 'px';
+    tip.textContent = 'Turn ' + p.t + ': ' + p.w + '% win chance';
+  });
+  hit.addEventListener('mouseleave', function () { tip.style.display = 'none'; });
+  hit.addEventListener('click', function (ev) {
+    var p = nearest(ev); if (!p) return;
+    var b = window.Replays && window.Replays.battle;
+    if (b) { try { b.seekTurn(p.t); } catch (e) {} }
+    show(p.t, true);
+  });
+
+  var panel = document.getElementById('lc-turn'), current = null;
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]; }); }
+  function show(turn, force) {
+    var t = null;
+    Object.keys(byTurn).map(Number).forEach(function (k) { if (k <= turn) t = k; });
+    if (t === current && !force) return;
+    current = t;
+    if (t === null) { cursor.setAttribute('opacity', 0); dot.setAttribute('opacity', 0); return; }
+    var p = pts.filter(function (q) { return q.t === t; })[0];
+    cursor.setAttribute('x1', x(t)); cursor.setAttribute('x2', x(t)); cursor.setAttribute('opacity', .35);
+    if (p) { dot.setAttribute('cx', x(t)); dot.setAttribute('cy', y(p.w)); dot.setAttribute('opacity', 1); }
+    var prev = pts.filter(function (q) { return q.t < t; }).pop();
+    var html = '';
+    byTurn[t].forEach(function (d, i) {
+      var delta = (i === 0 && prev && d.win !== null) ? d.win - prev.w : null;
+      html += '<h3>Turn ' + t + (i ? ' · forced switch' : '') + '</h3><div class="lc-row"><div class="lc-big">' +
+        (d.win === null ? '–' : d.win + '%') + '<small>win chance</small></div>' +
+        (delta !== null ? '<div class="lc-delta">' + (delta >= 0 ? '+' : '') + delta + ' pts vs turn ' + prev.t + '</div>' : '') + '</div>';
+      if (d.options.length) {
+        html += '<table><thead><tr><th>option</th><th class="n">preference</th></tr></thead><tbody>';
+        d.options.forEach(function (o, j) {
+          html += '<tr' + (j === 0 ? ' class="lc-pick"' : '') + '><td>' + esc(o[0]) + '</td><td class="n">' + o[1] +
+            '%<span class="lc-bar" style="width:' + Math.round(o[1] * 0.3) + 'px"></span></td></tr>';
+        });
+        html += '</tbody></table>';
+      }
+      d.notes.forEach(function (n) { html += '<div class="lc-note">' + esc(n) + '</div>'; });
+      if (i < byTurn[t].length - 1) html += '<div style="height:12px"></div>';
+    });
+    panel.innerHTML = html;
+  }
+  var tries = 0, swapped = false;
+  (function hook() {
+    var b = window.Replays && window.Replays.battle;
+    if (!b) {
+      if (++tries > 40) document.getElementById('lc-offline').style.display = 'block';
+      return setTimeout(hook, 250);
+    }
+    if (G.side === 'p2' && !swapped) {  // show the battle from the bot's side
+      swapped = true;
+      try { window.Replays.switchViewpoint(); } catch (e) { try { b.switchViewpoint(); } catch (e2) {} }
+    }
+    var m = /turn=(\d+)/.exec(location.hash);  // links like page.html#turn=12 open at that turn
+    if (m) { try { b.seekTurn(+m[1]); } catch (e) {} }
+    setInterval(function () { show(b.turn); }, 200);  // 'turn' events are suppressed while seeking
+    show(b.turn);
+  })();
+})();
+</script>
+<script>
+  var daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24);
+  document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"><\/script>');
+</script>
+</body></html>
