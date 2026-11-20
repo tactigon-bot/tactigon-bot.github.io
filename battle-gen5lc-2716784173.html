@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tactigon vs NoobishTrainerJoe</title>
+<style>
+/* Everything here is lc-* and scoped to #lc-app: replay-embed.js injects Showdown's battle.css
+   globally, which already styles .turn, .win, .battle and friends. */
+:root{--bg:#f5f6f8;--card:#fff;--line:#dfe3ea;--ink:#1f2430;--ink2:#5a6070;--muted:#8a90a0;--head:#2b3a55;
+  --win:#2f7d55;--lose:#b5473a;--series:#3a6ea5;--grid:#e8ebf0;--mid:#c3c8d2;--hl:#eef3fa}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#14171d;--card:#1d2129;--line:#2e3440;--ink:#e6e9ef;
+  --ink2:#b4bac6;--muted:#8a90a0;--head:#1b2333;--win:#5fbf8a;--lose:#e07a6c;--series:#7fb0e6;--grid:#2a2f3a;--mid:#4a5160;--hl:#24303f}}
+:root[data-theme="dark"]{--bg:#14171d;--card:#1d2129;--line:#2e3440;--ink:#e6e9ef;--ink2:#b4bac6;--muted:#8a90a0;--head:#1b2333;
+  --win:#5fbf8a;--lose:#e07a6c;--series:#7fb0e6;--grid:#2a2f3a;--mid:#4a5160;--hl:#24303f}
+body{margin:0;font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}
+#lc-head{padding:12px 20px;background:var(--head);color:#fff}
+#lc-head h1{margin:0;font-size:16px;font-weight:600}
+#lc-head p{margin:2px 0 0;opacity:.75;font-size:13px}
+#lc-head a{color:#cfe0ff}
+#lc-app .lc-split{display:flex;flex-wrap:wrap;align-items:flex-start;gap:20px;padding:18px}
+#lc-app .lc-left{flex:0 0 640px;max-width:100%;overflow:hidden}
+#lc-app .lc-panel{flex:1 1 380px;min-width:300px;max-width:480px;position:sticky;top:18px}
+#lc-app .lc-card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:14px}
+#lc-app .lc-card h3{margin:0 0 8px;font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:600}
+#lc-app .lc-big{font-size:28px;font-weight:650;font-variant-numeric:tabular-nums;line-height:1.1}
+#lc-app .lc-big small{display:block;font-size:10px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+#lc-app .lc-row{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+#lc-app .lc-delta{font-size:13px;font-variant-numeric:tabular-nums;color:var(--ink2)}
+#lc-app table{width:100%;border-collapse:collapse;margin-top:8px}
+#lc-app th{text-align:left;font-size:10px;text-transform:uppercase;color:var(--muted);font-weight:500;padding:2px 0;letter-spacing:.04em}
+#lc-app td{padding:4px 0;border-top:1px solid var(--line);font-size:13px;color:var(--ink2);font-variant-numeric:tabular-nums}
+#lc-app td.n,#lc-app th.n{text-align:right;width:64px}
+#lc-app tr.lc-pick td{color:var(--ink);font-weight:600}
+#lc-app .lc-bar{display:inline-block;height:6px;border-radius:3px;background:var(--series);vertical-align:middle;margin-left:6px;opacity:.75}
+#lc-app .lc-note{margin-top:8px;font-size:12px;color:var(--ink2);background:var(--hl);border-radius:5px;padding:5px 8px}
+#lc-app .lc-idle{color:var(--muted);font-size:13px}
+#lc-app svg{display:block;width:100%;height:auto;overflow:visible}
+#lc-app svg text{fill:var(--muted);font-size:10px;font-family:inherit}
+#lc-tip{position:fixed;pointer-events:none;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:6px;
+  padding:5px 8px;font-size:12px;box-shadow:0 2px 8px rgba(0,0,0,.15);display:none;z-index:10;font-variant-numeric:tabular-nums}
+#lc-offline{display:none;margin:12px 18px 0;padding:10px 14px;background:var(--card);border:1px solid var(--lose);border-radius:6px;color:var(--lose);font-size:13px}
+#lc-head p{overflow-wrap:anywhere}
+@media (max-width:700px){#lc-app .lc-split{padding:16px;gap:14px}#lc-app .lc-left{flex:1 1 100%;overflow-x:auto}
+  #lc-app .lc-panel{position:static;flex:1 1 100%;min-width:0;max-width:none}#lc-head{padding:12px 16px}}
+</style></head><body>
+<div id="lc-head"><h1>Tactigon vs NoobishTrainerJoe</h1><p>battle-gen5lc-2716784173 · won · 33 turns · Tactigon v11 · <a href="index.html">all games</a></p></div>
+<div id="lc-offline">The Showdown replay player could not be loaded (it comes from play.pokemonshowdown.com), so the panel can't follow the turn. The chart still works.</div>
+<div id="lc-app"><div class="lc-split">
+  <div class="lc-left"><div class="wrapper replay-wrapper" style="width:640px;max-width:100%">
+    <input type="hidden" name="replayid" value="battle-gen5lc-2716784173" />
+    <div class="battle"></div><div class="battle-log"></div>
+    <div class="replay-controls"></div><div class="replay-controls-2"></div>
+    <script type="text/plain" class="battle-log-data">>battle-gen5lc-2716784173
+|init|battle
+|title|NoobishTrainerJoe vs. Tactigon
+|t:|1795148362
+|gametype|singles
+|player|p1|NoobishTrainerJoe|265|
+|player|p2|Tactigon|2|
+|gen|5
+|tier|[Gen 5] LC
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Endless Battle Clause: Forcing endless battles is banned
+|rule|Species Clause: Limit one of each Pokemon
+|rule|OHKO Clause: OHKO moves are banned
+|rule|Evasion Items Clause: Evasion items are banned
+|rule|Evasion Moves Clause: Evasion moves are banned
+|rule|Pomeg Glitch Clause: Gen 3 Pokemon at level 5+ can have any of their level-up moves.
+|rule|Sleep Moves Clause: Sleep-inducing moves are banned
+|clearpoke
+|poke|p1|Mienfoo, L5, F|item
+|poke|p1|Natu, L5, F|item
+|poke|p1|Diglett, L5, M|item
+|poke|p1|Gastly, L5, M|item
+|poke|p1|Clamperl, L5, M|item
+|poke|p1|Porygon, L5|item
+|poke|p2|Diglett, L5, F|item
+|poke|p2|Pawniard, L5, F|item
+|poke|p2|Porygon, L5|item
+|poke|p2|Staryu, L5|item
+|poke|p2|Ferroseed, L5, M|item
+|poke|p2|Frillish, L5, M|item
+|teampreview
+|inactive|Battle timer is ON: inactive players will automatically lose when time's up. (requested by NoobishTrainerJoe)
+|inactive|Time left: 300 sec this turn | 300 sec total | 60 sec grace
+|inactive|NoobishTrainerJoe has 270 seconds left.
+|
+|t:|1795148394
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Diglett|Diglett, L5, M|100/100
+|switch|p2a: Diglett|Diglett, L5, F|18/18
+|turn|1
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795148397
+|move|p1a: Diglett|Earthquake|p2a: Diglett
+|-damage|p2a: Diglett|0 fnt
+|faint|p2a: Diglett
+|-damage|p1a: Diglett|95/100|[from] item: Life Orb
+|
+|upkeep
+|inactive|Time left: 300 sec this turn | 300 sec total | 5 sec grace
+|
+|t:|1795148397
+|switch|p2a: Pawniard|Pawniard, L5, F|21/21
+|turn|2
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795148409
+|switch|p1a: Mienfoo|Mienfoo, L5, F|100/100
+|move|p2a: Pawniard|Night Slash|p1a: Mienfoo
+|-resisted|p1a: Mienfoo
+|-damage|p1a: Mienfoo|87/100
+|
+|upkeep
+|turn|3
+|inactive|Time left: 300 sec this turn | 300 sec total
+|inactive|NoobishTrainerJoe has 270 seconds left.
+|
+|t:|1795148443
+|switch|p2a: Frillish|Frillish, L5, M|25/25
+|move|p1a: Mienfoo|Knock Off|p2a: Frillish
+|-supereffective|p2a: Frillish
+|-damage|p2a: Frillish|21/25
+|-enditem|p2a: Frillish|Eviolite|[from] move: Knock Off|[of] p1a: Mienfoo
+|
+|upkeep
+|turn|4
+|inactive|Time left: 300 sec this turn | 300 sec total
+|inactive|NoobishTrainerJoe has 270 seconds left.
+|
+|t:|1795148459
+|move|p1a: Mienfoo|U-turn|p2a: Frillish
+|-resisted|p2a: Frillish
+|-crit|p2a: Frillish
+|-damage|p2a: Frillish|14/25
+|
+|t:|1795148463
+|switch|p1a: Natu|Natu, L5, F|100/100|[from] U-turn
+|move|p2a: Frillish|Scald|p1a: Natu
+|-damage|p1a: Natu|70/100
+|-status|p1a: Natu|brn
+|
+|-damage|p1a: Natu|61/100 brn|[from] brn
+|upkeep
+|turn|5
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795148471
+|move|p1a: Natu|Giga Drain|p2a: Frillish
+|-supereffective|p2a: Frillish
+|-damage|p2a: Frillish|2/25
+|-heal|p1a: Natu|87/100 brn|[from] drain|[of] p2a: Frillish
+|move|p2a: Frillish|Recover|p2a: Frillish
+|-heal|p2a: Frillish|15/25
+|
+|-damage|p1a: Natu|79/100 brn|[from] brn
+|upkeep
+|turn|6
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795148473
+|switch|p2a: Pawniard|Pawniard, L5, F|21/21
+|move|p1a: Natu|Giga Drain|p2a: Pawniard
+|-resisted|p2a: Pawniard
+|-damage|p2a: Pawniard|17/21
+|-heal|p1a: Natu|87/100 brn|[from] drain|[of] p2a: Pawniard
+|
+|-damage|p1a: Natu|79/100 brn|[from] brn
+|upkeep
+|turn|7
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795148485
+|move|p2a: Pawniard|Night Slash|p1a: Natu
+|-supereffective|p1a: Natu
+|-damage|p1a: Natu|0 fnt
+|faint|p1a: Natu
+|
+|upkeep
+|
+|t:|1795148496
+|switch|p1a: Mienfoo|Mienfoo, L5, F|100/100
+|turn|8
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795148499
+|switch|p2a: Frillish|Frillish, L5, M|15/25
+|move|p1a: Mienfoo|U-turn|p2a: Frillish
+|-resisted|p2a: Frillish
+|-damage|p2a: Frillish|12/25
+|
+|t:|1795148502
+|switch|p1a: Diglett|Diglett, L5, M|95/100|[from] U-turn
+|
+|upkeep
+|turn|9
+|inactive|Time left: 300 sec this turn | 300 sec total
+|error|[Unavailable choice] Can't switch: The active Pokémon is trapped
+|
+|t:|1795148504
+|move|p1a: Diglett|Earthquake|p2a: Frillish
+|-damage|p2a: Frillish|0 fnt
+|faint|p2a: Frillish
+|-damage|p1a: Diglett|89/100|[from] item: Life Orb
+|
+|upkeep
+|inactive|Time left: 300 sec this turn | 300 sec total | 5 sec grace
+|
+|t:|1795148505
+|switch|p2a: Pawniard|Pawniard, L5, F|17/21
+|turn|10
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795148508
+|move|p2a: Pawniard|Iron Head|p1a: Diglett
+|-damage|p1a: Diglett|0 fnt
+|faint|p1a: Diglett
+|
+|upkeep
+|
+|t:|1795148523
+|switch|p1a: Clamperl|Clamperl, L5, M|100/100
+|turn|11
+|inactive|Time left: 300 sec this turn | 300 sec total
+|inactive|NoobishTrainerJoe has 270 seconds left.
+|
+|t:|1795148571
+|switch|p2a: Ferroseed|Ferroseed, L5, M|23/23
+|move|p1a: Clamperl|Shell Smash|p1a: Clamperl
+|-unboost|p1a: Clamperl|def|1
+|-unboost|p1a: Clamperl|spd|1
+|-boost|p1a: Clamperl|atk|2
+|-boost|p1a: Clamperl|spa|2
+|-boost|p1a: Clamperl|spe|2
+|
+|upkeep
+|turn|12
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795148572
+|move|p1a: Clamperl|Substitute|p1a: Clamperl
+|-start|p1a: Clamperl|Substitute
+|-damage|p1a: Clamperl|75/100
+|move|p2a: Ferroseed|Giga Drain|p1a: Clamperl
+|-supereffective|p1a: Clamperl
+|-end|p1a: Clamperl|Substitute
+|
+|upkeep
+|turn|13
+|inactive|Time left: 300 sec this turn | 300 sec total
+|inactive|NoobishTrainerJoe has 270 seconds left.
+|
+|t:|1795148584
+|switch|p1a: Gastly|Gastly, L5, M|100/100
+|move|p2a: Ferroseed|Giga Drain|p1a: Gastly
+|-resisted|p1a: Gastly
+|-damage|p1a: Gastly|86/100
+|
+|upkeep
+|turn|14
+|inactive|Time left: 300 sec this turn | 300 sec total
+|inactive|NoobishTrainerJoe has 270 seconds left.
+|
+|t:|1795148593
+|switch|p2a: Staryu|Staryu, L5|19/19
+|move|p1a: Gastly|Substitute|p1a: Gastly
+|-start|p1a: Gastly|Substitute
+|-damage|p1a: Gastly|62/100
+|
+|upkeep
+|turn|15
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795148596
+|move|p2a: Staryu|Thunderbolt|p1a: Gastly
+|-end|p1a: Gastly|Substitute
+|move|p1a: Gastly|Shadow Ball|p2a: Staryu
+|-damage|p2a: Staryu|10/19
+|
+|upkeep
+|turn|16
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795148611
+|move|p2a: Staryu|Hydro Pump|p1a: Gastly
+|-damage|p1a: Gastly|0 fnt
+|faint|p1a: Gastly
+|
+|upkeep
+|
+|t:|1795148617
+|switch|p1a: Porygon|Porygon, L5|100/100
+|-ability|p1a: Porygon|Natural Cure|Trace|[from] ability: Trace|[of] p2a: Staryu
+|turn|17
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795148623
+|switch|p2a: Porygon|Porygon, L5|25/25
+|-ability|p2a: Porygon|Natural Cure|Trace|[from] ability: Trace|[of] p1a: Porygon
+|move|p1a: Porygon|Thunderbolt|p2a: Porygon
+|-damage|p2a: Porygon|19/25
+|-status|p2a: Porygon|par
+|
+|upkeep
+|turn|18
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795148629
+|switch|p1a: Mienfoo|Mienfoo, L5, F|100/100
+|-curestatus|p2a: Porygon|par|[from] ability: Natural Cure|[silent]
+|switch|p2a: Ferroseed|Ferroseed, L5, M|23/23
+|
+|upkeep
+|turn|19
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795148632
+|move|p1a: Mienfoo|High Jump Kick|p2a: Ferroseed|[miss]
+|-miss|p1a: Mienfoo|p2a: Ferroseed
+|-damage|p1a: Mienfoo|50/100|[from] highjumpkick
+|move|p2a: Ferroseed|Thunder Wave|p1a: Mienfoo
+|-status|p1a: Mienfoo|par
+|
+|upkeep
+|turn|20
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795148642
+|move|p2a: Ferroseed|Stealth Rock|p1a: Mienfoo
+|-sidestart|p1: NoobishTrainerJoe|move: Stealth Rock
+|cant|p1a: Mienfoo|par
+|
+|upkeep
+|turn|21
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795148651
+|move|p2a: Ferroseed|Spikes|p1a: Mienfoo
+|-sidestart|p1: NoobishTrainerJoe|Spikes
+|cant|p1a: Mienfoo|par
+|
+|upkeep
+|turn|22
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795148655
+|move|p2a: Ferroseed|Giga Drain|p1a: Mienfoo
+|-damage|p1a: Mienfoo|32/100 par
+|cant|p1a: Mienfoo|par
+|
+|upkeep
+|turn|23
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795148662
+|move|p2a: Ferroseed|Spikes|p1a: Mienfoo
+|-sidestart|p1: NoobishTrainerJoe|Spikes
+|move|p1a: Mienfoo|High Jump Kick|p2a: Ferroseed
+|-supereffective|p2a: Ferroseed
+|-damage|p2a: Ferroseed|3/23
+|-damage|p1a: Mienfoo|23/100 par|[from] ability: Iron Barbs|[of] p2a: Ferroseed
+|
+|upkeep
+|turn|24
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795148669
+|move|p2a: Ferroseed|Giga Drain|p1a: Mienfoo
+|-damage|p1a: Mienfoo|5/100 par
+|-heal|p2a: Ferroseed|5/23|[from] drain|[of] p1a: Mienfoo
+|move|p1a: Mienfoo|U-turn|p2a: Ferroseed
+|-damage|p2a: Ferroseed|1/23
+|-damage|p1a: Mienfoo|0 fnt|[from] ability: Iron Barbs|[of] p2a: Ferroseed
+|faint|p1a: Mienfoo
+|
+|upkeep
+|
+|t:|1795148673
+|switch|p1a: Clamperl|Clamperl, L5, M|75/100
+|-damage|p1a: Clamperl|65/100|[from] Stealth Rock
+|-damage|p1a: Clamperl|50/100|[from] Spikes
+|turn|25
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795148678
+|move|p1a: Clamperl|Surf|p2a: Ferroseed
+|-resisted|p2a: Ferroseed
+|-damage|p2a: Ferroseed|0 fnt
+|faint|p2a: Ferroseed
+|
+|upkeep
+|inactive|Time left: 300 sec this turn | 300 sec total | 5 sec grace
+|
+|t:|1795148678
+|switch|p2a: Pawniard|Pawniard, L5, F|17/21
+|turn|26
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795148685
+|move|p2a: Pawniard|Night Slash|p1a: Clamperl
+|-damage|p1a: Clamperl|0 fnt
+|faint|p1a: Clamperl
+|
+|upkeep
+|
+|t:|1795148688
+|switch|p1a: Porygon|Porygon, L5|100/100
+|-damage|p1a: Porygon|89/100|[from] Stealth Rock
+|-damage|p1a: Porygon|74/100|[from] Spikes
+|-ability|p1a: Porygon|Defiant|Trace|[from] ability: Trace|[of] p2a: Pawniard
+|turn|27
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795148692
+|switch|p2a: Porygon|Porygon, L5|19/25
+|-ability|p2a: Porygon|Defiant|Trace|[from] ability: Trace|[of] p1a: Porygon
+|move|p1a: Porygon|Thunder Wave|p2a: Porygon
+|-status|p2a: Porygon|par
+|
+|upkeep
+|turn|28
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795148694
+|move|p1a: Porygon|Thunderbolt|p2a: Porygon
+|-damage|p2a: Porygon|13/25 par
+|move|p2a: Porygon|Toxic|p1a: Porygon
+|-status|p1a: Porygon|tox
+|
+|-damage|p1a: Porygon|70/100 tox|[from] psn
+|upkeep
+|turn|29
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795148700
+|move|p1a: Porygon|Thunderbolt|p2a: Porygon
+|-crit|p2a: Porygon
+|-damage|p2a: Porygon|3/25 par
+|move|p2a: Porygon|Recover|p2a: Porygon
+|-heal|p2a: Porygon|16/25 par
+|
+|-damage|p1a: Porygon|62/100 tox|[from] psn
+|upkeep
+|turn|30
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795148704
+|move|p1a: Porygon|Thunderbolt|p2a: Porygon
+|-damage|p2a: Porygon|11/25 par
+|cant|p2a: Porygon|par
+|
+|-damage|p1a: Porygon|50/100 tox|[from] psn
+|upkeep
+|turn|31
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795148706
+|move|p1a: Porygon|Thunderbolt|p2a: Porygon
+|-damage|p2a: Porygon|6/25 par
+|move|p2a: Porygon|Recover|p2a: Porygon
+|-heal|p2a: Porygon|19/25 par
+|
+|-damage|p1a: Porygon|35/100 tox|[from] psn
+|upkeep
+|turn|32
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795148709
+|switch|p2a: Pawniard|Pawniard, L5, F|17/21
+|move|p1a: Porygon|Thunderbolt|p2a: Pawniard
+|-crit|p2a: Pawniard
+|-damage|p2a: Pawniard|0 fnt
+|faint|p2a: Pawniard
+|
+|-damage|p1a: Porygon|16/100 tox|[from] psn
+|upkeep
+|inactive|Time left: 300 sec this turn | 300 sec total | 5 sec grace
+|
+|t:|1795148709
+|switch|p2a: Staryu|Staryu, L5|10/19
+|turn|33
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795148712
+|move|p2a: Staryu|Thunderbolt|p1a: Porygon
+|-damage|p1a: Porygon|0 fnt
+|faint|p1a: Porygon
+|
+|win|Tactigon</script>
+  </div></div>
+  <aside class="lc-panel">
+    <div class="lc-card"><h3>Win chance over the game</h3><div id="lc-chart"></div></div>
+    <div class="lc-card" id="lc-turn"><div class="lc-idle">Press play: the bot's view of each turn appears here as the replay advances. Click the chart to jump to a turn.</div></div>
+  </aside>
+</div></div>
+<div id="lc-tip"></div>
+<script>
+var G = {"room": "battle-gen5lc-2716784173", "me": "Tactigon", "side": "p2", "foe": "NoobishTrainerJoe", "result": "won", "turns": 33, "decisions": [{"turn": 1, "choice": "move 1", "options": [["Earthquake", 100], ["switch Porygon", 0], ["switch Frillish", 0], ["switch Ferroseed", 0]], "win": 46, "notes": []}, {"turn": 2, "choice": "switch 4", "options": [["switch Pawniard", 82], ["switch Porygon", 18], ["switch Frillish", 0], ["switch Staryu", 0]], "win": 32, "notes": []}, {"turn": 2, "choice": "move 2", "options": [["Night Slash", 52], ["Iron Head", 47], ["Pursuit", 0], ["Brick Break", 0]], "win": 33, "notes": []}, {"turn": 3, "choice": "switch 6", "options": [["switch Frillish", 100], ["switch Porygon", 0], ["Night Slash", 0], ["switch Ferroseed", 0]], "win": 21, "notes": []}, {"turn": 4, "choice": "move 1", "options": [["Scald", 100], ["Will-O-Wisp", 0], ["Recover", 0], ["Hidden Power Fire 70", 0]], "win": 18, "notes": []}, {"turn": 5, "choice": "move 4", "options": [["Recover", 75], ["switch Pawniard", 22], ["switch Ferroseed", 2], ["switch Porygon", 1]], "win": 19, "notes": []}, {"turn": 6, "choice": "switch 6", "options": [["switch Pawniard", 72], ["switch Ferroseed", 28], ["switch Porygon", 0], ["Recover", 0]], "win": 20, "notes": []}, {"turn": 7, "choice": "move 2", "options": [["Night Slash", 97], ["Iron Head", 2], ["Pursuit", 0], ["switch Ferroseed", 0]], "win": 22, "notes": []}, {"turn": 8, "choice": "switch 6", "options": [["switch Frillish", 98], ["switch Ferroseed", 1], ["Night Slash", 1], ["switch Porygon", 0]], "win": 26, "notes": []}, {"turn": 9, "choice": "switch 2", "options": [["switch Porygon", 94], ["switch Ferroseed", 6], ["Recover", 0], ["Scald", 0]], "win": 21, "notes": []}, {"turn": 9, "choice": "move 4", "options": [["Recover", 91], ["Scald", 9], ["Will-O-Wisp", 0], ["Hidden Power Fire 70", 0]], "win": 21, "notes": []}, {"turn": 10, "choice": "switch 6", "options": [["switch Pawniard", 100], ["switch Porygon", 0], ["switch Ferroseed", 0], ["switch Staryu", 0]], "win": 19, "notes": []}, {"turn": 10, "choice": "move 1", "options": [["Iron Head", 62], ["Night Slash", 37], ["Pursuit", 2], ["Brick Break", 0]], "win": 21, "notes": []}, {"turn": 11, "choice": "switch 3", "options": [["switch Ferroseed", 100], ["Iron Head", 0], ["switch Staryu", 0], ["switch Porygon", 0]], "win": 22, "notes": []}, {"turn": 12, "choice": "move 1", "options": [["Giga Drain", 60], ["Thunder Wave", 40], ["Stealth Rock", 0], ["Spikes", 0]], "win": 25, "notes": []}, {"turn": 13, "choice": "move 1", "options": [["Giga Drain", 88], ["Thunder Wave", 12], ["Stealth Rock", 0], ["Spikes", 0]], "win": 29, "notes": []}, {"turn": 14, "choice": "switch 5", "options": [["switch Staryu", 56], ["Stealth Rock", 38], ["Thunder Wave", 3], ["Spikes", 2]], "win": 33, "notes": []}, {"turn": 15, "choice": "move 2", "options": [["Thunderbolt", 67], ["Hydro Pump", 25], ["switch Ferroseed", 8], ["switch Pawniard", 0]], "win": 31, "notes": []}, {"turn": 16, "choice": "move 1", "options": [["Hydro Pump", 90], ["Recover", 9], ["switch Pawniard", 1], ["Thunderbolt", 0]], "win": 36, "notes": []}, {"turn": 17, "choice": "switch 2", "options": [["switch Ferroseed", 57], ["switch Porygon", 43], ["Recover", 1], ["Hydro Pump", 0]], "win": 41, "notes": []}, {"turn": 18, "choice": "switch 5", "options": [["switch Ferroseed", 100], ["switch Pawniard", 0], ["Toxic", 0], ["Recover", 0]], "win": 34, "notes": []}, {"turn": 19, "choice": "move 3", "options": [["Thunder Wave", 97], ["switch Staryu", 2], ["Stealth Rock", 0], ["Spikes", 0]], "win": 37, "notes": []}, {"turn": 20, "choice": "move 2", "options": [["Stealth Rock", 73], ["Spikes", 23], ["Giga Drain", 4], ["switch Staryu", 0]], "win": 58, "notes": []}, {"turn": 21, "choice": "move 4", "options": [["Spikes", 72], ["Giga Drain", 28], ["switch Staryu", 0], ["Stealth Rock", 0]], "win": 69, "notes": []}, {"turn": 22, "choice": "move 1", "options": [["Giga Drain", 95], ["switch Staryu", 2], ["Spikes", 2], ["Stealth Rock", 1]], "win": 75, "notes": []}, {"turn": 23, "choice": "move 4", "options": [["Giga Drain", 65], ["Spikes", 33], ["switch Staryu", 1], ["Thunder Wave", 0]], "win": 81, "notes": []}, {"turn": 24, "choice": "move 1", "options": [["Giga Drain", 92], ["Spikes", 8], ["Thunder Wave", 0], ["switch Porygon", 0]], "win": 76, "notes": []}, {"turn": 25, "choice": "move 1", "options": [["Giga Drain", 100], ["Thunder Wave", 0], ["Stealth Rock", 0], ["Spikes", 0]], "win": 78, "notes": []}, {"turn": 26, "choice": "switch 3", "options": [["switch Staryu", 55], ["switch Pawniard", 45], ["switch Porygon", 0]], "win": 80, "notes": []}, {"turn": 26, "choice": "move 2", "options": [["Night Slash", 100], ["Iron Head", 0], ["Brick Break", 0], ["Pursuit", 0]], "win": 76, "notes": []}, {"turn": 27, "choice": "switch 5", "options": [["switch Porygon", 89], ["switch Staryu", 9], ["Night Slash", 2]], "win": 96, "notes": []}, {"turn": 28, "choice": "move 3", "options": [["Toxic", 94], ["Recover", 3], ["Thunderbolt", 2], ["switch Pawniard", 0]], "win": 93, "notes": []}, {"turn": 29, "choice": "move 4", "options": [["Recover", 84], ["Thunderbolt", 8], ["switch Pawniard", 5], ["Hidden Power Fire 70", 1]], "win": 97, "notes": []}, {"turn": 30, "choice": "move 4", "options": [["Recover", 41], ["switch Pawniard", 35], ["Thunderbolt", 14], ["switch Staryu", 5]], "win": 97, "notes": []}, {"turn": 31, "choice": "move 4", "options": [["Recover", 62], ["switch Pawniard", 22], ["Thunderbolt", 11], ["switch Staryu", 2]], "win": 97, "notes": []}, {"turn": 32, "choice": "switch 5", "options": [["switch Pawniard", 51], ["Thunderbolt", 24], ["switch Staryu", 22], ["Recover", 2]], "win": 98, "notes": []}, {"turn": 33, "choice": "switch 2", "options": [["switch Staryu", 100], ["switch Porygon", 0]], "win": 101, "notes": []}, {"turn": 33, "choice": "move 2", "options": [["Thunderbolt", 97], ["Hydro Pump", 3], ["Recover", 0], ["Rapid Spin", 0]], "win": 102, "notes": []}]};
+(function () {
+  var NS = 'http://www.w3.org/2000/svg';
+  var byTurn = {};
+  G.decisions.forEach(function (d) { (byTurn[d.turn] = byTurn[d.turn] || []).push(d); });
+  // one point per turn: the decision at the start of the turn (forced switches come later in it)
+  var pts = Object.keys(byTurn).map(Number).sort(function (a, b) { return a - b; })
+    .map(function (t) { return {t: t, w: byTurn[t][0].win}; }).filter(function (p) { return p.w !== null; });
+  var final = G.result === 'won' ? 100 : G.result === 'lost' ? 0 : 50;
+  var W = 440, H = 170, L = 30, R = 8, T = 8, B = 22;
+  var maxT = Math.max(G.turns, pts.length ? pts[pts.length - 1].t : 1, 1);
+  var x = function (t) { return L + (W - L - R) * (t - 1) / Math.max(maxT - 1, 1); };
+  var y = function (w) { return T + (H - T - B) * (1 - w / 100); };
+  function el(name, attrs, parent) {
+    var e = document.createElementNS(NS, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  var svg = el('svg', {viewBox: '0 0 ' + W + ' ' + H, role: 'img',
+    'aria-label': 'Bot win chance by turn, ending in a ' + G.result});
+  [0, 25, 50, 75, 100].forEach(function (v) {
+    el('line', {x1: L, x2: W - R, y1: y(v), y2: y(v), stroke: v === 50 ? 'var(--mid)' : 'var(--grid)',
+      'stroke-width': 1, 'stroke-dasharray': v === 50 ? '3 3' : ''}, svg);
+    el('text', {x: L - 6, y: y(v) + 3, 'text-anchor': 'end'}, svg).textContent = v + '%';
+  });
+  var step = Math.max(1, Math.ceil(maxT / 8));
+  for (var t = 1; t <= maxT; t += step) el('text', {x: x(t), y: H - 6, 'text-anchor': 'middle'}, svg).textContent = t;
+  if (pts.length) {
+    var d = pts.map(function (p, i) { return (i ? 'L' : 'M') + x(p.t).toFixed(1) + ' ' + y(p.w).toFixed(1); }).join(' ');
+    el('path', {d: d, fill: 'none', stroke: 'var(--series)', 'stroke-width': 2, 'stroke-linejoin': 'round', 'stroke-linecap': 'round'}, svg);
+    var last = pts[pts.length - 1];
+    el('line', {x1: x(last.t), y1: y(last.w), x2: x(maxT), y2: y(final), stroke: 'var(--series)', 'stroke-width': 2,
+      'stroke-dasharray': '2 3', opacity: .6}, svg);
+    el('circle', {cx: x(maxT), cy: y(final), r: 4, fill: G.result === 'won' ? 'var(--win)' : G.result === 'lost' ? 'var(--lose)' : 'var(--mid)',
+      stroke: 'var(--card)', 'stroke-width': 2}, svg);
+  }
+  var cursor = el('line', {y1: T, y2: H - B, stroke: 'var(--ink2)', 'stroke-width': 1, opacity: 0}, svg);
+  var dot = el('circle', {r: 4.5, fill: 'var(--series)', stroke: 'var(--card)', 'stroke-width': 2, opacity: 0}, svg);
+  var hit = el('rect', {x: L, y: T, width: W - L - R, height: H - T - B, fill: 'transparent', style: 'cursor:pointer'}, svg);
+  document.getElementById('lc-chart').appendChild(svg);
+  var tip = document.getElementById('lc-tip');
+  function nearest(ev) {
+    var r = svg.getBoundingClientRect(), px = (ev.clientX - r.left) * W / r.width, best = null;
+    pts.forEach(function (p) { if (!best || Math.abs(x(p.t) - px) < Math.abs(x(best.t) - px)) best = p; });
+    return best;
+  }
+  hit.addEventListener('mousemove', function (ev) {
+    var p = nearest(ev); if (!p) return;
+    tip.style.display = 'block'; tip.style.left = (ev.clientX + 12) + 'px'; tip.style.top = (ev.clientY - 28) + 'px';
+    tip.textContent = 'Turn ' + p.t + ': ' + p.w + '% win chance';
+  });
+  hit.addEventListener('mouseleave', function () { tip.style.display = 'none'; });
+  hit.addEventListener('click', function (ev) {
+    var p = nearest(ev); if (!p) return;
+    var b = window.Replays && window.Replays.battle;
+    if (b) { try { b.seekTurn(p.t); } catch (e) {} }
+    show(p.t, true);
+  });
+
+  var panel = document.getElementById('lc-turn'), current = null;
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]; }); }
+  function show(turn, force) {
+    var t = null;
+    Object.keys(byTurn).map(Number).forEach(function (k) { if (k <= turn) t = k; });
+    if (t === current && !force) return;
+    current = t;
+    if (t === null) { cursor.setAttribute('opacity', 0); dot.setAttribute('opacity', 0); return; }
+    var p = pts.filter(function (q) { return q.t === t; })[0];
+    cursor.setAttribute('x1', x(t)); cursor.setAttribute('x2', x(t)); cursor.setAttribute('opacity', .35);
+    if (p) { dot.setAttribute('cx', x(t)); dot.setAttribute('cy', y(p.w)); dot.setAttribute('opacity', 1); }
+    var prev = pts.filter(function (q) { return q.t < t; }).pop();
+    var html = '';
+    byTurn[t].forEach(function (d, i) {
+      var delta = (i === 0 && prev && d.win !== null) ? d.win - prev.w : null;
+      html += '<h3>Turn ' + t + (i ? ' · forced switch' : '') + '</h3><div class="lc-row"><div class="lc-big">' +
+        (d.win === null ? '–' : d.win + '%') + '<small>win chance</small></div>' +
+        (delta !== null ? '<div class="lc-delta">' + (delta >= 0 ? '+' : '') + delta + ' pts vs turn ' + prev.t + '</div>' : '') + '</div>';
+      if (d.options.length) {
+        html += '<table><thead><tr><th>option</th><th class="n">preference</th></tr></thead><tbody>';
+        d.options.forEach(function (o, j) {
+          html += '<tr' + (j === 0 ? ' class="lc-pick"' : '') + '><td>' + esc(o[0]) + '</td><td class="n">' + o[1] +
+            '%<span class="lc-bar" style="width:' + Math.round(o[1] * 0.3) + 'px"></span></td></tr>';
+        });
+        html += '</tbody></table>';
+      }
+      d.notes.forEach(function (n) { html += '<div class="lc-note">' + esc(n) + '</div>'; });
+      if (i < byTurn[t].length - 1) html += '<div style="height:12px"></div>';
+    });
+    panel.innerHTML = html;
+  }
+  var tries = 0, swapped = false;
+  (function hook() {
+    var b = window.Replays && window.Replays.battle;
+    if (!b) {
+      if (++tries > 40) document.getElementById('lc-offline').style.display = 'block';
+      return setTimeout(hook, 250);
+    }
+    if (G.side === 'p2' && !swapped) {  // show the battle from the bot's side
+      swapped = true;
+      try { window.Replays.switchViewpoint(); } catch (e) { try { b.switchViewpoint(); } catch (e2) {} }
+    }
+    var m = /turn=(\d+)/.exec(location.hash);  // links like page.html#turn=12 open at that turn
+    if (m) { try { b.seekTurn(+m[1]); } catch (e) {} }
+    setInterval(function () { show(b.turn); }, 200);  // 'turn' events are suppressed while seeking
+    show(b.turn);
+  })();
+})();
+</script>
+<script>
+  var daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24);
+  document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"><\/script>');
+</script>
+</body></html>
