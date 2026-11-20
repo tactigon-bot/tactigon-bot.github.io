@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tactigon vs NoobishTrainerJoe</title>
+<style>
+/* Everything here is lc-* and scoped to #lc-app: replay-embed.js injects Showdown's battle.css
+   globally, which already styles .turn, .win, .battle and friends. */
+:root{--bg:#f5f6f8;--card:#fff;--line:#dfe3ea;--ink:#1f2430;--ink2:#5a6070;--muted:#8a90a0;--head:#2b3a55;
+  --win:#2f7d55;--lose:#b5473a;--series:#3a6ea5;--grid:#e8ebf0;--mid:#c3c8d2;--hl:#eef3fa}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#14171d;--card:#1d2129;--line:#2e3440;--ink:#e6e9ef;
+  --ink2:#b4bac6;--muted:#8a90a0;--head:#1b2333;--win:#5fbf8a;--lose:#e07a6c;--series:#7fb0e6;--grid:#2a2f3a;--mid:#4a5160;--hl:#24303f}}
+:root[data-theme="dark"]{--bg:#14171d;--card:#1d2129;--line:#2e3440;--ink:#e6e9ef;--ink2:#b4bac6;--muted:#8a90a0;--head:#1b2333;
+  --win:#5fbf8a;--lose:#e07a6c;--series:#7fb0e6;--grid:#2a2f3a;--mid:#4a5160;--hl:#24303f}
+body{margin:0;font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}
+#lc-head{padding:12px 20px;background:var(--head);color:#fff}
+#lc-head h1{margin:0;font-size:16px;font-weight:600}
+#lc-head p{margin:2px 0 0;opacity:.75;font-size:13px}
+#lc-head a{color:#cfe0ff}
+#lc-app .lc-split{display:flex;flex-wrap:wrap;align-items:flex-start;gap:20px;padding:18px}
+#lc-app .lc-left{flex:0 0 640px;max-width:100%;overflow:hidden}
+#lc-app .lc-panel{flex:1 1 380px;min-width:300px;max-width:480px;position:sticky;top:18px}
+#lc-app .lc-card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:14px}
+#lc-app .lc-card h3{margin:0 0 8px;font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:600}
+#lc-app .lc-big{font-size:28px;font-weight:650;font-variant-numeric:tabular-nums;line-height:1.1}
+#lc-app .lc-big small{display:block;font-size:10px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+#lc-app .lc-row{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+#lc-app .lc-delta{font-size:13px;font-variant-numeric:tabular-nums;color:var(--ink2)}
+#lc-app table{width:100%;border-collapse:collapse;margin-top:8px}
+#lc-app th{text-align:left;font-size:10px;text-transform:uppercase;color:var(--muted);font-weight:500;padding:2px 0;letter-spacing:.04em}
+#lc-app td{padding:4px 0;border-top:1px solid var(--line);font-size:13px;color:var(--ink2);font-variant-numeric:tabular-nums}
+#lc-app td.n,#lc-app th.n{text-align:right;width:64px}
+#lc-app tr.lc-pick td{color:var(--ink);font-weight:600}
+#lc-app .lc-bar{display:inline-block;height:6px;border-radius:3px;background:var(--series);vertical-align:middle;margin-left:6px;opacity:.75}
+#lc-app .lc-note{margin-top:8px;font-size:12px;color:var(--ink2);background:var(--hl);border-radius:5px;padding:5px 8px}
+#lc-app .lc-idle{color:var(--muted);font-size:13px}
+#lc-app svg{display:block;width:100%;height:auto;overflow:visible}
+#lc-app svg text{fill:var(--muted);font-size:10px;font-family:inherit}
+#lc-tip{position:fixed;pointer-events:none;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:6px;
+  padding:5px 8px;font-size:12px;box-shadow:0 2px 8px rgba(0,0,0,.15);display:none;z-index:10;font-variant-numeric:tabular-nums}
+#lc-offline{display:none;margin:12px 18px 0;padding:10px 14px;background:var(--card);border:1px solid var(--lose);border-radius:6px;color:var(--lose);font-size:13px}
+#lc-head p{overflow-wrap:anywhere}
+@media (max-width:700px){#lc-app .lc-split{padding:16px;gap:14px}#lc-app .lc-left{flex:1 1 100%;overflow-x:auto}
+  #lc-app .lc-panel{position:static;flex:1 1 100%;min-width:0;max-width:none}#lc-head{padding:12px 16px}}
+</style></head><body>
+<div id="lc-head"><h1>Tactigon vs NoobishTrainerJoe</h1><p>battle-gen5lc-2716790755 · won · 20 turns · Tactigon v11 · <a href="index.html">all games</a></p></div>
+<div id="lc-offline">The Showdown replay player could not be loaded (it comes from play.pokemonshowdown.com), so the panel can't follow the turn. The chart still works.</div>
+<div id="lc-app"><div class="lc-split">
+  <div class="lc-left"><div class="wrapper replay-wrapper" style="width:640px;max-width:100%">
+    <input type="hidden" name="replayid" value="battle-gen5lc-2716790755" />
+    <div class="battle"></div><div class="battle-log"></div>
+    <div class="replay-controls"></div><div class="replay-controls-2"></div>
+    <script type="text/plain" class="battle-log-data">>battle-gen5lc-2716790755
+|init|battle
+|title|NoobishTrainerJoe vs. Tactigon
+|t:|1795149767
+|gametype|singles
+|player|p1|NoobishTrainerJoe|265|
+|player|p2|Tactigon|2|
+|gen|5
+|tier|[Gen 5] LC
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Endless Battle Clause: Forcing endless battles is banned
+|rule|Species Clause: Limit one of each Pokemon
+|rule|OHKO Clause: OHKO moves are banned
+|rule|Evasion Items Clause: Evasion items are banned
+|rule|Evasion Moves Clause: Evasion moves are banned
+|rule|Pomeg Glitch Clause: Gen 3 Pokemon at level 5+ can have any of their level-up moves.
+|rule|Sleep Moves Clause: Sleep-inducing moves are banned
+|clearpoke
+|poke|p1|Mienfoo, L5, M|item
+|poke|p1|Natu, L5, M|item
+|poke|p1|Diglett, L5, M|item
+|poke|p1|Gastly, L5, F|item
+|poke|p1|Clamperl, L5, F|item
+|poke|p1|Porygon, L5|item
+|poke|p2|Mienfoo, L5, F|item
+|poke|p2|Drifloon, L5, F|item
+|poke|p2|Snover, L5, F|item
+|poke|p2|Drilbur, L5, F|item
+|poke|p2|Magnemite, L5|item
+|poke|p2|Omanyte, L5, M|item
+|teampreview
+|inactive|Battle timer is ON: inactive players will automatically lose when time's up. (requested by NoobishTrainerJoe)
+|inactive|Time left: 300 sec this turn | 300 sec total | 60 sec grace
+|
+|t:|1795149787
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Porygon|Porygon, L5|100/100
+|switch|p2a: Snover|Snover, L5, F|23/23
+|-weather|Hail|[from] ability: Snow Warning|[of] p2a: Snover
+|-ability|p1a: Porygon|Snow Warning|Trace|[from] ability: Trace|[of] p2a: Snover
+|turn|1
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795149792
+|switch|p2a: Drilbur|Drilbur, L5, F|23/23
+|-ability|p2a: Drilbur|Mold Breaker
+|move|p1a: Porygon|Hidden Power|p2a: Drilbur
+|-damage|p2a: Drilbur|18/23
+|
+|-weather|Hail|[upkeep]
+|-damage|p2a: Drilbur|17/23|[from] Hail
+|-damage|p1a: Porygon|97/100|[from] Hail
+|upkeep
+|turn|2
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795149803
+|switch|p1a: Diglett|Diglett, L5, M|100/100
+|move|p2a: Drilbur|Stealth Rock|p1a: Diglett
+|-sidestart|p1: NoobishTrainerJoe|move: Stealth Rock
+|
+|-weather|Hail|[upkeep]
+|-damage|p1a: Diglett|95/100|[from] Hail
+|-damage|p2a: Drilbur|16/23|[from] Hail
+|upkeep
+|turn|3
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795149806
+|move|p1a: Diglett|Earthquake|p2a: Drilbur
+|-damage|p2a: Drilbur|0 fnt
+|faint|p2a: Drilbur
+|-damage|p1a: Diglett|89/100|[from] item: Life Orb
+|
+|-weather|Hail|[upkeep]
+|-damage|p1a: Diglett|84/100|[from] Hail
+|upkeep
+|inactive|Time left: 300 sec this turn | 300 sec total | 5 sec grace
+|
+|t:|1795149807
+|switch|p2a: Snover|Snover, L5, F|23/23
+|turn|4
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795149827
+|switch|p1a: Mienfoo|Mienfoo, L5, M|100/100
+|-damage|p1a: Mienfoo|96/100|[from] Stealth Rock
+|move|p2a: Snover|Blizzard|p1a: Mienfoo
+|-damage|p1a: Mienfoo|50/100
+|
+|-weather|Hail|[upkeep]
+|-damage|p1a: Mienfoo|46/100|[from] Hail
+|upkeep
+|turn|5
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795149838
+|switch|p1a: Porygon|Porygon, L5|97/100
+|-damage|p1a: Porygon|85/100|[from] Stealth Rock
+|-ability|p1a: Porygon|Snow Warning|Trace|[from] ability: Trace|[of] p2a: Snover
+|move|p2a: Snover|Protect||[still]
+|-fail|p2a: Snover
+|
+|-weather|Hail|[upkeep]
+|-damage|p1a: Porygon|81/100|[from] Hail
+|upkeep
+|turn|6
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795149846
+|switch|p2a: Mienfoo|Mienfoo, L5, F|23/23
+|move|p1a: Porygon|Thunder Wave|p2a: Mienfoo
+|-status|p2a: Mienfoo|par
+|
+|-weather|Hail|[upkeep]
+|-damage|p1a: Porygon|77/100|[from] Hail
+|-damage|p2a: Mienfoo|22/23 par|[from] Hail
+|upkeep
+|turn|7
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795149865
+|switch|p1a: Natu|Natu, L5, M|100/100
+|-damage|p1a: Natu|79/100|[from] Stealth Rock
+|cant|p2a: Mienfoo|par
+|
+|-weather|Hail|[upkeep]
+|-damage|p1a: Natu|74/100|[from] Hail
+|-damage|p2a: Mienfoo|21/23 par|[from] Hail
+|upkeep
+|turn|8
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795149875
+|move|p1a: Natu|U-turn|p2a: Mienfoo
+|-resisted|p2a: Mienfoo
+|-damage|p2a: Mienfoo|20/23 par
+|
+|t:|1795149884
+|switch|p1a: Mienfoo|Mienfoo, L5, M|78/100|[from] U-turn
+|-damage|p1a: Mienfoo|73/100|[from] Stealth Rock
+|cant|p2a: Mienfoo|par
+|
+|-weather|Hail|[upkeep]
+|-damage|p1a: Mienfoo|69/100|[from] Hail
+|-damage|p2a: Mienfoo|19/23 par|[from] Hail
+|upkeep
+|turn|9
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795149889
+|move|p1a: Mienfoo|Fake Out|p2a: Mienfoo
+|-damage|p2a: Mienfoo|16/23 par
+|cant|p2a: Mienfoo|flinch
+|
+|-weather|Hail|[upkeep]
+|-damage|p1a: Mienfoo|64/100|[from] Hail
+|-damage|p2a: Mienfoo|15/23 par|[from] Hail
+|upkeep
+|turn|10
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795149907
+|move|p1a: Mienfoo|Knock Off|p2a: Mienfoo
+|-resisted|p2a: Mienfoo
+|-damage|p2a: Mienfoo|14/23 par
+|-enditem|p2a: Mienfoo|Eviolite|[from] move: Knock Off|[of] p1a: Mienfoo
+|cant|p2a: Mienfoo|par
+|
+|-weather|Hail|[upkeep]
+|-damage|p1a: Mienfoo|60/100|[from] Hail
+|-damage|p2a: Mienfoo|13/23 par|[from] Hail
+|upkeep
+|turn|11
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795149912
+|move|p1a: Mienfoo|High Jump Kick|p2a: Mienfoo
+|-damage|p2a: Mienfoo|0 fnt
+|faint|p2a: Mienfoo
+|
+|-weather|Hail|[upkeep]
+|-damage|p1a: Mienfoo|55/100|[from] Hail
+|upkeep
+|inactive|Time left: 300 sec this turn | 300 sec total | 5 sec grace
+|
+|t:|1795149912
+|switch|p2a: Omanyte|Omanyte, L5, M|20/20
+|turn|12
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795149924
+|move|p2a: Omanyte|Hydro Pump|p1a: Mienfoo
+|-damage|p1a: Mienfoo|0 fnt
+|faint|p1a: Mienfoo
+|
+|-weather|Hail|[upkeep]
+|-damage|p2a: Omanyte|19/20|[from] Hail
+|upkeep
+|
+|t:|1795149929
+|switch|p1a: Diglett|Diglett, L5, M|84/100
+|-damage|p1a: Diglett|78/100|[from] Stealth Rock
+|turn|13
+|inactive|Time left: 300 sec this turn | 300 sec total
+|error|[Unavailable choice] Can't switch: The active Pokémon is trapped
+|
+|t:|1795149934
+|move|p1a: Diglett|Earthquake|p2a: Omanyte
+|-supereffective|p2a: Omanyte
+|-damage|p2a: Omanyte|1/20
+|-damage|p1a: Diglett|73/100|[from] item: Life Orb
+|move|p2a: Omanyte|Hidden Power|p1a: Diglett
+|-supereffective|p1a: Diglett
+|-damage|p1a: Diglett|0 fnt
+|faint|p1a: Diglett
+|
+|-weather|Hail|[upkeep]
+|-damage|p2a: Omanyte|0 fnt|[from] Hail
+|faint|p2a: Omanyte
+|upkeep
+|inactive|Time left: 300 sec this turn | 300 sec total | 5 sec grace
+|
+|t:|1795149948
+|switch|p1a: Porygon|Porygon, L5|77/100
+|switch|p2a: Magnemite|Magnemite, L5|19/19
+|-damage|p1a: Porygon|66/100|[from] Stealth Rock
+|-ability|p1a: Porygon|Magnet Pull|Trace|[from] ability: Trace|[of] p2a: Magnemite
+|turn|14
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795149956
+|move|p2a: Magnemite|Volt Switch|p1a: Porygon
+|-damage|p1a: Porygon|39/100
+|inactive|Time left: 300 sec this turn | 300 sec total | 5 sec grace
+|
+|t:|1795149956
+|switch|p2a: Drifloon|Drifloon, L5, F|26/26|[from] Volt Switch
+|move|p1a: Porygon|Thunder Wave|p2a: Drifloon
+|-status|p2a: Drifloon|par
+|
+|-weather|Hail|[upkeep]
+|-damage|p1a: Porygon|35/100|[from] Hail
+|-damage|p2a: Drifloon|25/26 par|[from] Hail
+|upkeep
+|turn|15
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795149961
+|move|p1a: Porygon|Thunderbolt|p2a: Drifloon
+|-supereffective|p2a: Drifloon
+|-damage|p2a: Drifloon|0 fnt
+|faint|p2a: Drifloon
+|
+|-weather|Hail|[upkeep]
+|-damage|p1a: Porygon|31/100|[from] Hail
+|upkeep
+|inactive|Time left: 300 sec this turn | 300 sec total | 5 sec grace
+|
+|t:|1795149961
+|switch|p2a: Magnemite|Magnemite, L5|19/19
+|turn|16
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795149973
+|move|p2a: Magnemite|Thunderbolt|p1a: Porygon
+|-damage|p1a: Porygon|0 fnt
+|faint|p1a: Porygon
+|
+|-weather|Hail|[upkeep]
+|-damage|p2a: Magnemite|18/19|[from] Hail
+|upkeep
+|
+|t:|1795149978
+|switch|p1a: Gastly|Gastly, L5, F|100/100
+|-damage|p1a: Gastly|91/100|[from] Stealth Rock
+|turn|17
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795149995
+|move|p2a: Magnemite|Thunderbolt|p1a: Gastly
+|-damage|p1a: Gastly|20/100
+|move|p1a: Gastly|Hidden Power|p2a: Magnemite
+|-supereffective|p2a: Magnemite
+|-damage|p2a: Magnemite|0 fnt
+|faint|p2a: Magnemite
+|
+|-weather|Hail|[upkeep]
+|-damage|p1a: Gastly|15/100|[from] Hail
+|upkeep
+|inactive|Time left: 300 sec this turn | 300 sec total | 5 sec grace
+|
+|t:|1795149995
+|switch|p2a: Snover|Snover, L5, F|23/23
+|turn|18
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795150015
+|move|p2a: Snover|Ice Shard|p1a: Gastly
+|-damage|p1a: Gastly|0 fnt
+|faint|p1a: Gastly
+|
+|-weather|Hail|[upkeep]
+|upkeep
+|
+|t:|1795150021
+|switch|p1a: Clamperl|Clamperl, L5, F|100/100
+|-damage|p1a: Clamperl|90/100|[from] Stealth Rock
+|turn|19
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795150037
+|move|p2a: Snover|Giga Drain|p1a: Clamperl
+|-supereffective|p1a: Clamperl
+|-damage|p1a: Clamperl|0 fnt
+|faint|p1a: Clamperl
+|
+|-weather|Hail|[upkeep]
+|upkeep
+|
+|t:|1795150039
+|switch|p1a: Natu|Natu, L5, M|74/100
+|-damage|p1a: Natu|53/100|[from] Stealth Rock
+|turn|20
+|inactive|Time left: 300 sec this turn | 300 sec total
+|
+|t:|1795150043
+|move|p1a: Natu|Psychic|p2a: Snover
+|-damage|p2a: Snover|14/23
+|move|p2a: Snover|Blizzard|p1a: Natu
+|-supereffective|p1a: Natu
+|-crit|p1a: Natu
+|-damage|p1a: Natu|0 fnt
+|faint|p1a: Natu
+|
+|win|Tactigon</script>
+  </div></div>
+  <aside class="lc-panel">
+    <div class="lc-card"><h3>Win chance over the game</h3><div id="lc-chart"></div></div>
+    <div class="lc-card" id="lc-turn"><div class="lc-idle">Press play: the bot's view of each turn appears here as the replay advances. Click the chart to jump to a turn.</div></div>
+  </aside>
+</div></div>
+<div id="lc-tip"></div>
+<script>
+var G = {"room": "battle-gen5lc-2716790755", "me": "Tactigon", "side": "p2", "foe": "NoobishTrainerJoe", "result": "won", "turns": 20, "decisions": [{"turn": 1, "choice": "switch 2", "options": [["switch Drilbur", 49], ["Protect", 26], ["Blizzard", 18], ["switch Mienfoo", 4]], "win": 62, "notes": []}, {"turn": 2, "choice": "move 2", "options": [["Stealth Rock", 100], ["Earthquake", 0], ["Rock Tomb", 0], ["switch Mienfoo", 0]], "win": 71, "notes": []}, {"turn": 3, "choice": "move 1", "options": [["Earthquake", 99], ["switch Snover", 1], ["switch Drifloon", 0], ["switch Mienfoo", 0]], "win": 65, "notes": []}, {"turn": 4, "choice": "switch 2", "options": [["switch Snover", 100], ["switch Omanyte", 0], ["switch Mienfoo", 0], ["switch Magnemite", 0]], "win": 57, "notes": []}, {"turn": 4, "choice": "move 2", "options": [["Blizzard", 99], ["Giga Drain", 1], ["Ice Shard", 0], ["switch Omanyte", 0]], "win": 59, "notes": []}, {"turn": 5, "choice": "move 3", "options": [["Blizzard", 67], ["Protect", 30], ["Giga Drain", 2], ["switch Mienfoo", 0]], "win": 64, "notes": []}, {"turn": 6, "choice": "switch 6", "options": [["switch Mienfoo", 99], ["Protect", 1], ["Blizzard", 0], ["switch Omanyte", 0]], "win": 55, "notes": []}, {"turn": 7, "choice": "move 1", "options": [["U-turn", 62], ["Knock Off", 29], ["High Jump Kick", 7], ["Fake Out", 1]], "win": 52, "notes": []}, {"turn": 8, "choice": "move 2", "options": [["U-turn", 99], ["switch Magnemite", 0], ["switch Snover", 0], ["Knock Off", 0]], "win": 49, "notes": []}, {"turn": 9, "choice": "move 2", "options": [["U-turn", 56], ["Knock Off", 35], ["switch Drifloon", 8], ["High Jump Kick", 1]], "win": 54, "notes": []}, {"turn": 10, "choice": "move 2", "options": [["U-turn", 94], ["switch Drifloon", 5], ["Knock Off", 1], ["switch Omanyte", 0]], "win": 49, "notes": []}, {"turn": 11, "choice": "move 2", "options": [["U-turn", 99], ["switch Drifloon", 1], ["Knock Off", 0], ["High Jump Kick", 0]], "win": 45, "notes": []}, {"turn": 12, "choice": "switch 5", "options": [["switch Omanyte", 100], ["switch Drifloon", 0], ["switch Snover", 0], ["switch Magnemite", 0]], "win": 41, "notes": []}, {"turn": 12, "choice": "move 1", "options": [["Hydro Pump", 62], ["switch Drifloon", 37], ["Shell Smash", 1], ["Earth Power", 0]], "win": 42, "notes": []}, {"turn": 13, "choice": "switch 6", "options": [["switch Snover", 98], ["switch Drifloon", 2], ["Hidden Power Grass 70", 0], ["Hydro Pump", 0]], "win": 49, "notes": []}, {"turn": 13, "choice": "move 3", "options": [["Hidden Power Grass 70", 97], ["Hydro Pump", 2], ["Shell Smash", 0], ["Earth Power", 0]], "win": 49, "notes": []}, {"turn": 14, "choice": "switch 4", "options": [["switch Magnemite", 100], ["switch Snover", 0], ["switch Drifloon", 0]], "win": 55, "notes": []}, {"turn": 14, "choice": "move 2", "options": [["Volt Switch", 100], ["Thunderbolt", 0], ["Flash Cannon", 0], ["Hidden Power Fire 70", 0]], "win": 37, "notes": []}, {"turn": 14, "choice": "switch 3", "options": [["switch Drifloon", 82], ["switch Snover", 18]], "win": 52, "notes": []}, {"turn": 15, "choice": "move 2", "options": [["Knock Off", 100], ["Acrobatics", 0], ["Substitute", 0], ["switch Snover", 0]], "win": 41, "notes": []}, {"turn": 16, "choice": "switch 3", "options": [["switch Magnemite", 83], ["switch Snover", 17]], "win": 55, "notes": []}, {"turn": 16, "choice": "move 1", "options": [["Thunderbolt", 100], ["Volt Switch", 0], ["Flash Cannon", 0], ["Hidden Power Fire 70", 0]], "win": 55, "notes": []}, {"turn": 17, "choice": "move 1", "options": [["Thunderbolt", 100], ["switch Snover", 0]], "win": 71, "notes": []}, {"turn": 18, "choice": "switch 6", "options": [["switch Snover", 100]], "win": 67, "notes": []}, {"turn": 18, "choice": "move 4", "options": [["Ice Shard", 100], ["Protect", 0], ["Giga Drain", 0], ["Blizzard", 0]], "win": 62, "notes": []}, {"turn": 19, "choice": "move 1", "options": [["Giga Drain", 100], ["Protect", 0], ["Blizzard", 0], ["Ice Shard", 0]], "win": 83, "notes": []}, {"turn": 20, "choice": "move 2", "options": [["Blizzard", 82], ["Ice Shard", 18], ["Protect", 1], ["Giga Drain", 0]], "win": 90, "notes": []}]};
+(function () {
+  var NS = 'http://www.w3.org/2000/svg';
+  var byTurn = {};
+  G.decisions.forEach(function (d) { (byTurn[d.turn] = byTurn[d.turn] || []).push(d); });
+  // one point per turn: the decision at the start of the turn (forced switches come later in it)
+  var pts = Object.keys(byTurn).map(Number).sort(function (a, b) { return a - b; })
+    .map(function (t) { return {t: t, w: byTurn[t][0].win}; }).filter(function (p) { return p.w !== null; });
+  var final = G.result === 'won' ? 100 : G.result === 'lost' ? 0 : 50;
+  var W = 440, H = 170, L = 30, R = 8, T = 8, B = 22;
+  var maxT = Math.max(G.turns, pts.length ? pts[pts.length - 1].t : 1, 1);
+  var x = function (t) { return L + (W - L - R) * (t - 1) / Math.max(maxT - 1, 1); };
+  var y = function (w) { return T + (H - T - B) * (1 - w / 100); };
+  function el(name, attrs, parent) {
+    var e = document.createElementNS(NS, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  var svg = el('svg', {viewBox: '0 0 ' + W + ' ' + H, role: 'img',
+    'aria-label': 'Bot win chance by turn, ending in a ' + G.result});
+  [0, 25, 50, 75, 100].forEach(function (v) {
+    el('line', {x1: L, x2: W - R, y1: y(v), y2: y(v), stroke: v === 50 ? 'var(--mid)' : 'var(--grid)',
+      'stroke-width': 1, 'stroke-dasharray': v === 50 ? '3 3' : ''}, svg);
+    el('text', {x: L - 6, y: y(v) + 3, 'text-anchor': 'end'}, svg).textContent = v + '%';
+  });
+  var step = Math.max(1, Math.ceil(maxT / 8));
+  for (var t = 1; t <= maxT; t += step) el('text', {x: x(t), y: H - 6, 'text-anchor': 'middle'}, svg).textContent = t;
+  if (pts.length) {
+    var d = pts.map(function (p, i) { return (i ? 'L' : 'M') + x(p.t).toFixed(1) + ' ' + y(p.w).toFixed(1); }).join(' ');
+    el('path', {d: d, fill: 'none', stroke: 'var(--series)', 'stroke-width': 2, 'stroke-linejoin': 'round', 'stroke-linecap': 'round'}, svg);
+    var last = pts[pts.length - 1];
+    el('line', {x1: x(last.t), y1: y(last.w), x2: x(maxT), y2: y(final), stroke: 'var(--series)', 'stroke-width': 2,
+      'stroke-dasharray': '2 3', opacity: .6}, svg);
+    el('circle', {cx: x(maxT), cy: y(final), r: 4, fill: G.result === 'won' ? 'var(--win)' : G.result === 'lost' ? 'var(--lose)' : 'var(--mid)',
+      stroke: 'var(--card)', 'stroke-width': 2}, svg);
+  }
+  var cursor = el('line', {y1: T, y2: H - B, stroke: 'var(--ink2)', 'stroke-width': 1, opacity: 0}, svg);
+  var dot = el('circle', {r: 4.5, fill: 'var(--series)', stroke: 'var(--card)', 'stroke-width': 2, opacity: 0}, svg);
+  var hit = el('rect', {x: L, y: T, width: W - L - R, height: H - T - B, fill: 'transparent', style: 'cursor:pointer'}, svg);
+  document.getElementById('lc-chart').appendChild(svg);
+  var tip = document.getElementById('lc-tip');
+  function nearest(ev) {
+    var r = svg.getBoundingClientRect(), px = (ev.clientX - r.left) * W / r.width, best = null;
+    pts.forEach(function (p) { if (!best || Math.abs(x(p.t) - px) < Math.abs(x(best.t) - px)) best = p; });
+    return best;
+  }
+  hit.addEventListener('mousemove', function (ev) {
+    var p = nearest(ev); if (!p) return;
+    tip.style.display = 'block'; tip.style.left = (ev.clientX + 12) + 'px'; tip.style.top = (ev.clientY - 28) + 'px';
+    tip.textContent = 'Turn ' + p.t + ': ' + p.w + '% win chance';
+  });
+  hit.addEventListener('mouseleave', function () { tip.style.display = 'none'; });
+  hit.addEventListener('click', function (ev) {
+    var p = nearest(ev); if (!p) return;
+    var b = window.Replays && window.Replays.battle;
+    if (b) { try { b.seekTurn(p.t); } catch (e) {} }
+    show(p.t, true);
+  });
+
+  var panel = document.getElementById('lc-turn'), current = null;
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]; }); }
+  function show(turn, force) {
+    var t = null;
+    Object.keys(byTurn).map(Number).forEach(function (k) { if (k <= turn) t = k; });
+    if (t === current && !force) return;
+    current = t;
+    if (t === null) { cursor.setAttribute('opacity', 0); dot.setAttribute('opacity', 0); return; }
+    var p = pts.filter(function (q) { return q.t === t; })[0];
+    cursor.setAttribute('x1', x(t)); cursor.setAttribute('x2', x(t)); cursor.setAttribute('opacity', .35);
+    if (p) { dot.setAttribute('cx', x(t)); dot.setAttribute('cy', y(p.w)); dot.setAttribute('opacity', 1); }
+    var prev = pts.filter(function (q) { return q.t < t; }).pop();
+    var html = '';
+    byTurn[t].forEach(function (d, i) {
+      var delta = (i === 0 && prev && d.win !== null) ? d.win - prev.w : null;
+      html += '<h3>Turn ' + t + (i ? ' · forced switch' : '') + '</h3><div class="lc-row"><div class="lc-big">' +
+        (d.win === null ? '–' : d.win + '%') + '<small>win chance</small></div>' +
+        (delta !== null ? '<div class="lc-delta">' + (delta >= 0 ? '+' : '') + delta + ' pts vs turn ' + prev.t + '</div>' : '') + '</div>';
+      if (d.options.length) {
+        html += '<table><thead><tr><th>option</th><th class="n">preference</th></tr></thead><tbody>';
+        d.options.forEach(function (o, j) {
+          html += '<tr' + (j === 0 ? ' class="lc-pick"' : '') + '><td>' + esc(o[0]) + '</td><td class="n">' + o[1] +
+            '%<span class="lc-bar" style="width:' + Math.round(o[1] * 0.3) + 'px"></span></td></tr>';
+        });
+        html += '</tbody></table>';
+      }
+      d.notes.forEach(function (n) { html += '<div class="lc-note">' + esc(n) + '</div>'; });
+      if (i < byTurn[t].length - 1) html += '<div style="height:12px"></div>';
+    });
+    panel.innerHTML = html;
+  }
+  var tries = 0, swapped = false;
+  (function hook() {
+    var b = window.Replays && window.Replays.battle;
+    if (!b) {
+      if (++tries > 40) document.getElementById('lc-offline').style.display = 'block';
+      return setTimeout(hook, 250);
+    }
+    if (G.side === 'p2' && !swapped) {  // show the battle from the bot's side
+      swapped = true;
+      try { window.Replays.switchViewpoint(); } catch (e) { try { b.switchViewpoint(); } catch (e2) {} }
+    }
+    var m = /turn=(\d+)/.exec(location.hash);  // links like page.html#turn=12 open at that turn
+    if (m) { try { b.seekTurn(+m[1]); } catch (e) {} }
+    setInterval(function () { show(b.turn); }, 200);  // 'turn' events are suppressed while seeking
+    show(b.turn);
+  })();
+})();
+</script>
+<script>
+  var daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24);
+  document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"><\/script>');
+</script>
+</body></html>
