@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tactigon vs asdweqwasd</title>
+<style>
+/* Everything here is lc-* and scoped to #lc-app: replay-embed.js injects Showdown's battle.css
+   globally, which already styles .turn, .win, .battle and friends. */
+:root{--bg:#f5f6f8;--card:#fff;--line:#dfe3ea;--ink:#1f2430;--ink2:#5a6070;--muted:#8a90a0;--head:#2b3a55;
+  --win:#2f7d55;--lose:#b5473a;--series:#3a6ea5;--grid:#e8ebf0;--mid:#c3c8d2;--hl:#eef3fa}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#14171d;--card:#1d2129;--line:#2e3440;--ink:#e6e9ef;
+  --ink2:#b4bac6;--muted:#8a90a0;--head:#1b2333;--win:#5fbf8a;--lose:#e07a6c;--series:#7fb0e6;--grid:#2a2f3a;--mid:#4a5160;--hl:#24303f}}
+:root[data-theme="dark"]{--bg:#14171d;--card:#1d2129;--line:#2e3440;--ink:#e6e9ef;--ink2:#b4bac6;--muted:#8a90a0;--head:#1b2333;
+  --win:#5fbf8a;--lose:#e07a6c;--series:#7fb0e6;--grid:#2a2f3a;--mid:#4a5160;--hl:#24303f}
+body{margin:0;font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}
+#lc-head{padding:12px 20px;background:var(--head);color:#fff}
+#lc-head h1{margin:0;font-size:16px;font-weight:600}
+#lc-head p{margin:2px 0 0;opacity:.75;font-size:13px}
+#lc-head a{color:#cfe0ff}
+#lc-app .lc-split{display:flex;flex-wrap:wrap;align-items:flex-start;gap:20px;padding:18px}
+#lc-app .lc-left{flex:0 0 640px;max-width:100%;overflow:hidden}
+#lc-app .lc-panel{flex:1 1 380px;min-width:300px;max-width:480px;position:sticky;top:18px}
+#lc-app .lc-card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:14px}
+#lc-app .lc-card h3{margin:0 0 8px;font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:600}
+#lc-app .lc-big{font-size:28px;font-weight:650;font-variant-numeric:tabular-nums;line-height:1.1}
+#lc-app .lc-big small{display:block;font-size:10px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+#lc-app .lc-row{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+#lc-app .lc-delta{font-size:13px;font-variant-numeric:tabular-nums;color:var(--ink2)}
+#lc-app table{width:100%;border-collapse:collapse;margin-top:8px}
+#lc-app th{text-align:left;font-size:10px;text-transform:uppercase;color:var(--muted);font-weight:500;padding:2px 0;letter-spacing:.04em}
+#lc-app td{padding:4px 0;border-top:1px solid var(--line);font-size:13px;color:var(--ink2);font-variant-numeric:tabular-nums}
+#lc-app td.n,#lc-app th.n{text-align:right;width:64px}
+#lc-app tr.lc-pick td{color:var(--ink);font-weight:600}
+#lc-app .lc-bar{display:inline-block;height:6px;border-radius:3px;background:var(--series);vertical-align:middle;margin-left:6px;opacity:.75}
+#lc-app .lc-note{margin-top:8px;font-size:12px;color:var(--ink2);background:var(--hl);border-radius:5px;padding:5px 8px}
+#lc-app .lc-idle{color:var(--muted);font-size:13px}
+#lc-app svg{display:block;width:100%;height:auto;overflow:visible}
+#lc-app svg text{fill:var(--muted);font-size:10px;font-family:inherit}
+#lc-tip{position:fixed;pointer-events:none;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:6px;
+  padding:5px 8px;font-size:12px;box-shadow:0 2px 8px rgba(0,0,0,.15);display:none;z-index:10;font-variant-numeric:tabular-nums}
+#lc-offline{display:none;margin:12px 18px 0;padding:10px 14px;background:var(--card);border:1px solid var(--lose);border-radius:6px;color:var(--lose);font-size:13px}
+#lc-head p{overflow-wrap:anywhere}
+@media (max-width:700px){#lc-app .lc-split{padding:16px;gap:14px}#lc-app .lc-left{flex:1 1 100%;overflow-x:auto}
+  #lc-app .lc-panel{position:static;flex:1 1 100%;min-width:0;max-width:none}#lc-head{padding:12px 16px}}
+</style></head><body>
+<div id="lc-head"><h1>Tactigon vs asdweqwasd</h1><p>battle-gen5lc-2717009175 · lost · 37 turns · Tactigon v11 · <a href="index.html">all games</a></p></div>
+<div id="lc-offline">The Showdown replay player could not be loaded (it comes from play.pokemonshowdown.com), so the panel can't follow the turn. The chart still works.</div>
+<div id="lc-app"><div class="lc-split">
+  <div class="lc-left"><div class="wrapper replay-wrapper" style="width:640px;max-width:100%">
+    <input type="hidden" name="replayid" value="battle-gen5lc-2717009175" />
+    <div class="battle"></div><div class="battle-log"></div>
+    <div class="replay-controls"></div><div class="replay-controls-2"></div>
+    <script type="text/plain" class="battle-log-data">>battle-gen5lc-2717009175
+|init|battle
+|title|asdweqwasd vs. Tactigon
+|t:|1795192631
+|gametype|singles
+|player|p1|asdweqwasd|picnicker|
+|player|p2|Tactigon|2|
+|gen|5
+|tier|[Gen 5] LC
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Endless Battle Clause: Forcing endless battles is banned
+|rule|Species Clause: Limit one of each Pokemon
+|rule|OHKO Clause: OHKO moves are banned
+|rule|Evasion Items Clause: Evasion items are banned
+|rule|Evasion Moves Clause: Evasion moves are banned
+|rule|Pomeg Glitch Clause: Gen 3 Pokemon at level 5+ can have any of their level-up moves.
+|rule|Sleep Moves Clause: Sleep-inducing moves are banned
+|clearpoke
+|poke|p1|Gastly, L5, M|item
+|poke|p1|Diglett, L5, F|item
+|poke|p1|Porygon, L5|item
+|poke|p1|Omanyte, L5, M|item
+|poke|p1|Mienfoo, L5, F|item
+|poke|p1|Vullaby, L5, F|item
+|poke|p2|Archen, L5, F|item
+|poke|p2|Mienfoo, L5, M|item
+|poke|p2|Abra, L5, M|item
+|poke|p2|Magnemite, L5|item
+|poke|p2|Drifloon, L5, M|item
+|poke|p2|Ferroseed, L5, M|item
+|teampreview
+|
+|t:|1795192643
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Gastly|Gastly, L5, M|100/100
+|switch|p2a: Ferroseed|Ferroseed, L5, M|22/22
+|turn|1
+|
+|t:|1795192645
+|move|p1a: Gastly|Taunt|p2a: Ferroseed
+|-start|p2a: Ferroseed|move: Taunt
+|cant|p2a: Ferroseed|move: Taunt|Stealth Rock
+|
+|upkeep
+|turn|2
+|
+|t:|1795192649
+|move|p1a: Gastly|Hidden Power|p2a: Ferroseed
+|-supereffective|p2a: Ferroseed
+|-damage|p2a: Ferroseed|6/22
+|move|p2a: Ferroseed|Bullet Seed|p1a: Gastly
+|-resisted|p1a: Gastly
+|-damage|p1a: Gastly|96/100
+|-resisted|p1a: Gastly
+|-damage|p1a: Gastly|91/100
+|-resisted|p1a: Gastly
+|-damage|p1a: Gastly|86/100
+|-hitcount|p1a: Gastly|3
+|
+|upkeep
+|turn|3
+|
+|t:|1795192654
+|switch|p2a: Abra|Abra, L5, M|19/19
+|move|p1a: Gastly|Hidden Power|p2a: Abra
+|-damage|p2a: Abra|10/19
+|
+|upkeep
+|turn|4
+|
+|t:|1795192661
+|switch|p2a: Ferroseed|Ferroseed, L5, M|6/22
+|switch|p1a: Diglett|Diglett, L5, F|100/100
+|
+|upkeep
+|turn|5
+|error|[Unavailable choice] Can't switch: The active Pokémon is trapped
+|
+|t:|1795192662
+|move|p1a: Diglett|Earthquake|p2a: Ferroseed
+|-damage|p2a: Ferroseed|0 fnt
+|faint|p2a: Ferroseed
+|
+|upkeep
+|
+|t:|1795192663
+|switch|p2a: Archen|Archen, L5, F|22/22
+|turn|6
+|
+|t:|1795192671
+|switch|p1a: Porygon|Porygon, L5|100/100
+|-ability|p1a: Porygon|Defeatist|Trace|[from] ability: Trace|[of] p2a: Archen
+|move|p2a: Archen|Acrobatics|p1a: Porygon
+|-damage|p1a: Porygon|72/100
+|
+|upkeep
+|turn|7
+|
+|t:|1795192674
+|move|p2a: Archen|Substitute|p2a: Archen
+|-start|p2a: Archen|Substitute
+|-damage|p2a: Archen|17/22
+|move|p1a: Porygon|Recover|p1a: Porygon
+|-heal|p1a: Porygon|100/100
+|
+|upkeep
+|turn|8
+|
+|t:|1795192676
+|move|p2a: Archen|Acrobatics|p1a: Porygon
+|-damage|p1a: Porygon|72/100
+|move|p1a: Porygon|Thunderbolt|p2a: Archen
+|-supereffective|p2a: Archen
+|-end|p2a: Archen|Substitute
+|
+|upkeep
+|turn|9
+|
+|t:|1795192680
+|move|p2a: Archen|Substitute|p2a: Archen
+|-start|p2a: Archen|Substitute
+|-damage|p2a: Archen|12/22
+|move|p1a: Porygon|Thunderbolt|p2a: Archen
+|-supereffective|p2a: Archen
+|-end|p2a: Archen|Substitute
+|
+|upkeep
+|turn|10
+|
+|t:|1795192686
+|move|p2a: Archen|Acrobatics|p1a: Porygon
+|-damage|p1a: Porygon|44/100
+|move|p1a: Porygon|Thunderbolt|p2a: Archen
+|-supereffective|p2a: Archen
+|-damage|p2a: Archen|2/22
+|-status|p2a: Archen|par
+|-enditem|p2a: Archen|Oran Berry|[eat]
+|-heal|p2a: Archen|12/22 par|[from] item: Oran Berry
+|
+|upkeep
+|turn|11
+|
+|t:|1795192694
+|switch|p2a: Mienfoo|Mienfoo, L5, M|23/23
+|move|p1a: Porygon|Thunderbolt|p2a: Mienfoo
+|-damage|p2a: Mienfoo|20/23
+|
+|upkeep
+|turn|12
+|
+|t:|1795192696
+|switch|p1a: Gastly|Gastly, L5, M|86/100
+|move|p2a: Mienfoo|U-turn|p1a: Gastly
+|-resisted|p1a: Gastly
+|-damage|p1a: Gastly|81/100
+|
+|t:|1795192697
+|switch|p2a: Magnemite|Magnemite, L5|19/19|[from] U-turn
+|
+|upkeep
+|turn|13
+|
+|t:|1795192706
+|switch|p1a: Porygon|Porygon, L5|44/100
+|-ability|p1a: Porygon|Magnet Pull|Trace|[from] ability: Trace|[of] p2a: Magnemite
+|move|p2a: Magnemite|Flash Cannon|p1a: Porygon
+|-damage|p1a: Porygon|16/100
+|
+|upkeep
+|turn|14
+|
+|t:|1795192709
+|move|p2a: Magnemite|Flash Cannon|p1a: Porygon
+|-damage|p1a: Porygon|0 fnt
+|faint|p1a: Porygon
+|
+|upkeep
+|
+|t:|1795192711
+|switch|p1a: Diglett|Diglett, L5, F|100/100
+|turn|15
+|error|[Unavailable choice] Can't switch: The active Pokémon is trapped
+|
+|t:|1795192712
+|move|p2a: Magnemite|Flash Cannon|p1a: Diglett
+|-damage|p1a: Diglett|45/100
+|move|p1a: Diglett|Earthquake|p2a: Magnemite
+|-supereffective|p2a: Magnemite
+|-damage|p2a: Magnemite|0 fnt
+|faint|p2a: Magnemite
+|
+|upkeep
+|
+|t:|1795192713
+|switch|p2a: Mienfoo|Mienfoo, L5, M|23/23
+|turn|16
+|
+|t:|1795192719
+|switch|p1a: Gastly|Gastly, L5, M|81/100
+|move|p2a: Mienfoo|Knock Off|p1a: Gastly
+|-supereffective|p1a: Gastly
+|-damage|p1a: Gastly|62/100
+|-enditem|p1a: Gastly|Eviolite|[from] move: Knock Off|[of] p2a: Mienfoo
+|
+|upkeep
+|turn|17
+|
+|t:|1795192721
+|move|p1a: Gastly|Will-O-Wisp|p2a: Mienfoo|[miss]
+|-miss|p1a: Gastly|p2a: Mienfoo
+|move|p2a: Mienfoo|U-turn|p1a: Gastly
+|-resisted|p1a: Gastly
+|-damage|p1a: Gastly|53/100
+|
+|t:|1795192722
+|switch|p2a: Abra|Abra, L5, M|10/19|[from] U-turn
+|
+|upkeep
+|turn|18
+|
+|t:|1795192725
+|switch|p2a: Mienfoo|Mienfoo, L5, M|23/23
+|switch|p1a: Vullaby|Vullaby, L5, F|100/100
+|
+|upkeep
+|turn|19
+|
+|t:|1795192728
+|switch|p1a: Gastly|Gastly, L5, M|53/100
+|move|p2a: Mienfoo|Fake Out|p1a: Gastly
+|-immune|p1a: Gastly
+|
+|upkeep
+|turn|20
+|
+|t:|1795192730
+|move|p1a: Gastly|Will-O-Wisp|p2a: Mienfoo
+|-status|p2a: Mienfoo|brn
+|move|p2a: Mienfoo|U-turn|p1a: Gastly
+|-resisted|p1a: Gastly
+|-damage|p1a: Gastly|48/100
+|
+|t:|1795192731
+|switch|p2a: Abra|Abra, L5, M|10/19|[from] U-turn
+|
+|upkeep
+|turn|21
+|
+|t:|1795192735
+|switch|p1a: Vullaby|Vullaby, L5, F|100/100
+|move|p2a: Abra|Shadow Ball|p1a: Vullaby
+|-resisted|p1a: Vullaby
+|-damage|p1a: Vullaby|87/100
+|
+|upkeep
+|turn|22
+|
+|t:|1795192738
+|switch|p2a: Archen|Archen, L5, F|12/22 par
+|move|p1a: Vullaby|U-turn|p2a: Archen
+|-resisted|p2a: Archen
+|-damage|p2a: Archen|8/22 par
+|
+|t:|1795192743
+|switch|p1a: Omanyte|Omanyte, L5, M|100/100|[from] U-turn
+|
+|upkeep
+|turn|23
+|
+|t:|1795192745
+|move|p1a: Omanyte|Scald|p2a: Archen
+|-supereffective|p2a: Archen
+|-damage|p2a: Archen|0 fnt
+|faint|p2a: Archen
+|
+|upkeep
+|
+|t:|1795192745
+|switch|p2a: Abra|Abra, L5, M|10/19
+|turn|24
+|
+|t:|1795192749
+|switch|p1a: Vullaby|Vullaby, L5, F|87/100
+|move|p2a: Abra|Energy Ball|p1a: Vullaby
+|-resisted|p1a: Vullaby
+|-damage|p1a: Vullaby|74/100
+|
+|upkeep
+|turn|25
+|
+|t:|1795192751
+|switch|p2a: Mienfoo|Mienfoo, L5, M|23/23 brn
+|move|p1a: Vullaby|U-turn|p2a: Mienfoo
+|-resisted|p2a: Mienfoo
+|-damage|p2a: Mienfoo|21/23 brn
+|
+|t:|1795192753
+|switch|p1a: Gastly|Gastly, L5, M|48/100|[from] U-turn
+|
+|-damage|p2a: Mienfoo|19/23 brn|[from] brn
+|upkeep
+|turn|26
+|
+|t:|1795192755
+|move|p1a: Gastly|Sludge Bomb|p2a: Mienfoo
+|-damage|p2a: Mienfoo|9/23 brn
+|move|p2a: Mienfoo|U-turn|p1a: Gastly
+|-resisted|p1a: Gastly
+|-damage|p1a: Gastly|43/100
+|
+|t:|1795192755
+|switch|p2a: Abra|Abra, L5, M|10/19|[from] U-turn
+|
+|upkeep
+|turn|27
+|
+|t:|1795192759
+|switch|p1a: Vullaby|Vullaby, L5, F|74/100
+|move|p2a: Abra|Shadow Ball|p1a: Vullaby
+|-resisted|p1a: Vullaby
+|-damage|p1a: Vullaby|61/100
+|
+|upkeep
+|turn|28
+|
+|t:|1795192760
+|switch|p2a: Mienfoo|Mienfoo, L5, M|16/23 brn
+|move|p1a: Vullaby|Roost|p1a: Vullaby
+|-heal|p1a: Vullaby|100/100
+|-singleturn|p1a: Vullaby|move: Roost
+|
+|-damage|p2a: Mienfoo|14/23 brn|[from] brn
+|upkeep
+|turn|29
+|
+|t:|1795192762
+|move|p1a: Vullaby|Brave Bird|p2a: Mienfoo
+|-supereffective|p2a: Mienfoo
+|-damage|p2a: Mienfoo|0 fnt
+|faint|p2a: Mienfoo
+|-damage|p1a: Vullaby|79/100|[from] Recoil
+|
+|upkeep
+|
+|t:|1795192762
+|switch|p2a: Drifloon|Drifloon, L5, M|25/25
+|turn|30
+|
+|t:|1795192768
+|switch|p1a: Gastly|Gastly, L5, M|43/100
+|move|p2a: Drifloon|Will-O-Wisp|p1a: Gastly
+|-status|p1a: Gastly|brn
+|
+|-damage|p1a: Gastly|34/100 brn|[from] brn
+|upkeep
+|turn|31
+|
+|t:|1795192771
+|switch|p2a: Abra|Abra, L5, M|10/19
+|move|p1a: Gastly|Will-O-Wisp|p2a: Abra|[miss]
+|-miss|p1a: Gastly|p2a: Abra
+|
+|-damage|p1a: Gastly|24/100 brn|[from] brn
+|upkeep
+|turn|32
+|
+|t:|1795192773
+|switch|p1a: Vullaby|Vullaby, L5, F|79/100
+|move|p2a: Abra|Shadow Ball|p1a: Vullaby
+|-resisted|p1a: Vullaby
+|-damage|p1a: Vullaby|66/100
+|
+|upkeep
+|turn|33
+|
+|t:|1795192774
+|switch|p2a: Drifloon|Drifloon, L5, M|25/25
+|move|p1a: Vullaby|Roost|p1a: Vullaby
+|-heal|p1a: Vullaby|100/100
+|-singleturn|p1a: Vullaby|move: Roost
+|
+|upkeep
+|turn|34
+|
+|t:|1795192776
+|switch|p1a: Gastly|Gastly, L5, M|24/100 brn
+|move|p2a: Drifloon|Acrobatics|p1a: Gastly
+|-enditem|p2a: Drifloon|Flying Gem|[from] gem|[move] Acrobatics
+|-damage|p1a: Gastly|0 fnt
+|faint|p1a: Gastly
+|
+|upkeep
+|
+|t:|1795192778
+|switch|p1a: Omanyte|Omanyte, L5, M|100/100
+|turn|35
+|
+|t:|1795192779
+|switch|p2a: Abra|Abra, L5, M|10/19
+|move|p1a: Omanyte|Scald|p2a: Abra
+|-damage|p2a: Abra|0 fnt
+|faint|p2a: Abra
+|
+|upkeep
+|
+|t:|1795192780
+|switch|p2a: Drifloon|Drifloon, L5, M|25/25
+|turn|36
+|
+|t:|1795192781
+|move|p2a: Drifloon|Acrobatics|p1a: Omanyte
+|-resisted|p1a: Omanyte
+|-damage|p1a: Omanyte|86/100
+|-ability|p1a: Omanyte|Weak Armor|boost
+|-unboost|p1a: Omanyte|def|1
+|-boost|p1a: Omanyte|spe|1
+|move|p1a: Omanyte|Scald|p2a: Drifloon
+|-damage|p2a: Drifloon|10/25
+|
+|upkeep
+|turn|37
+|
+|t:|1795192784
+|move|p1a: Omanyte|Scald|p2a: Drifloon
+|-damage|p2a: Drifloon|0 fnt
+|faint|p2a: Drifloon
+|
+|win|asdweqwasd</script>
+  </div></div>
+  <aside class="lc-panel">
+    <div class="lc-card"><h3>Win chance over the game</h3><div id="lc-chart"></div></div>
+    <div class="lc-card" id="lc-turn"><div class="lc-idle">Press play: the bot's view of each turn appears here as the replay advances. Click the chart to jump to a turn.</div></div>
+  </aside>
+</div></div>
+<div id="lc-tip"></div>
+<script>
+var G = {"room": "battle-gen5lc-2717009175", "me": "Tactigon", "side": "p2", "foe": "asdweqwasd", "result": "lost", "turns": 37, "decisions": [{"turn": 1, "choice": "move 2", "options": [["Stealth Rock", 81], ["Thunder Wave", 14], ["Spikes", 5], ["Bullet Seed", 0]], "win": 66, "notes": []}, {"turn": 2, "choice": "move 4", "options": [["Bullet Seed", 100], ["switch Abra", 0], ["switch Drifloon", 0], ["switch Mienfoo", 0]], "win": 62, "notes": []}, {"turn": 3, "choice": "switch 5", "options": [["switch Abra", 69], ["Bullet Seed", 14], ["switch Drifloon", 12], ["switch Mienfoo", 4]], "win": 38, "notes": []}, {"turn": 4, "choice": "switch 5", "options": [["switch Ferroseed", 80], ["Psychic", 14], ["Shadow Ball", 5], ["switch Magnemite", 0]], "win": 32, "notes": []}, {"turn": 5, "choice": "switch 6", "options": [["switch Archen", 85], ["switch Drifloon", 9], ["switch Mienfoo", 6], ["Bullet Seed", 0]], "win": 28, "notes": []}, {"turn": 5, "choice": "move 4", "options": [["Bullet Seed", 53], ["Stealth Rock", 38], ["Spikes", 9], ["Thunder Wave", 0]], "win": 28, "notes": []}, {"turn": 6, "choice": "switch 6", "options": [["switch Archen", 99], ["switch Mienfoo", 1], ["switch Drifloon", 0], ["switch Magnemite", 0]], "win": 25, "notes": []}, {"turn": 6, "choice": "move 3", "options": [["Acrobatics", 85], ["Agility", 14], ["Stone Edge", 1], ["Substitute", 0]], "win": 24, "notes": []}, {"turn": 7, "choice": "move 2", "options": [["Substitute", 100], ["Acrobatics", 0], ["Stone Edge", 0], ["Agility", 0]], "win": 21, "notes": []}, {"turn": 8, "choice": "move 3", "options": [["Acrobatics", 96], ["Stone Edge", 4], ["Agility", 0], ["Substitute", 0]], "win": 29, "notes": []}, {"turn": 9, "choice": "move 2", "options": [["Substitute", 99], ["Acrobatics", 1], ["Stone Edge", 0], ["switch Mienfoo", 0]], "win": 17, "notes": []}, {"turn": 10, "choice": "move 3", "options": [["Acrobatics", 95], ["Stone Edge", 4], ["switch Mienfoo", 1], ["Substitute", 0]], "win": 14, "notes": []}, {"turn": 11, "choice": "switch 2", "options": [["switch Mienfoo", 95], ["Acrobatics", 4], ["Stone Edge", 1], ["switch Drifloon", 0]], "win": 12, "notes": []}, {"turn": 12, "choice": "move 3", "options": [["U-turn", 63], ["Knock Off", 36], ["Fake Out", 0], ["High Jump Kick", 0]], "win": 16, "notes": []}, {"turn": 12, "choice": "switch 4", "options": [["switch Magnemite", 54], ["switch Abra", 44], ["switch Drifloon", 2], ["switch Archen", 0]], "win": 18, "notes": []}, {"turn": 13, "choice": "move 1", "options": [["Flash Cannon", 98], ["switch Archen", 1], ["Volt Switch", 1], ["switch Mienfoo", 0]], "win": 15, "notes": []}, {"turn": 14, "choice": "move 1", "options": [["Flash Cannon", 100]], "win": 17, "notes": []}, {"turn": 15, "choice": "switch 2", "options": [["switch Archen", 86], ["switch Mienfoo", 14], ["Flash Cannon", 0], ["switch Drifloon", 0]], "win": 4, "notes": []}, {"turn": 15, "choice": "move 1", "options": [["Flash Cannon", 100]], "win": 4, "notes": []}, {"turn": 16, "choice": "switch 4", "options": [["switch Mienfoo", 100], ["switch Drifloon", 0], ["switch Archen", 0], ["switch Abra", 0]], "win": 8, "notes": []}, {"turn": 16, "choice": "move 4", "options": [["Knock Off", 63], ["U-turn", 36], ["Fake Out", 0], ["High Jump Kick", 0]], "win": 7, "notes": []}, {"turn": 17, "choice": "move 3", "options": [["U-turn", 98], ["switch Archen", 2], ["Knock Off", 0], ["switch Abra", 0]], "win": 8, "notes": []}, {"turn": 17, "choice": "switch 5", "options": [["switch Abra", 100], ["switch Drifloon", 0], ["switch Archen", 0]], "win": 9, "notes": []}, {"turn": 18, "choice": "switch 5", "options": [["switch Mienfoo", 48], ["Shadow Ball", 26], ["switch Archen", 12], ["Psychic", 10]], "win": 9, "notes": []}, {"turn": 19, "choice": "move 1", "options": [["Fake Out", 100], ["High Jump Kick", 0], ["switch Archen", 0], ["U-turn", 0]], "win": 9, "notes": []}, {"turn": 20, "choice": "move 3", "options": [["U-turn", 97], ["switch Archen", 3], ["Knock Off", 0], ["switch Abra", 0]], "win": 7, "notes": []}, {"turn": 20, "choice": "switch 5", "options": [["switch Abra", 100], ["switch Drifloon", 0], ["switch Archen", 0]], "win": 6, "notes": []}, {"turn": 21, "choice": "move 3", "options": [["Shadow Ball", 44], ["switch Archen", 23], ["Psychic", 17], ["switch Mienfoo", 14]], "win": 5, "notes": []}, {"turn": 22, "choice": "switch 2", "options": [["switch Archen", 100], ["switch Mienfoo", 0], ["Protect", 0], ["switch Drifloon", 0]], "win": 4, "notes": []}, {"turn": 23, "choice": "move 4", "options": [["Stone Edge", 98], ["Acrobatics", 2], ["switch Mienfoo", 0], ["switch Abra", 0]], "win": 7, "notes": []}, {"turn": 24, "choice": "switch 2", "options": [["switch Abra", 100], ["switch Mienfoo", 0], ["switch Drifloon", 0]], "win": 5, "notes": []}, {"turn": 24, "choice": "move 1", "options": [["Energy Ball", 100], ["Shadow Ball", 0], ["Psychic", 0], ["switch Drifloon", 0]], "win": 6, "notes": []}, {"turn": 25, "choice": "switch 5", "options": [["switch Mienfoo", 100], ["Protect", 0], ["switch Drifloon", 0], ["Energy Ball", 0]], "win": 4, "notes": []}, {"turn": 26, "choice": "move 3", "options": [["U-turn", 100], ["Knock Off", 0], ["switch Abra", 0], ["Fake Out", 0]], "win": 5, "notes": []}, {"turn": 26, "choice": "switch 5", "options": [["switch Abra", 100], ["switch Drifloon", 0]], "win": 4, "notes": []}, {"turn": 27, "choice": "move 3", "options": [["Shadow Ball", 82], ["Psychic", 13], ["Protect", 3], ["switch Mienfoo", 2]], "win": 4, "notes": []}, {"turn": 28, "choice": "switch 5", "options": [["switch Mienfoo", 100], ["switch Drifloon", 0], ["Protect", 0], ["Energy Ball", 0]], "win": 4, "notes": []}, {"turn": 29, "choice": "move 3", "options": [["U-turn", 90], ["switch Drifloon", 8], ["Fake Out", 1], ["High Jump Kick", 1]], "win": 4, "notes": []}, {"turn": 30, "choice": "switch 3", "options": [["switch Drifloon", 100], ["switch Abra", 0]], "win": 3, "notes": []}, {"turn": 30, "choice": "move 2", "options": [["Acrobatics", 67], ["Will-O-Wisp", 28], ["switch Abra", 5], ["Sucker Punch", 0]], "win": 2, "notes": []}, {"turn": 31, "choice": "switch 5", "options": [["switch Abra", 100], ["Sucker Punch", 0], ["Acrobatics", 0], ["Destiny Bond", 0]], "win": 3, "notes": []}, {"turn": 32, "choice": "move 3", "options": [["Shadow Ball", 64], ["Protect", 26], ["Psychic", 10], ["Energy Ball", 0]], "win": 4, "notes": []}, {"turn": 33, "choice": "switch 5", "options": [["Protect", 69], ["switch Drifloon", 31], ["Energy Ball", 0], ["Shadow Ball", 0]], "win": 3, "notes": []}, {"turn": 34, "choice": "move 1", "options": [["Acrobatics", 91], ["Will-O-Wisp", 9], ["switch Abra", 0], ["Sucker Punch", 0]], "win": 3, "notes": []}, {"turn": 35, "choice": "switch 5", "options": [["switch Abra", 83], ["Acrobatics", 12], ["Will-O-Wisp", 4], ["Sucker Punch", 1]], "win": 3, "notes": []}, {"turn": 36, "choice": "switch 5", "options": [["switch Drifloon", 100]], "win": 1, "notes": []}, {"turn": 36, "choice": "move 1", "options": [["Acrobatics", 60], ["Will-O-Wisp", 21], ["Sucker Punch", 18], ["Destiny Bond", 0]], "win": 1, "notes": []}, {"turn": 37, "choice": "move 1", "options": [["Sucker Punch", 65], ["Acrobatics", 31], ["Destiny Bond", 4], ["Will-O-Wisp", 0]], "win": 1, "notes": []}]};
+(function () {
+  var NS = 'http://www.w3.org/2000/svg';
+  var byTurn = {};
+  G.decisions.forEach(function (d) { (byTurn[d.turn] = byTurn[d.turn] || []).push(d); });
+  // one point per turn: the decision at the start of the turn (forced switches come later in it)
+  var pts = Object.keys(byTurn).map(Number).sort(function (a, b) { return a - b; })
+    .map(function (t) { return {t: t, w: byTurn[t][0].win}; }).filter(function (p) { return p.w !== null; });
+  var final = G.result === 'won' ? 100 : G.result === 'lost' ? 0 : 50;
+  var W = 440, H = 170, L = 30, R = 8, T = 8, B = 22;
+  var maxT = Math.max(G.turns, pts.length ? pts[pts.length - 1].t : 1, 1);
+  var x = function (t) { return L + (W - L - R) * (t - 1) / Math.max(maxT - 1, 1); };
+  var y = function (w) { return T + (H - T - B) * (1 - w / 100); };
+  function el(name, attrs, parent) {
+    var e = document.createElementNS(NS, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  var svg = el('svg', {viewBox: '0 0 ' + W + ' ' + H, role: 'img',
+    'aria-label': 'Bot win chance by turn, ending in a ' + G.result});
+  [0, 25, 50, 75, 100].forEach(function (v) {
+    el('line', {x1: L, x2: W - R, y1: y(v), y2: y(v), stroke: v === 50 ? 'var(--mid)' : 'var(--grid)',
+      'stroke-width': 1, 'stroke-dasharray': v === 50 ? '3 3' : ''}, svg);
+    el('text', {x: L - 6, y: y(v) + 3, 'text-anchor': 'end'}, svg).textContent = v + '%';
+  });
+  var step = Math.max(1, Math.ceil(maxT / 8));
+  for (var t = 1; t <= maxT; t += step) el('text', {x: x(t), y: H - 6, 'text-anchor': 'middle'}, svg).textContent = t;
+  if (pts.length) {
+    var d = pts.map(function (p, i) { return (i ? 'L' : 'M') + x(p.t).toFixed(1) + ' ' + y(p.w).toFixed(1); }).join(' ');
+    el('path', {d: d, fill: 'none', stroke: 'var(--series)', 'stroke-width': 2, 'stroke-linejoin': 'round', 'stroke-linecap': 'round'}, svg);
+    var last = pts[pts.length - 1];
+    el('line', {x1: x(last.t), y1: y(last.w), x2: x(maxT), y2: y(final), stroke: 'var(--series)', 'stroke-width': 2,
+      'stroke-dasharray': '2 3', opacity: .6}, svg);
+    el('circle', {cx: x(maxT), cy: y(final), r: 4, fill: G.result === 'won' ? 'var(--win)' : G.result === 'lost' ? 'var(--lose)' : 'var(--mid)',
+      stroke: 'var(--card)', 'stroke-width': 2}, svg);
+  }
+  var cursor = el('line', {y1: T, y2: H - B, stroke: 'var(--ink2)', 'stroke-width': 1, opacity: 0}, svg);
+  var dot = el('circle', {r: 4.5, fill: 'var(--series)', stroke: 'var(--card)', 'stroke-width': 2, opacity: 0}, svg);
+  var hit = el('rect', {x: L, y: T, width: W - L - R, height: H - T - B, fill: 'transparent', style: 'cursor:pointer'}, svg);
+  document.getElementById('lc-chart').appendChild(svg);
+  var tip = document.getElementById('lc-tip');
+  function nearest(ev) {
+    var r = svg.getBoundingClientRect(), px = (ev.clientX - r.left) * W / r.width, best = null;
+    pts.forEach(function (p) { if (!best || Math.abs(x(p.t) - px) < Math.abs(x(best.t) - px)) best = p; });
+    return best;
+  }
+  hit.addEventListener('mousemove', function (ev) {
+    var p = nearest(ev); if (!p) return;
+    tip.style.display = 'block'; tip.style.left = (ev.clientX + 12) + 'px'; tip.style.top = (ev.clientY - 28) + 'px';
+    tip.textContent = 'Turn ' + p.t + ': ' + p.w + '% win chance';
+  });
+  hit.addEventListener('mouseleave', function () { tip.style.display = 'none'; });
+  hit.addEventListener('click', function (ev) {
+    var p = nearest(ev); if (!p) return;
+    var b = window.Replays && window.Replays.battle;
+    if (b) { try { b.seekTurn(p.t); } catch (e) {} }
+    show(p.t, true);
+  });
+
+  var panel = document.getElementById('lc-turn'), current = null;
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]; }); }
+  function show(turn, force) {
+    var t = null;
+    Object.keys(byTurn).map(Number).forEach(function (k) { if (k <= turn) t = k; });
+    if (t === current && !force) return;
+    current = t;
+    if (t === null) { cursor.setAttribute('opacity', 0); dot.setAttribute('opacity', 0); return; }
+    var p = pts.filter(function (q) { return q.t === t; })[0];
+    cursor.setAttribute('x1', x(t)); cursor.setAttribute('x2', x(t)); cursor.setAttribute('opacity', .35);
+    if (p) { dot.setAttribute('cx', x(t)); dot.setAttribute('cy', y(p.w)); dot.setAttribute('opacity', 1); }
+    var prev = pts.filter(function (q) { return q.t < t; }).pop();
+    var html = '';
+    byTurn[t].forEach(function (d, i) {
+      var delta = (i === 0 && prev && d.win !== null) ? d.win - prev.w : null;
+      html += '<h3>Turn ' + t + (i ? ' · forced switch' : '') + '</h3><div class="lc-row"><div class="lc-big">' +
+        (d.win === null ? '–' : d.win + '%') + '<small>win chance</small></div>' +
+        (delta !== null ? '<div class="lc-delta">' + (delta >= 0 ? '+' : '') + delta + ' pts vs turn ' + prev.t + '</div>' : '') + '</div>';
+      if (d.options.length) {
+        html += '<table><thead><tr><th>option</th><th class="n">preference</th></tr></thead><tbody>';
+        d.options.forEach(function (o, j) {
+          html += '<tr' + (j === 0 ? ' class="lc-pick"' : '') + '><td>' + esc(o[0]) + '</td><td class="n">' + o[1] +
+            '%<span class="lc-bar" style="width:' + Math.round(o[1] * 0.3) + 'px"></span></td></tr>';
+        });
+        html += '</tbody></table>';
+      }
+      d.notes.forEach(function (n) { html += '<div class="lc-note">' + esc(n) + '</div>'; });
+      if (i < byTurn[t].length - 1) html += '<div style="height:12px"></div>';
+    });
+    panel.innerHTML = html;
+  }
+  var tries = 0, swapped = false;
+  (function hook() {
+    var b = window.Replays && window.Replays.battle;
+    if (!b) {
+      if (++tries > 40) document.getElementById('lc-offline').style.display = 'block';
+      return setTimeout(hook, 250);
+    }
+    if (G.side === 'p2' && !swapped) {  // show the battle from the bot's side
+      swapped = true;
+      try { window.Replays.switchViewpoint(); } catch (e) { try { b.switchViewpoint(); } catch (e2) {} }
+    }
+    var m = /turn=(\d+)/.exec(location.hash);  // links like page.html#turn=12 open at that turn
+    if (m) { try { b.seekTurn(+m[1]); } catch (e) {} }
+    setInterval(function () { show(b.turn); }, 200);  // 'turn' events are suppressed while seeking
+    show(b.turn);
+  })();
+})();
+</script>
+<script>
+  var daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24);
+  document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"><\/script>');
+</script>
+</body></html>
