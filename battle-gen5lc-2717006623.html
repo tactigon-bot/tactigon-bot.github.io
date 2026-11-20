@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tactigon vs asdweqwasd</title>
+<style>
+/* Everything here is lc-* and scoped to #lc-app: replay-embed.js injects Showdown's battle.css
+   globally, which already styles .turn, .win, .battle and friends. */
+:root{--bg:#f5f6f8;--card:#fff;--line:#dfe3ea;--ink:#1f2430;--ink2:#5a6070;--muted:#8a90a0;--head:#2b3a55;
+  --win:#2f7d55;--lose:#b5473a;--series:#3a6ea5;--grid:#e8ebf0;--mid:#c3c8d2;--hl:#eef3fa}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#14171d;--card:#1d2129;--line:#2e3440;--ink:#e6e9ef;
+  --ink2:#b4bac6;--muted:#8a90a0;--head:#1b2333;--win:#5fbf8a;--lose:#e07a6c;--series:#7fb0e6;--grid:#2a2f3a;--mid:#4a5160;--hl:#24303f}}
+:root[data-theme="dark"]{--bg:#14171d;--card:#1d2129;--line:#2e3440;--ink:#e6e9ef;--ink2:#b4bac6;--muted:#8a90a0;--head:#1b2333;
+  --win:#5fbf8a;--lose:#e07a6c;--series:#7fb0e6;--grid:#2a2f3a;--mid:#4a5160;--hl:#24303f}
+body{margin:0;font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}
+#lc-head{padding:12px 20px;background:var(--head);color:#fff}
+#lc-head h1{margin:0;font-size:16px;font-weight:600}
+#lc-head p{margin:2px 0 0;opacity:.75;font-size:13px}
+#lc-head a{color:#cfe0ff}
+#lc-app .lc-split{display:flex;flex-wrap:wrap;align-items:flex-start;gap:20px;padding:18px}
+#lc-app .lc-left{flex:0 0 640px;max-width:100%;overflow:hidden}
+#lc-app .lc-panel{flex:1 1 380px;min-width:300px;max-width:480px;position:sticky;top:18px}
+#lc-app .lc-card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:14px}
+#lc-app .lc-card h3{margin:0 0 8px;font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:600}
+#lc-app .lc-big{font-size:28px;font-weight:650;font-variant-numeric:tabular-nums;line-height:1.1}
+#lc-app .lc-big small{display:block;font-size:10px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+#lc-app .lc-row{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+#lc-app .lc-delta{font-size:13px;font-variant-numeric:tabular-nums;color:var(--ink2)}
+#lc-app table{width:100%;border-collapse:collapse;margin-top:8px}
+#lc-app th{text-align:left;font-size:10px;text-transform:uppercase;color:var(--muted);font-weight:500;padding:2px 0;letter-spacing:.04em}
+#lc-app td{padding:4px 0;border-top:1px solid var(--line);font-size:13px;color:var(--ink2);font-variant-numeric:tabular-nums}
+#lc-app td.n,#lc-app th.n{text-align:right;width:64px}
+#lc-app tr.lc-pick td{color:var(--ink);font-weight:600}
+#lc-app .lc-bar{display:inline-block;height:6px;border-radius:3px;background:var(--series);vertical-align:middle;margin-left:6px;opacity:.75}
+#lc-app .lc-note{margin-top:8px;font-size:12px;color:var(--ink2);background:var(--hl);border-radius:5px;padding:5px 8px}
+#lc-app .lc-idle{color:var(--muted);font-size:13px}
+#lc-app svg{display:block;width:100%;height:auto;overflow:visible}
+#lc-app svg text{fill:var(--muted);font-size:10px;font-family:inherit}
+#lc-tip{position:fixed;pointer-events:none;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:6px;
+  padding:5px 8px;font-size:12px;box-shadow:0 2px 8px rgba(0,0,0,.15);display:none;z-index:10;font-variant-numeric:tabular-nums}
+#lc-offline{display:none;margin:12px 18px 0;padding:10px 14px;background:var(--card);border:1px solid var(--lose);border-radius:6px;color:var(--lose);font-size:13px}
+#lc-head p{overflow-wrap:anywhere}
+@media (max-width:700px){#lc-app .lc-split{padding:16px;gap:14px}#lc-app .lc-left{flex:1 1 100%;overflow-x:auto}
+  #lc-app .lc-panel{position:static;flex:1 1 100%;min-width:0;max-width:none}#lc-head{padding:12px 16px}}
+</style></head><body>
+<div id="lc-head"><h1>Tactigon vs asdweqwasd</h1><p>battle-gen5lc-2717006623 · won · 69 turns · Tactigon v11 · <a href="index.html">all games</a></p></div>
+<div id="lc-offline">The Showdown replay player could not be loaded (it comes from play.pokemonshowdown.com), so the panel can't follow the turn. The chart still works.</div>
+<div id="lc-app"><div class="lc-split">
+  <div class="lc-left"><div class="wrapper replay-wrapper" style="width:640px;max-width:100%">
+    <input type="hidden" name="replayid" value="battle-gen5lc-2717006623" />
+    <div class="battle"></div><div class="battle-log"></div>
+    <div class="replay-controls"></div><div class="replay-controls-2"></div>
+    <script type="text/plain" class="battle-log-data">>battle-gen5lc-2717006623
+|init|battle
+|title|asdweqwasd vs. Tactigon
+|t:|1795192305
+|gametype|singles
+|player|p1|asdweqwasd|picnicker|
+|player|p2|Tactigon|2|
+|gen|5
+|tier|[Gen 5] LC
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Endless Battle Clause: Forcing endless battles is banned
+|rule|Species Clause: Limit one of each Pokemon
+|rule|OHKO Clause: OHKO moves are banned
+|rule|Evasion Items Clause: Evasion items are banned
+|rule|Evasion Moves Clause: Evasion moves are banned
+|rule|Pomeg Glitch Clause: Gen 3 Pokemon at level 5+ can have any of their level-up moves.
+|rule|Sleep Moves Clause: Sleep-inducing moves are banned
+|clearpoke
+|poke|p1|Gastly, L5, F|item
+|poke|p1|Diglett, L5, M|item
+|poke|p1|Porygon, L5|item
+|poke|p1|Omanyte, L5, F|item
+|poke|p1|Mienfoo, L5, F|item
+|poke|p1|Vullaby, L5, F|item
+|poke|p2|Mienfoo, L5, M|item
+|poke|p2|Gastly, L5, M|item
+|poke|p2|Vullaby, L5, F|item
+|poke|p2|Drilbur, L5, F|item
+|poke|p2|Pawniard, L5, F|item
+|poke|p2|Porygon, L5|item
+|teampreview
+|
+|t:|1795192318
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Diglett|Diglett, L5, M|100/100
+|switch|p2a: Drilbur|Drilbur, L5, F|23/23
+|-ability|p2a: Drilbur|Mold Breaker
+|turn|1
+|
+|t:|1795192321
+|move|p1a: Diglett|Earthquake|p2a: Drilbur
+|-damage|p2a: Drilbur|8/23
+|move|p2a: Drilbur|Earthquake|p1a: Diglett
+|-damage|p1a: Diglett|12/100
+|
+|upkeep
+|turn|2
+|error|[Unavailable choice] Can't switch: The active Pokémon is trapped
+|
+|t:|1795192325
+|move|p1a: Diglett|Earthquake|p2a: Drilbur
+|-damage|p2a: Drilbur|0 fnt
+|faint|p2a: Drilbur
+|
+|upkeep
+|
+|t:|1795192325
+|switch|p2a: Mienfoo|Mienfoo, L5, M|23/23
+|turn|3
+|
+|t:|1795192332
+|switch|p1a: Gastly|Gastly, L5, F|100/100
+|move|p2a: Mienfoo|U-turn|p1a: Gastly
+|-resisted|p1a: Gastly
+|-damage|p1a: Gastly|96/100
+|
+|t:|1795192332
+|switch|p2a: Vullaby|Vullaby, L5, F|23/23|[from] U-turn
+|
+|upkeep
+|turn|4
+|
+|t:|1795192333
+|move|p1a: Gastly|Will-O-Wisp|p2a: Vullaby
+|-status|p2a: Vullaby|brn
+|move|p2a: Vullaby|Dark Pulse|p1a: Gastly
+|-supereffective|p1a: Gastly
+|-damage|p1a: Gastly|10/100
+|
+|-damage|p2a: Vullaby|21/23 brn|[from] brn
+|upkeep
+|turn|5
+|
+|t:|1795192342
+|move|p1a: Gastly|Sludge Bomb|p2a: Vullaby
+|-damage|p2a: Vullaby|11/23 brn
+|move|p2a: Vullaby|Dark Pulse|p1a: Gastly
+|-supereffective|p1a: Gastly
+|-damage|p1a: Gastly|0 fnt
+|faint|p1a: Gastly
+|
+|-damage|p2a: Vullaby|9/23 brn|[from] brn
+|upkeep
+|
+|t:|1795192346
+|switch|p1a: Porygon|Porygon, L5|100/100
+|-ability|p1a: Porygon|Weak Armor|Trace|[from] ability: Trace|[of] p2a: Vullaby
+|turn|6
+|
+|t:|1795192349
+|move|p2a: Vullaby|Roost|p2a: Vullaby
+|-heal|p2a: Vullaby|21/23 brn
+|-singleturn|p2a: Vullaby|move: Roost
+|move|p1a: Porygon|Thunderbolt|p2a: Vullaby
+|-crit|p2a: Vullaby
+|-damage|p2a: Vullaby|7/23 brn
+|
+|-damage|p2a: Vullaby|5/23 brn|[from] brn
+|upkeep
+|turn|7
+|
+|t:|1795192352
+|switch|p1a: Omanyte|Omanyte, L5, F|100/100
+|move|p2a: Vullaby|Roost|p2a: Vullaby
+|-heal|p2a: Vullaby|17/23 brn
+|-singleturn|p2a: Vullaby|move: Roost
+|
+|-damage|p2a: Vullaby|15/23 brn|[from] brn
+|upkeep
+|turn|8
+|
+|t:|1795192354
+|move|p2a: Vullaby|Dark Pulse|p1a: Omanyte
+|-damage|p1a: Omanyte|58/100
+|move|p1a: Omanyte|Toxic Spikes|p2a: Vullaby
+|-sidestart|p2: Tactigon|move: Toxic Spikes
+|
+|-damage|p2a: Vullaby|13/23 brn|[from] brn
+|upkeep
+|turn|9
+|
+|t:|1795192367
+|switch|p1a: Porygon|Porygon, L5|100/100
+|-ability|p1a: Porygon|Weak Armor|Trace|[from] ability: Trace|[of] p2a: Vullaby
+|move|p2a: Vullaby|Dark Pulse|p1a: Porygon
+|-damage|p1a: Porygon|76/100
+|
+|-damage|p2a: Vullaby|11/23 brn|[from] brn
+|upkeep
+|turn|10
+|
+|t:|1795192370
+|move|p2a: Vullaby|Roost|p2a: Vullaby
+|-heal|p2a: Vullaby|23/23 brn
+|-singleturn|p2a: Vullaby|move: Roost
+|move|p1a: Porygon|Thunderbolt|p2a: Vullaby
+|-damage|p2a: Vullaby|16/23 brn
+|
+|-damage|p2a: Vullaby|14/23 brn|[from] brn
+|upkeep
+|turn|11
+|
+|t:|1795192372
+|move|p2a: Vullaby|Roost|p2a: Vullaby
+|-heal|p2a: Vullaby|23/23 brn
+|-singleturn|p2a: Vullaby|move: Roost
+|move|p1a: Porygon|Thunderbolt|p2a: Vullaby
+|-damage|p2a: Vullaby|16/23 brn
+|
+|-damage|p2a: Vullaby|14/23 brn|[from] brn
+|upkeep
+|turn|12
+|
+|t:|1795192373
+|move|p2a: Vullaby|Roost|p2a: Vullaby
+|-heal|p2a: Vullaby|23/23 brn
+|-singleturn|p2a: Vullaby|move: Roost
+|move|p1a: Porygon|Thunderbolt|p2a: Vullaby
+|-damage|p2a: Vullaby|16/23 brn
+|
+|-damage|p2a: Vullaby|14/23 brn|[from] brn
+|upkeep
+|turn|13
+|
+|t:|1795192375
+|switch|p2a: Mienfoo|Mienfoo, L5, M|23/23
+|-status|p2a: Mienfoo|psn
+|move|p1a: Porygon|Thunderbolt|p2a: Mienfoo
+|-damage|p2a: Mienfoo|17/23 psn
+|
+|-damage|p2a: Mienfoo|15/23 psn|[from] psn
+|upkeep
+|turn|14
+|
+|t:|1795192383
+|switch|p1a: Mienfoo|Mienfoo, L5, F|100/100
+|move|p2a: Mienfoo|U-turn|p1a: Mienfoo
+|-resisted|p1a: Mienfoo
+|-damage|p1a: Mienfoo|92/100
+|
+|t:|1795192384
+|switch|p2a: Gastly|Gastly, L5, M|20/20|[from] U-turn
+|
+|upkeep
+|turn|15
+|
+|t:|1795192389
+|switch|p1a: Porygon|Porygon, L5|76/100
+|-ability|p1a: Porygon|Levitate|Trace|[from] ability: Trace|[of] p2a: Gastly
+|move|p2a: Gastly|Will-O-Wisp|p1a: Porygon
+|-status|p1a: Porygon|brn
+|
+|-damage|p1a: Porygon|64/100 brn|[from] brn
+|upkeep
+|turn|16
+|
+|t:|1795192391
+|switch|p2a: Mienfoo|Mienfoo, L5, M|22/23 psn
+|move|p1a: Porygon|Recover|p1a: Porygon
+|-heal|p1a: Porygon|100/100 brn
+|
+|-damage|p2a: Mienfoo|20/23 psn|[from] psn
+|-damage|p1a: Porygon|88/100 brn|[from] brn
+|upkeep
+|turn|17
+|
+|t:|1795192393
+|switch|p1a: Mienfoo|Mienfoo, L5, F|100/100
+|move|p2a: Mienfoo|High Jump Kick|p1a: Mienfoo
+|-damage|p1a: Mienfoo|48/100
+|
+|-damage|p2a: Mienfoo|18/23 psn|[from] psn
+|upkeep
+|turn|18
+|
+|t:|1795192395
+|switch|p2a: Gastly|Gastly, L5, M|20/20
+|switch|p1a: Vullaby|Vullaby, L5, F|100/100
+|
+|upkeep
+|turn|19
+|
+|t:|1795192397
+|switch|p2a: Porygon|Porygon, L5|25/25
+|-status|p2a: Porygon|psn
+|-ability|p2a: Porygon|Weak Armor|Trace|[from] ability: Trace|[of] p1a: Vullaby
+|switch|p1a: Porygon|Porygon, L5|88/100 brn
+|-ability|p1a: Porygon|Weak Armor|Trace|[from] ability: Trace|[of] p2a: Porygon
+|
+|-damage|p2a: Porygon|22/25 psn|[from] psn
+|-damage|p1a: Porygon|76/100 brn|[from] brn
+|upkeep
+|turn|20
+|
+|t:|1795192401
+|switch|p1a: Mienfoo|Mienfoo, L5, F|79/100
+|move|p2a: Porygon|Psychic|p1a: Mienfoo
+|-supereffective|p1a: Mienfoo
+|-damage|p1a: Mienfoo|27/100
+|
+|-damage|p2a: Porygon|19/25 psn|[from] psn
+|upkeep
+|turn|21
+|
+|t:|1795192406
+|move|p1a: Mienfoo|U-turn|p2a: Porygon
+|-damage|p2a: Porygon|15/25 psn
+|-ability|p2a: Porygon|Weak Armor|boost
+|-unboost|p2a: Porygon|def|1
+|-boost|p2a: Porygon|spe|1
+|
+|t:|1795192410
+|switch|p1a: Porygon|Porygon, L5|76/100 brn|[from] U-turn
+|-ability|p1a: Porygon|Weak Armor|Trace|[from] ability: Trace|[of] p2a: Porygon
+|move|p2a: Porygon|Recover|p2a: Porygon
+|-heal|p2a: Porygon|25/25 psn
+|
+|-damage|p2a: Porygon|22/25 psn|[from] psn
+|-damage|p1a: Porygon|64/100 brn|[from] brn
+|upkeep
+|turn|22
+|
+|t:|1795192412
+|move|p2a: Porygon|Psychic|p1a: Porygon
+|-damage|p1a: Porygon|44/100 brn
+|move|p1a: Porygon|Recover|p1a: Porygon
+|-heal|p1a: Porygon|96/100 brn
+|
+|-damage|p2a: Porygon|19/25 psn|[from] psn
+|-damage|p1a: Porygon|84/100 brn|[from] brn
+|upkeep
+|turn|23
+|
+|t:|1795192415
+|move|p2a: Porygon|Psychic|p1a: Porygon
+|-damage|p1a: Porygon|64/100 brn
+|move|p1a: Porygon|Thunderbolt|p2a: Porygon
+|-damage|p2a: Porygon|14/25 psn
+|
+|-damage|p2a: Porygon|11/25 psn|[from] psn
+|-damage|p1a: Porygon|52/100 brn|[from] brn
+|upkeep
+|turn|24
+|
+|t:|1795192419
+|move|p2a: Porygon|Recover|p2a: Porygon
+|-heal|p2a: Porygon|24/25 psn
+|move|p1a: Porygon|Thunderbolt|p2a: Porygon
+|-damage|p2a: Porygon|19/25 psn
+|
+|-damage|p2a: Porygon|16/25 psn|[from] psn
+|-damage|p1a: Porygon|40/100 brn|[from] brn
+|upkeep
+|turn|25
+|
+|t:|1795192421
+|move|p2a: Porygon|Psychic|p1a: Porygon
+|-damage|p1a: Porygon|20/100 brn
+|move|p1a: Porygon|Recover|p1a: Porygon
+|-heal|p1a: Porygon|72/100 brn
+|
+|-damage|p2a: Porygon|13/25 psn|[from] psn
+|-damage|p1a: Porygon|60/100 brn|[from] brn
+|upkeep
+|turn|26
+|
+|t:|1795192424
+|move|p2a: Porygon|Recover|p2a: Porygon
+|-heal|p2a: Porygon|25/25 psn
+|move|p1a: Porygon|Recover|p1a: Porygon
+|-heal|p1a: Porygon|100/100 brn
+|
+|-damage|p2a: Porygon|22/25 psn|[from] psn
+|-damage|p1a: Porygon|88/100 brn|[from] brn
+|upkeep
+|turn|27
+|
+|t:|1795192425
+|move|p2a: Porygon|Psychic|p1a: Porygon
+|-damage|p1a: Porygon|68/100 brn
+|move|p1a: Porygon|Thunderbolt|p2a: Porygon
+|-damage|p2a: Porygon|17/25 psn
+|
+|-damage|p2a: Porygon|14/25 psn|[from] psn
+|-damage|p1a: Porygon|56/100 brn|[from] brn
+|upkeep
+|turn|28
+|
+|t:|1795192430
+|move|p2a: Porygon|Psychic|p1a: Porygon
+|-damage|p1a: Porygon|36/100 brn
+|move|p1a: Porygon|Psychic|p2a: Porygon
+|-damage|p2a: Porygon|9/25 psn
+|
+|-damage|p2a: Porygon|6/25 psn|[from] psn
+|-damage|p1a: Porygon|24/100 brn|[from] brn
+|upkeep
+|turn|29
+|
+|t:|1795192432
+|move|p2a: Porygon|Recover|p2a: Porygon
+|-heal|p2a: Porygon|19/25 psn
+|move|p1a: Porygon|Recover|p1a: Porygon
+|-heal|p1a: Porygon|76/100 brn
+|
+|-damage|p2a: Porygon|16/25 psn|[from] psn
+|-damage|p1a: Porygon|64/100 brn|[from] brn
+|upkeep
+|turn|30
+|
+|t:|1795192434
+|switch|p2a: Mienfoo|Mienfoo, L5, M|23/23 psn
+|move|p1a: Porygon|Psychic|p2a: Mienfoo
+|-supereffective|p2a: Mienfoo
+|-crit|p2a: Mienfoo
+|-damage|p2a: Mienfoo|1/23 psn
+|
+|-damage|p2a: Mienfoo|0 fnt|[from] psn
+|faint|p2a: Mienfoo
+|-damage|p1a: Porygon|52/100 brn|[from] brn
+|upkeep
+|
+|t:|1795192434
+|switch|p2a: Pawniard|Pawniard, L5, F|21/21
+|turn|31
+|
+|t:|1795192441
+|move|p2a: Pawniard|Iron Head|p1a: Porygon
+|-damage|p1a: Porygon|16/100 brn
+|-ability|p1a: Porygon|Weak Armor|boost
+|-unboost|p1a: Porygon|def|1
+|-boost|p1a: Porygon|spe|1
+|-damage|p2a: Pawniard|19/21|[from] item: Life Orb
+|move|p1a: Porygon|Recover|p1a: Porygon
+|-heal|p1a: Porygon|68/100 brn
+|
+|-damage|p1a: Porygon|56/100 brn|[from] brn
+|upkeep
+|turn|32
+|
+|t:|1795192451
+|switch|p1a: Omanyte|Omanyte, L5, F|58/100
+|move|p2a: Pawniard|Iron Head|p1a: Omanyte
+|-damage|p1a: Omanyte|15/100
+|-ability|p1a: Omanyte|Weak Armor|boost
+|-unboost|p1a: Omanyte|def|1
+|-boost|p1a: Omanyte|spe|1
+|-damage|p2a: Pawniard|17/21|[from] item: Life Orb
+|
+|upkeep
+|turn|33
+|
+|t:|1795192453
+|move|p2a: Pawniard|Sucker Punch||[still]
+|-fail|p2a: Pawniard
+|move|p1a: Omanyte|Stealth Rock|p2a: Pawniard
+|-sidestart|p2: Tactigon|move: Stealth Rock
+|
+|upkeep
+|turn|34
+|
+|t:|1795192455
+|switch|p1a: Mienfoo|Mienfoo, L5, F|57/100
+|move|p2a: Pawniard|Sucker Punch||[still]
+|-fail|p2a: Pawniard
+|
+|upkeep
+|turn|35
+|
+|t:|1795192459
+|move|p2a: Pawniard|Iron Head|p1a: Mienfoo
+|-damage|p1a: Mienfoo|5/100
+|-damage|p2a: Pawniard|15/21|[from] item: Life Orb
+|move|p1a: Mienfoo|U-turn|p2a: Pawniard
+|-damage|p2a: Pawniard|8/21
+|
+|t:|1795192469
+|switch|p1a: Vullaby|Vullaby, L5, F|100/100|[from] U-turn
+|
+|upkeep
+|turn|36
+|
+|t:|1795192471
+|move|p1a: Vullaby|Brave Bird|p2a: Pawniard
+|-resisted|p2a: Pawniard
+|-damage|p2a: Pawniard|0 fnt
+|faint|p2a: Pawniard
+|-damage|p1a: Vullaby|87/100|[from] Recoil
+|
+|upkeep
+|
+|t:|1795192471
+|switch|p2a: Porygon|Porygon, L5|16/25 psn
+|-damage|p2a: Porygon|13/25 psn|[from] Stealth Rock
+|-ability|p2a: Porygon|Weak Armor|Trace|[from] ability: Trace|[of] p1a: Vullaby
+|turn|37
+|
+|t:|1795192491
+|switch|p1a: Omanyte|Omanyte, L5, F|15/100
+|move|p2a: Porygon|Ice Beam|p1a: Omanyte
+|-resisted|p1a: Omanyte
+|-damage|p1a: Omanyte|0 fnt
+|faint|p1a: Omanyte
+|
+|-damage|p2a: Porygon|10/25 psn|[from] psn
+|upkeep
+|
+|t:|1795192496
+|switch|p1a: Porygon|Porygon, L5|56/100 brn
+|-ability|p1a: Porygon|Weak Armor|Trace|[from] ability: Trace|[of] p2a: Porygon
+|turn|38
+|
+|t:|1795192498
+|move|p1a: Porygon|Recover|p1a: Porygon
+|-heal|p1a: Porygon|100/100 brn
+|move|p2a: Porygon|Recover|p2a: Porygon
+|-heal|p2a: Porygon|23/25 psn
+|
+|-damage|p2a: Porygon|20/25 psn|[from] psn
+|-damage|p1a: Porygon|88/100 brn|[from] brn
+|upkeep
+|turn|39
+|
+|t:|1795192501
+|move|p2a: Porygon|Ice Beam|p1a: Porygon
+|-damage|p1a: Porygon|68/100 brn
+|move|p1a: Porygon|Thunderbolt|p2a: Porygon
+|-damage|p2a: Porygon|15/25 psn
+|
+|-damage|p2a: Porygon|12/25 psn|[from] psn
+|-damage|p1a: Porygon|56/100 brn|[from] brn
+|upkeep
+|turn|40
+|
+|t:|1795192505
+|move|p1a: Porygon|Thunderbolt|p2a: Porygon
+|-damage|p2a: Porygon|7/25 psn
+|move|p2a: Porygon|Recover|p2a: Porygon
+|-heal|p2a: Porygon|20/25 psn
+|
+|-damage|p2a: Porygon|17/25 psn|[from] psn
+|-damage|p1a: Porygon|44/100 brn|[from] brn
+|upkeep
+|turn|41
+|
+|t:|1795192508
+|move|p2a: Porygon|Psychic|p1a: Porygon
+|-damage|p1a: Porygon|24/100 brn
+|move|p1a: Porygon|Recover|p1a: Porygon
+|-heal|p1a: Porygon|76/100 brn
+|
+|-damage|p2a: Porygon|14/25 psn|[from] psn
+|-damage|p1a: Porygon|64/100 brn|[from] brn
+|upkeep
+|turn|42
+|
+|t:|1795192512
+|move|p1a: Porygon|Thunderbolt|p2a: Porygon
+|-damage|p2a: Porygon|9/25 psn
+|move|p2a: Porygon|Recover|p2a: Porygon
+|-heal|p2a: Porygon|22/25 psn
+|
+|-damage|p2a: Porygon|19/25 psn|[from] psn
+|-damage|p1a: Porygon|52/100 brn|[from] brn
+|upkeep
+|turn|43
+|
+|t:|1795192516
+|move|p1a: Porygon|Thunderbolt|p2a: Porygon
+|-damage|p2a: Porygon|14/25 psn
+|move|p2a: Porygon|Psychic|p1a: Porygon
+|-damage|p1a: Porygon|28/100 brn
+|
+|-damage|p2a: Porygon|11/25 psn|[from] psn
+|-damage|p1a: Porygon|16/100 brn|[from] brn
+|upkeep
+|turn|44
+|
+|t:|1795192520
+|move|p1a: Porygon|Recover|p1a: Porygon
+|-heal|p1a: Porygon|68/100 brn
+|move|p2a: Porygon|Recover|p2a: Porygon
+|-heal|p2a: Porygon|24/25 psn
+|
+|-damage|p2a: Porygon|21/25 psn|[from] psn
+|-damage|p1a: Porygon|56/100 brn|[from] brn
+|upkeep
+|turn|45
+|
+|t:|1795192526
+|move|p2a: Porygon|Psychic|p1a: Porygon
+|-damage|p1a: Porygon|36/100 brn
+|move|p1a: Porygon|Thunderbolt|p2a: Porygon
+|-damage|p2a: Porygon|16/25 psn
+|
+|-damage|p2a: Porygon|13/25 psn|[from] psn
+|-damage|p1a: Porygon|24/100 brn|[from] brn
+|upkeep
+|turn|46
+|
+|t:|1795192528
+|move|p2a: Porygon|Recover|p2a: Porygon
+|-heal|p2a: Porygon|25/25 psn
+|move|p1a: Porygon|Recover|p1a: Porygon
+|-heal|p1a: Porygon|76/100 brn
+|
+|-damage|p2a: Porygon|22/25 psn|[from] psn
+|-damage|p1a: Porygon|64/100 brn|[from] brn
+|upkeep
+|turn|47
+|
+|t:|1795192530
+|move|p1a: Porygon|Thunderbolt|p2a: Porygon
+|-damage|p2a: Porygon|17/25 psn
+|move|p2a: Porygon|Psychic|p1a: Porygon
+|-damage|p1a: Porygon|44/100 brn
+|
+|-damage|p2a: Porygon|14/25 psn|[from] psn
+|-damage|p1a: Porygon|32/100 brn|[from] brn
+|upkeep
+|turn|48
+|
+|t:|1795192532
+|move|p2a: Porygon|Recover|p2a: Porygon
+|-heal|p2a: Porygon|25/25 psn
+|move|p1a: Porygon|Recover|p1a: Porygon
+|-heal|p1a: Porygon|84/100 brn
+|
+|-damage|p2a: Porygon|22/25 psn|[from] psn
+|-damage|p1a: Porygon|72/100 brn|[from] brn
+|upkeep
+|turn|49
+|
+|t:|1795192534
+|move|p2a: Porygon|Psychic|p1a: Porygon
+|-damage|p1a: Porygon|52/100 brn
+|move|p1a: Porygon|Thunderbolt|p2a: Porygon
+|-crit|p2a: Porygon
+|-damage|p2a: Porygon|12/25 psn
+|
+|-damage|p2a: Porygon|9/25 psn|[from] psn
+|-damage|p1a: Porygon|40/100 brn|[from] brn
+|upkeep
+|turn|50
+|
+|t:|1795192536
+|move|p1a: Porygon|Recover|p1a: Porygon
+|-heal|p1a: Porygon|92/100 brn
+|move|p2a: Porygon|Recover|p2a: Porygon
+|-heal|p2a: Porygon|22/25 psn
+|
+|-damage|p2a: Porygon|19/25 psn|[from] psn
+|-damage|p1a: Porygon|80/100 brn|[from] brn
+|upkeep
+|turn|51
+|
+|t:|1795192538
+|move|p1a: Porygon|Psychic|p2a: Porygon
+|-damage|p2a: Porygon|14/25 psn
+|move|p2a: Porygon|Psychic|p1a: Porygon
+|-damage|p1a: Porygon|60/100 brn
+|
+|-damage|p2a: Porygon|11/25 psn|[from] psn
+|-damage|p1a: Porygon|48/100 brn|[from] brn
+|upkeep
+|turn|52
+|
+|t:|1795192541
+|move|p2a: Porygon|Recover|p2a: Porygon
+|-heal|p2a: Porygon|24/25 psn
+|move|p1a: Porygon|Recover|p1a: Porygon
+|-heal|p1a: Porygon|100/100 brn
+|
+|-damage|p2a: Porygon|21/25 psn|[from] psn
+|-damage|p1a: Porygon|88/100 brn|[from] brn
+|upkeep
+|turn|53
+|
+|t:|1795192543
+|move|p2a: Porygon|Psychic|p1a: Porygon
+|-damage|p1a: Porygon|68/100 brn
+|move|p1a: Porygon|Psychic|p2a: Porygon
+|-damage|p2a: Porygon|15/25 psn
+|
+|-damage|p2a: Porygon|12/25 psn|[from] psn
+|-damage|p1a: Porygon|56/100 brn|[from] brn
+|upkeep
+|turn|54
+|
+|t:|1795192547
+|move|p1a: Porygon|Psychic|p2a: Porygon
+|-damage|p2a: Porygon|7/25 psn
+|move|p2a: Porygon|Recover|p2a: Porygon
+|-heal|p2a: Porygon|20/25 psn
+|
+|-damage|p2a: Porygon|17/25 psn|[from] psn
+|-damage|p1a: Porygon|44/100 brn|[from] brn
+|upkeep
+|turn|55
+|
+|t:|1795192551
+|move|p2a: Porygon|Psychic|p1a: Porygon
+|-damage|p1a: Porygon|24/100 brn
+|move|p1a: Porygon|Recover|p1a: Porygon
+|-heal|p1a: Porygon|76/100 brn
+|
+|-damage|p2a: Porygon|14/25 psn|[from] psn
+|-damage|p1a: Porygon|64/100 brn|[from] brn
+|upkeep
+|turn|56
+|
+|t:|1795192553
+|move|p2a: Porygon|Recover|p2a: Porygon
+|-heal|p2a: Porygon|25/25 psn
+|move|p1a: Porygon|Psychic|p2a: Porygon
+|-damage|p2a: Porygon|20/25 psn
+|
+|-damage|p2a: Porygon|17/25 psn|[from] psn
+|-damage|p1a: Porygon|52/100 brn|[from] brn
+|upkeep
+|turn|57
+|
+|t:|1795192555
+|move|p1a: Porygon|Recover|p1a: Porygon
+|-heal|p1a: Porygon|100/100 brn
+|move|p2a: Porygon|Psychic|p1a: Porygon
+|-damage|p1a: Porygon|76/100 brn
+|-unboost|p1a: Porygon|spd|1
+|
+|-damage|p2a: Porygon|14/25 psn|[from] psn
+|-damage|p1a: Porygon|64/100 brn|[from] brn
+|upkeep
+|turn|58
+|
+|t:|1795192557
+|move|p1a: Porygon|Psychic|p2a: Porygon
+|-damage|p2a: Porygon|9/25 psn
+|move|p2a: Porygon|Recover|p2a: Porygon
+|-heal|p2a: Porygon|22/25 psn
+|
+|-damage|p2a: Porygon|19/25 psn|[from] psn
+|-damage|p1a: Porygon|52/100 brn|[from] brn
+|upkeep
+|turn|59
+|
+|t:|1795192561
+|move|p1a: Porygon|Recover|p1a: Porygon
+|-heal|p1a: Porygon|100/100 brn
+|move|p2a: Porygon|Psychic|p1a: Porygon
+|-damage|p1a: Porygon|72/100 brn
+|-unboost|p1a: Porygon|spd|1
+|
+|-damage|p2a: Porygon|16/25 psn|[from] psn
+|-damage|p1a: Porygon|60/100 brn|[from] brn
+|upkeep
+|turn|60
+|
+|t:|1795192564
+|move|p1a: Porygon|Psychic|p2a: Porygon
+|-damage|p2a: Porygon|11/25 psn
+|-unboost|p2a: Porygon|spd|1
+|move|p2a: Porygon|Recover|p2a: Porygon
+|-heal|p2a: Porygon|24/25 psn
+|
+|-damage|p2a: Porygon|21/25 psn|[from] psn
+|-damage|p1a: Porygon|48/100 brn|[from] brn
+|upkeep
+|turn|61
+|
+|t:|1795192568
+|move|p1a: Porygon|Psychic|p2a: Porygon
+|-damage|p2a: Porygon|15/25 psn
+|move|p2a: Porygon|Ice Beam|p1a: Porygon
+|-damage|p1a: Porygon|16/100 brn
+|
+|-damage|p2a: Porygon|12/25 psn|[from] psn
+|-damage|p1a: Porygon|4/100 brn|[from] brn
+|upkeep
+|turn|62
+|
+|t:|1795192572
+|move|p1a: Porygon|Thunderbolt|p2a: Porygon
+|-damage|p2a: Porygon|5/25 psn
+|move|p2a: Porygon|Thunder Wave||[still]
+|-fail|p2a: Porygon
+|
+|-damage|p2a: Porygon|2/25 psn|[from] psn
+|-damage|p1a: Porygon|0 fnt|[from] brn
+|faint|p1a: Porygon
+|upkeep
+|
+|t:|1795192578
+|switch|p1a: Mienfoo|Mienfoo, L5, F|35/100
+|turn|63
+|
+|t:|1795192580
+|move|p1a: Mienfoo|U-turn|p2a: Porygon
+|-damage|p2a: Porygon|0 fnt
+|faint|p2a: Porygon
+|
+|t:|1795192594
+|switch|p1a: Diglett|Diglett, L5, M|12/100|[from] U-turn
+|
+|upkeep
+|
+|t:|1795192595
+|switch|p2a: Vullaby|Vullaby, L5, F|14/23 brn
+|-damage|p2a: Vullaby|9/23 brn|[from] Stealth Rock
+|turn|64
+|
+|t:|1795192600
+|switch|p1a: Vullaby|Vullaby, L5, F|87/100
+|move|p2a: Vullaby|Roost|p2a: Vullaby
+|-heal|p2a: Vullaby|21/23 brn
+|-singleturn|p2a: Vullaby|move: Roost
+|
+|-damage|p2a: Vullaby|19/23 brn|[from] brn
+|upkeep
+|turn|65
+|
+|t:|1795192604
+|move|p1a: Vullaby|Knock Off|p2a: Vullaby
+|-resisted|p2a: Vullaby
+|-damage|p2a: Vullaby|18/23 brn
+|-ability|p2a: Vullaby|Weak Armor|boost
+|-unboost|p2a: Vullaby|def|1
+|-boost|p2a: Vullaby|spe|1
+|-enditem|p2a: Vullaby|Eviolite|[from] move: Knock Off|[of] p1a: Vullaby
+|move|p2a: Vullaby|Nasty Plot|p2a: Vullaby
+|-boost|p2a: Vullaby|spa|2
+|
+|-damage|p2a: Vullaby|16/23 brn|[from] brn
+|upkeep
+|turn|66
+|
+|t:|1795192607
+|move|p2a: Vullaby|Air Slash|p1a: Vullaby
+|-damage|p1a: Vullaby|22/100
+|cant|p1a: Vullaby|flinch
+|
+|-damage|p2a: Vullaby|14/23 brn|[from] brn
+|upkeep
+|turn|67
+|
+|t:|1795192611
+|move|p2a: Vullaby|Air Slash|p1a: Vullaby
+|-damage|p1a: Vullaby|0 fnt
+|faint|p1a: Vullaby
+|
+|-damage|p2a: Vullaby|12/23 brn|[from] brn
+|upkeep
+|
+|t:|1795192613
+|switch|p1a: Mienfoo|Mienfoo, L5, F|66/100
+|turn|68
+|
+|t:|1795192614
+|move|p2a: Vullaby|Air Slash|p1a: Mienfoo
+|-supereffective|p1a: Mienfoo
+|-damage|p1a: Mienfoo|0 fnt
+|faint|p1a: Mienfoo
+|
+|-damage|p2a: Vullaby|10/23 brn|[from] brn
+|upkeep
+|
+|t:|1795192616
+|switch|p1a: Diglett|Diglett, L5, M|12/100
+|turn|69
+|
+|t:|1795192617
+|move|p1a: Diglett|Sucker Punch|p2a: Vullaby
+|-resisted|p2a: Vullaby
+|-damage|p2a: Vullaby|6/23 brn
+|-ability|p2a: Vullaby|Weak Armor|boost
+|-unboost|p2a: Vullaby|def|1
+|-boost|p2a: Vullaby|spe|1
+|move|p2a: Vullaby|Dark Pulse|p1a: Diglett
+|-damage|p1a: Diglett|0 fnt
+|faint|p1a: Diglett
+|
+|win|Tactigon</script>
+  </div></div>
+  <aside class="lc-panel">
+    <div class="lc-card"><h3>Win chance over the game</h3><div id="lc-chart"></div></div>
+    <div class="lc-card" id="lc-turn"><div class="lc-idle">Press play: the bot's view of each turn appears here as the replay advances. Click the chart to jump to a turn.</div></div>
+  </aside>
+</div></div>
+<div id="lc-tip"></div>
+<script>
+var G = {"room": "battle-gen5lc-2717006623", "me": "Tactigon", "side": "p2", "foe": "asdweqwasd", "result": "won", "turns": 69, "decisions": [{"turn": 1, "choice": "move 1", "options": [["Earthquake", 80], ["Stealth Rock", 17], ["switch Vullaby", 1], ["switch Mienfoo", 1]], "win": 66, "notes": []}, {"turn": 2, "choice": "switch 5", "options": [["switch Vullaby", 88], ["switch Mienfoo", 9], ["Rapid Spin", 1], ["Stealth Rock", 1]], "win": 65, "notes": []}, {"turn": 2, "choice": "move 3", "options": [["Rapid Spin", 66], ["Stealth Rock", 31], ["Earthquake", 2], ["Rock Slide", 0]], "win": 65, "notes": []}, {"turn": 3, "choice": "switch 3", "options": [["switch Mienfoo", 92], ["switch Vullaby", 8], ["switch Porygon", 1], ["switch Pawniard", 0]], "win": 67, "notes": []}, {"turn": 3, "choice": "move 2", "options": [["U-turn", 53], ["Knock Off", 22], ["Fake Out", 20], ["High Jump Kick", 5]], "win": 63, "notes": []}, {"turn": 3, "choice": "switch 5", "options": [["switch Vullaby", 89], ["switch Pawniard", 10], ["switch Porygon", 1], ["switch Gastly", 0]], "win": 62, "notes": []}, {"turn": 4, "choice": "move 1", "options": [["Dark Pulse", 100], ["Nasty Plot", 0], ["Air Slash", 0], ["switch Porygon", 0]], "win": 56, "notes": []}, {"turn": 5, "choice": "move 1", "options": [["Dark Pulse", 63], ["Nasty Plot", 23], ["Air Slash", 14], ["Roost", 0]], "win": 59, "notes": []}, {"turn": 6, "choice": "move 2", "options": [["Roost", 99], ["Air Slash", 0], ["Dark Pulse", 0], ["Nasty Plot", 0]], "win": 67, "notes": []}, {"turn": 7, "choice": "move 2", "options": [["Roost", 50], ["Air Slash", 33], ["Dark Pulse", 16], ["switch Porygon", 1]], "win": 67, "notes": []}, {"turn": 8, "choice": "move 1", "options": [["Dark Pulse", 99], ["switch Porygon", 1], ["Air Slash", 0], ["Nasty Plot", 0]], "win": 61, "notes": []}, {"turn": 9, "choice": "move 1", "options": [["Dark Pulse", 100], ["Air Slash", 0], ["Roost", 0], ["Nasty Plot", 0]], "win": 66, "notes": []}, {"turn": 10, "choice": "move 2", "options": [["Roost", 97], ["switch Mienfoo", 1], ["Air Slash", 1], ["Dark Pulse", 0]], "win": 71, "notes": []}, {"turn": 11, "choice": "move 2", "options": [["Roost", 59], ["switch Mienfoo", 13], ["Dark Pulse", 13], ["Air Slash", 8]], "win": 72, "notes": []}, {"turn": 12, "choice": "move 2", "options": [["Roost", 41], ["switch Mienfoo", 24], ["Dark Pulse", 18], ["Air Slash", 8]], "win": 71, "notes": []}, {"turn": 13, "choice": "switch 5", "options": [["switch Mienfoo", 29], ["Roost", 28], ["Dark Pulse", 24], ["Air Slash", 9]], "win": 71, "notes": []}, {"turn": 14, "choice": "move 2", "options": [["U-turn", 56], ["High Jump Kick", 44], ["Knock Off", 0], ["Fake Out", 0]], "win": 72, "notes": []}, {"turn": 14, "choice": "switch 2", "options": [["switch Gastly", 99], ["switch Vullaby", 0], ["switch Porygon", 0], ["switch Pawniard", 0]], "win": 71, "notes": []}, {"turn": 15, "choice": "move 3", "options": [["Will-O-Wisp", 98], ["Sludge Bomb", 1], ["Substitute", 0], ["Shadow Ball", 0]], "win": 74, "notes": []}, {"turn": 16, "choice": "switch 2", "options": [["switch Mienfoo", 48], ["Sludge Bomb", 23], ["switch Pawniard", 18], ["Substitute", 10]], "win": 75, "notes": []}, {"turn": 17, "choice": "move 4", "options": [["High Jump Kick", 99], ["U-turn", 1], ["Knock Off", 0], ["Fake Out", 0]], "win": 77, "notes": []}, {"turn": 18, "choice": "switch 2", "options": [["High Jump Kick", 58], ["switch Gastly", 35], ["U-turn", 3], ["Knock Off", 3]], "win": 79, "notes": []}, {"turn": 19, "choice": "switch 6", "options": [["switch Porygon", 83], ["switch Pawniard", 8], ["Will-O-Wisp", 4], ["switch Vullaby", 4]], "win": 76, "notes": []}, {"turn": 20, "choice": "move 4", "options": [["Psychic", 43], ["Thunder Wave", 23], ["switch Mienfoo", 16], ["Ice Beam", 13]], "win": 78, "notes": []}, {"turn": 21, "choice": "move 2", "options": [["Recover", 79], ["switch Mienfoo", 7], ["Ice Beam", 6], ["Psychic", 6]], "win": 79, "notes": []}, {"turn": 22, "choice": "move 4", "options": [["Psychic", 48], ["switch Mienfoo", 24], ["switch Pawniard", 12], ["Ice Beam", 11]], "win": 83, "notes": []}, {"turn": 23, "choice": "move 4", "options": [["Psychic", 64], ["Ice Beam", 12], ["Thunder Wave", 10], ["Recover", 7]], "win": 81, "notes": []}, {"turn": 24, "choice": "move 2", "options": [["Recover", 43], ["Psychic", 40], ["Thunder Wave", 14], ["Ice Beam", 3]], "win": 80, "notes": []}, {"turn": 25, "choice": "move 4", "options": [["Psychic", 58], ["Ice Beam", 31], ["Recover", 3], ["switch Mienfoo", 3]], "win": 83, "notes": []}, {"turn": 26, "choice": "move 2", "options": [["Recover", 47], ["Psychic", 38], ["Thunder Wave", 6], ["Ice Beam", 4]], "win": 80, "notes": []}, {"turn": 27, "choice": "move 4", "options": [["Psychic", 62], ["Ice Beam", 21], ["switch Mienfoo", 17], ["Thunder Wave", 0]], "win": 82, "notes": []}, {"turn": 28, "choice": "move 4", "options": [["Psychic", 50], ["Recover", 27], ["Thunder Wave", 7], ["Ice Beam", 6]], "win": 79, "notes": []}, {"turn": 29, "choice": "move 2", "options": [["Psychic", 64], ["Recover", 27], ["Ice Beam", 6], ["Thunder Wave", 2]], "win": 82, "notes": []}, {"turn": 30, "choice": "switch 2", "options": [["Psychic", 41], ["switch Mienfoo", 39], ["Ice Beam", 10], ["switch Pawniard", 8]], "win": 80, "notes": []}, {"turn": 31, "choice": "switch 4", "options": [["switch Pawniard", 100], ["switch Vullaby", 0], ["switch Porygon", 0], ["switch Gastly", 0]], "win": 69, "notes": []}, {"turn": 31, "choice": "move 3", "options": [["Iron Head", 94], ["Swords Dance", 5], ["Pursuit", 0], ["Sucker Punch", 0]], "win": 66, "notes": []}, {"turn": 32, "choice": "move 3", "options": [["Iron Head", 81], ["Swords Dance", 10], ["Pursuit", 7], ["Sucker Punch", 2]], "win": 68, "notes": []}, {"turn": 33, "choice": "move 2", "options": [["Sucker Punch", 94], ["Iron Head", 4], ["Pursuit", 2], ["Swords Dance", 0]], "win": 67, "notes": []}, {"turn": 34, "choice": "move 2", "options": [["Sucker Punch", 91], ["Iron Head", 6], ["Pursuit", 3], ["Swords Dance", 1]], "win": 58, "notes": []}, {"turn": 35, "choice": "move 3", "options": [["Iron Head", 100], ["switch Gastly", 0], ["Swords Dance", 0], ["Sucker Punch", 0]], "win": 55, "notes": []}, {"turn": 36, "choice": "move 3", "options": [["Iron Head", 97], ["Swords Dance", 2], ["switch Vullaby", 0], ["Sucker Punch", 0]], "win": 43, "notes": []}, {"turn": 37, "choice": "switch 2", "options": [["switch Porygon", 87], ["switch Gastly", 13], ["switch Vullaby", 0]], "win": 24, "notes": []}, {"turn": 37, "choice": "move 1", "options": [["Ice Beam", 54], ["Recover", 40], ["Thunder Wave", 6], ["Psychic", 0]], "win": 26, "notes": []}, {"turn": 38, "choice": "move 2", "options": [["Recover", 100], ["Ice Beam", 0], ["Psychic", 0], ["Thunder Wave", 0]], "win": 40, "notes": []}, {"turn": 39, "choice": "move 1", "options": [["Psychic", 61], ["Ice Beam", 34], ["Recover", 5], ["Thunder Wave", 0]], "win": 36, "notes": []}, {"turn": 40, "choice": "move 2", "options": [["Recover", 99], ["Psychic", 0], ["Thunder Wave", 0], ["Ice Beam", 0]], "win": 42, "notes": []}, {"turn": 41, "choice": "move 4", "options": [["Psychic", 67], ["Recover", 16], ["Ice Beam", 16], ["switch Vullaby", 0]], "win": 43, "notes": []}, {"turn": 42, "choice": "move 2", "options": [["Recover", 99], ["Psychic", 0], ["Ice Beam", 0], ["Thunder Wave", 0]], "win": 39, "notes": []}, {"turn": 43, "choice": "move 4", "options": [["Psychic", 89], ["Ice Beam", 11], ["switch Vullaby", 0], ["Recover", 0]], "win": 42, "notes": []}, {"turn": 44, "choice": "move 2", "options": [["Recover", 98], ["Psychic", 1], ["Ice Beam", 1], ["Thunder Wave", 0]], "win": 52, "notes": []}, {"turn": 45, "choice": "move 4", "options": [["Psychic", 94], ["Ice Beam", 6], ["switch Vullaby", 0], ["Recover", 0]], "win": 41, "notes": []}, {"turn": 46, "choice": "move 2", "options": [["Recover", 84], ["Psychic", 9], ["Ice Beam", 6], ["Thunder Wave", 1]], "win": 48, "notes": []}, {"turn": 47, "choice": "move 4", "options": [["Psychic", 93], ["Ice Beam", 7], ["switch Vullaby", 0], ["Thunder Wave", 0]], "win": 40, "notes": []}, {"turn": 48, "choice": "move 2", "options": [["Recover", 63], ["Psychic", 23], ["Ice Beam", 13], ["Thunder Wave", 1]], "win": 47, "notes": []}, {"turn": 49, "choice": "move 4", "options": [["Psychic", 94], ["Ice Beam", 6], ["Thunder Wave", 0], ["switch Vullaby", 0]], "win": 39, "notes": []}, {"turn": 50, "choice": "move 2", "options": [["Recover", 100], ["Ice Beam", 0], ["Psychic", 0], ["Thunder Wave", 0]], "win": 42, "notes": []}, {"turn": 51, "choice": "move 4", "options": [["Psychic", 85], ["Ice Beam", 14], ["Recover", 1], ["Thunder Wave", 0]], "win": 35, "notes": []}, {"turn": 52, "choice": "move 2", "options": [["Recover", 99], ["Psychic", 1], ["Ice Beam", 0], ["Thunder Wave", 0]], "win": 40, "notes": []}, {"turn": 53, "choice": "move 4", "options": [["Psychic", 95], ["Ice Beam", 5], ["Thunder Wave", 0], ["Recover", 0]], "win": 36, "notes": []}, {"turn": 54, "choice": "move 2", "options": [["Recover", 99], ["Psychic", 1], ["Ice Beam", 0], ["Thunder Wave", 0]], "win": 40, "notes": []}, {"turn": 55, "choice": "move 4", "options": [["Psychic", 81], ["Ice Beam", 15], ["Recover", 3], ["switch Vullaby", 0]], "win": 42, "notes": []}, {"turn": 56, "choice": "move 2", "options": [["Recover", 99], ["Psychic", 1], ["Ice Beam", 0], ["Thunder Wave", 0]], "win": 39, "notes": []}, {"turn": 57, "choice": "move 4", "options": [["Psychic", 84], ["Ice Beam", 15], ["Recover", 1], ["switch Vullaby", 0]], "win": 43, "notes": []}, {"turn": 58, "choice": "move 2", "options": [["Recover", 95], ["Psychic", 3], ["Ice Beam", 2], ["Thunder Wave", 0]], "win": 47, "notes": []}, {"turn": 59, "choice": "move 4", "options": [["Psychic", 88], ["Ice Beam", 12], ["Recover", 0], ["switch Vullaby", 0]], "win": 49, "notes": []}, {"turn": 60, "choice": "move 2", "options": [["Recover", 81], ["Ice Beam", 18], ["Thunder Wave", 1], ["switch Vullaby", 0]], "win": 56, "notes": []}, {"turn": 61, "choice": "move 1", "options": [["Ice Beam", 100], ["switch Vullaby", 0], ["Thunder Wave", 0], ["switch Gastly", 0]], "win": 56, "notes": []}, {"turn": 62, "choice": "move 3", "options": [["Thunder Wave", 92], ["Ice Beam", 5], ["switch Vullaby", 2], ["switch Gastly", 1]], "win": 57, "notes": []}, {"turn": 63, "choice": "move 3", "options": [["Thunder Wave", 84], ["Ice Beam", 16], ["switch Gastly", 0], ["switch Vullaby", 0]], "win": 46, "notes": []}, {"turn": 64, "choice": "switch 5", "options": [["switch Vullaby", 100], ["switch Gastly", 0]], "win": 42, "notes": []}, {"turn": 64, "choice": "move 2", "options": [["Roost", 100], ["Dark Pulse", 0], ["Air Slash", 0], ["Nasty Plot", 0]], "win": 41, "notes": []}, {"turn": 65, "choice": "move 3", "options": [["Nasty Plot", 75], ["Air Slash", 24], ["Roost", 1], ["switch Gastly", 0]], "win": 37, "notes": []}, {"turn": 66, "choice": "move 4", "options": [["Air Slash", 100], ["Dark Pulse", 0], ["Roost", 0], ["Nasty Plot", 0]], "win": 56, "notes": []}, {"turn": 67, "choice": "move 4", "options": [["Air Slash", 90], ["Dark Pulse", 10], ["Nasty Plot", 0], ["Roost", 0]], "win": 76, "notes": []}, {"turn": 68, "choice": "move 4", "options": [["Air Slash", 94], ["Roost", 2], ["switch Gastly", 2], ["Dark Pulse", 1]], "win": 85, "notes": []}, {"turn": 69, "choice": "move 1", "options": [["Dark Pulse", 58], ["Roost", 26], ["Air Slash", 15], ["Nasty Plot", 0]], "win": 94, "notes": []}]};
+(function () {
+  var NS = 'http://www.w3.org/2000/svg';
+  var byTurn = {};
+  G.decisions.forEach(function (d) { (byTurn[d.turn] = byTurn[d.turn] || []).push(d); });
+  // one point per turn: the decision at the start of the turn (forced switches come later in it)
+  var pts = Object.keys(byTurn).map(Number).sort(function (a, b) { return a - b; })
+    .map(function (t) { return {t: t, w: byTurn[t][0].win}; }).filter(function (p) { return p.w !== null; });
+  var final = G.result === 'won' ? 100 : G.result === 'lost' ? 0 : 50;
+  var W = 440, H = 170, L = 30, R = 8, T = 8, B = 22;
+  var maxT = Math.max(G.turns, pts.length ? pts[pts.length - 1].t : 1, 1);
+  var x = function (t) { return L + (W - L - R) * (t - 1) / Math.max(maxT - 1, 1); };
+  var y = function (w) { return T + (H - T - B) * (1 - w / 100); };
+  function el(name, attrs, parent) {
+    var e = document.createElementNS(NS, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  var svg = el('svg', {viewBox: '0 0 ' + W + ' ' + H, role: 'img',
+    'aria-label': 'Bot win chance by turn, ending in a ' + G.result});
+  [0, 25, 50, 75, 100].forEach(function (v) {
+    el('line', {x1: L, x2: W - R, y1: y(v), y2: y(v), stroke: v === 50 ? 'var(--mid)' : 'var(--grid)',
+      'stroke-width': 1, 'stroke-dasharray': v === 50 ? '3 3' : ''}, svg);
+    el('text', {x: L - 6, y: y(v) + 3, 'text-anchor': 'end'}, svg).textContent = v + '%';
+  });
+  var step = Math.max(1, Math.ceil(maxT / 8));
+  for (var t = 1; t <= maxT; t += step) el('text', {x: x(t), y: H - 6, 'text-anchor': 'middle'}, svg).textContent = t;
+  if (pts.length) {
+    var d = pts.map(function (p, i) { return (i ? 'L' : 'M') + x(p.t).toFixed(1) + ' ' + y(p.w).toFixed(1); }).join(' ');
+    el('path', {d: d, fill: 'none', stroke: 'var(--series)', 'stroke-width': 2, 'stroke-linejoin': 'round', 'stroke-linecap': 'round'}, svg);
+    var last = pts[pts.length - 1];
+    el('line', {x1: x(last.t), y1: y(last.w), x2: x(maxT), y2: y(final), stroke: 'var(--series)', 'stroke-width': 2,
+      'stroke-dasharray': '2 3', opacity: .6}, svg);
+    el('circle', {cx: x(maxT), cy: y(final), r: 4, fill: G.result === 'won' ? 'var(--win)' : G.result === 'lost' ? 'var(--lose)' : 'var(--mid)',
+      stroke: 'var(--card)', 'stroke-width': 2}, svg);
+  }
+  var cursor = el('line', {y1: T, y2: H - B, stroke: 'var(--ink2)', 'stroke-width': 1, opacity: 0}, svg);
+  var dot = el('circle', {r: 4.5, fill: 'var(--series)', stroke: 'var(--card)', 'stroke-width': 2, opacity: 0}, svg);
+  var hit = el('rect', {x: L, y: T, width: W - L - R, height: H - T - B, fill: 'transparent', style: 'cursor:pointer'}, svg);
+  document.getElementById('lc-chart').appendChild(svg);
+  var tip = document.getElementById('lc-tip');
+  function nearest(ev) {
+    var r = svg.getBoundingClientRect(), px = (ev.clientX - r.left) * W / r.width, best = null;
+    pts.forEach(function (p) { if (!best || Math.abs(x(p.t) - px) < Math.abs(x(best.t) - px)) best = p; });
+    return best;
+  }
+  hit.addEventListener('mousemove', function (ev) {
+    var p = nearest(ev); if (!p) return;
+    tip.style.display = 'block'; tip.style.left = (ev.clientX + 12) + 'px'; tip.style.top = (ev.clientY - 28) + 'px';
+    tip.textContent = 'Turn ' + p.t + ': ' + p.w + '% win chance';
+  });
+  hit.addEventListener('mouseleave', function () { tip.style.display = 'none'; });
+  hit.addEventListener('click', function (ev) {
+    var p = nearest(ev); if (!p) return;
+    var b = window.Replays && window.Replays.battle;
+    if (b) { try { b.seekTurn(p.t); } catch (e) {} }
+    show(p.t, true);
+  });
+
+  var panel = document.getElementById('lc-turn'), current = null;
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]; }); }
+  function show(turn, force) {
+    var t = null;
+    Object.keys(byTurn).map(Number).forEach(function (k) { if (k <= turn) t = k; });
+    if (t === current && !force) return;
+    current = t;
+    if (t === null) { cursor.setAttribute('opacity', 0); dot.setAttribute('opacity', 0); return; }
+    var p = pts.filter(function (q) { return q.t === t; })[0];
+    cursor.setAttribute('x1', x(t)); cursor.setAttribute('x2', x(t)); cursor.setAttribute('opacity', .35);
+    if (p) { dot.setAttribute('cx', x(t)); dot.setAttribute('cy', y(p.w)); dot.setAttribute('opacity', 1); }
+    var prev = pts.filter(function (q) { return q.t < t; }).pop();
+    var html = '';
+    byTurn[t].forEach(function (d, i) {
+      var delta = (i === 0 && prev && d.win !== null) ? d.win - prev.w : null;
+      html += '<h3>Turn ' + t + (i ? ' · forced switch' : '') + '</h3><div class="lc-row"><div class="lc-big">' +
+        (d.win === null ? '–' : d.win + '%') + '<small>win chance</small></div>' +
+        (delta !== null ? '<div class="lc-delta">' + (delta >= 0 ? '+' : '') + delta + ' pts vs turn ' + prev.t + '</div>' : '') + '</div>';
+      if (d.options.length) {
+        html += '<table><thead><tr><th>option</th><th class="n">preference</th></tr></thead><tbody>';
+        d.options.forEach(function (o, j) {
+          html += '<tr' + (j === 0 ? ' class="lc-pick"' : '') + '><td>' + esc(o[0]) + '</td><td class="n">' + o[1] +
+            '%<span class="lc-bar" style="width:' + Math.round(o[1] * 0.3) + 'px"></span></td></tr>';
+        });
+        html += '</tbody></table>';
+      }
+      d.notes.forEach(function (n) { html += '<div class="lc-note">' + esc(n) + '</div>'; });
+      if (i < byTurn[t].length - 1) html += '<div style="height:12px"></div>';
+    });
+    panel.innerHTML = html;
+  }
+  var tries = 0, swapped = false;
+  (function hook() {
+    var b = window.Replays && window.Replays.battle;
+    if (!b) {
+      if (++tries > 40) document.getElementById('lc-offline').style.display = 'block';
+      return setTimeout(hook, 250);
+    }
+    if (G.side === 'p2' && !swapped) {  // show the battle from the bot's side
+      swapped = true;
+      try { window.Replays.switchViewpoint(); } catch (e) { try { b.switchViewpoint(); } catch (e2) {} }
+    }
+    var m = /turn=(\d+)/.exec(location.hash);  // links like page.html#turn=12 open at that turn
+    if (m) { try { b.seekTurn(+m[1]); } catch (e) {} }
+    setInterval(function () { show(b.turn); }, 200);  // 'turn' events are suppressed while seeking
+    show(b.turn);
+  })();
+})();
+</script>
+<script>
+  var daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24);
+  document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"><\/script>');
+</script>
+</body></html>
